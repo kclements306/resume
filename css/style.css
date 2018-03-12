@@ -1,4 +1,4 @@
-duv.top {}
+div.top {}
 
 div.couple {
   position: absolute;
@@ -376,10 +376,9 @@ img.three-icon {
   padding-right: 25px;
 }
 
-tr.three {
-  position: relative;
-  border-top: 1px black;
-  border-bottom: 1px black;
+tr.three:nth-child(2n) {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 img.three-03 {
@@ -645,7 +644,6 @@ span.footer_box_fromblog_date {
 
 div.footer_box_fromblog_redesign {
   position: relative;
-  top 40px;
   overflow: hidden;
 }
 
