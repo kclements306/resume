@@ -1,15 +1,11 @@
-div.container {
-  width: 1920px;
-}
+duv.top {}
 
 div.couple {
   position: absolute;
-  width: auto;
+  width: 1920px;
   height: 1950px;
   background-image: url("../images/couple.png");
   overflow: hidden;
-  position: relative;
-  margin-bottom: 0px;
 }
 
 nav.nav {
@@ -66,35 +62,42 @@ div.down_arrow {
   margin-top: 150px;
 }
 
-div.right-margin {
+img.right-margin-phone {
   position: absolute;
-  margin-left: 1825px;
-  top: 0;
-  bottom: 350px;
-  color: gray;
+  width: 45px;
+  height: 200px;
+  right: 10px;
+  top: 0px;
 }
 
-div.right-margin-nav {
+nav.right-margin {
   position: absolute;
+  font-family: gotham black;
+  font-size: 16px;
+  color: gray;
   transform: rotate(-90deg);
-  bottom: 500px;
-  /* white-space: nowrap; */
+  height: 30px;
+  width: 500px;
+  right: -220px;
+  top: 600px;
+  color: gray;
+  z-index: 10;
+}
+
+span.right-margin-nav {
+  margin-right: 20px;
 }
 
 div.right-margin-copyright {
   position: absolute;
-  bottom: 50px;
-  transform: rotate(-90deg);
-  padding-left: 0;
-  border: 1px red;
-}
-
-nav.right-margin {
+  font-family: gotham black;
+  font-size: 16px;
   color: gray;
-}
-
-span.right-margin-nav {
-  padding-right: 20px;
+  transform: rotate(-90deg);
+  right: -120px;
+  width: 300px;
+  height: 20px;
+  z-index: 10;
 }
 
 div.one {
@@ -357,6 +360,8 @@ img.three-whatwedo-x {
 
 table.three {
   position: absolute;
+  table-layout: auto;
+  border-collapse: collapse;
   font-family: Abraham Lincoln;
   font-size: 36px;
   top: 225px;
@@ -365,13 +370,15 @@ table.three {
 }
 
 img.three-icon {
+  position: relative;
   background-size: 20px;
   width: 20 px;
   height: 20 px;
-  padding-right:25px;
+  padding-right: 25px;
 }
 
 tr.three {
+  position: relative;
   border-top: 1px black;
   border-bottom: 1px black;
 }
@@ -597,7 +604,8 @@ div.footer_box_fromblog {
 }
 
 div.footer_box_newsletter_body {
-  margin-top: 20px;
+  position: relative;
+  top: 40px;
 }
 
 p.footer_box_newsletter_email {
@@ -624,6 +632,7 @@ p.footer_box_newsletter_subscribe {
 }
 
 p.footer_box_fromblog {
+  position: relative;
   font-family: gotham black;
   font-size: 10px;
   color: gray;
@@ -636,9 +645,9 @@ span.footer_box_fromblog_date {
 }
 
 div.footer_box_fromblog_redesign {
-/* position: absolute; */
+  position: relative;
+  top 40px;
   overflow: hidden;
-
 }
 
 img.footer_box_fromblog {
@@ -648,6 +657,8 @@ img.footer_box_fromblog {
 }
 
 p.footer_box_fromblog {
+  position: relative;
+  margin-left: 20px;
   margin-top: 20px;
   float: left;
   /* clear: both; */
