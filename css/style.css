@@ -1,63 +1,654 @@
-div {
-  margin-left: 50px
-}
-h3 {
-  padding-bottom: 1px;
-}
-ul {
-  padding-top: 1px;
-  padding-bottom: 1px;
-}
-.container{
-  margin-left: 150px;
-  margin-right:50px;
-}
-.heading {
-  text-align: center;
-}
-.h3_text{
-  padding-bottom: 0px;
-  margin-bottom: 1px;
-}
-.summary {
-  padding-top: 0px;
+div.container {
+  width: 1920px;
 }
 
-.summary_text {
-  padding-top: 0px;
-}
-.technical_skills {
-
-}
-.technical_skills-text {
-
-}
-.work_experience {
-
-}
-.work_experience_date {
-
-}
-.work_experience_text{
-  padding-right: 50px
-}
-.education{
-
-}
-.education_text {
-
-}
-.p_indent {
-  padding-right: 150px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-top: 0px;
-}
-.h4_work{
-  padding-bottom: 0px;
-  margin-top: 0px;
+div.couple {
+  position: absolute;
+  width: auto;
+  height: 1950px;
+  background-image: url("../images/couple.png");
+  overflow: hidden;
+  position: relative;
   margin-bottom: 0px;
 }
-.h4_workdate {
-  margin-bottom: 2px;
+
+nav.nav {
+  text-align: center;
+  margin-top: 30px;
+  font-family: sans-serif;
+  font-size: 18px;
+  color: gray;
+}
+
+div.logo {
+  padding-top: 50px;
+  text-align: center;
+}
+
+img.logo {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid white;
+}
+
+span.nav {
+  padding-right: 20px;
+}
+
+div.honor {
+  font-family: Abraham Lincoln;
+  font-size: 64px;
+  color: orange;
+  text-align: center;
+  margin-top: 700px;
+}
+
+div.honor_subtext {
+  font-family: Abraham Lincoln;
+  font-size: 36px;
+  color: gray;
+  text-align: center;
+  padding-top: 10px;
+}
+
+div.scroll {
+  margin-top: 300px;
+  text-align: center;
+  font-family: Abraham Lincoln;
+  font-size: 36px;
+  color: gray;
+}
+
+div.down_arrow {
+  text-align: center;
+  margin-top: 150px;
+}
+
+div.right-margin {
+  position: absolute;
+  margin-left: 1825px;
+  top: 0;
+  bottom: 350px;
+  color: gray;
+}
+
+div.right-margin-nav {
+  position: absolute;
+  transform: rotate(-90deg);
+  bottom: 500px;
+  /* white-space: nowrap; */
+}
+
+div.right-margin-copyright {
+  position: absolute;
+  bottom: 50px;
+  transform: rotate(-90deg);
+  padding-left: 0;
+  border: 1px red;
+}
+
+nav.right-margin {
+  color: gray;
+}
+
+span.right-margin-nav {
+  padding-right: 20px;
+}
+
+div.one {
+  position: absolute;
+  top: 1950px;
+  height: 1200px;
+  width: 1920px;
+  background-color: #694fca;
+  margin-top: 0px;
+}
+
+div.brushes {
+  position: absolute;
+  height: 700px;
+  width: 1000px;
+  top: 1600px;
+  left: 400px;
+  z-index: 10;
+}
+
+img.basket_brushes {
+  position: absolute;
+  left: 700px;
+  top: 435px;
+}
+
+div.invites {
+  position: absolute;
+  top: 480px;
+  left: 250px;
+}
+
+span.invites {
+  font-family: Abraham Lincoln;
+  font-size: 64px;
+  color: white;
+}
+
+span.invent {
+  font-family: Abraham Lincoln;
+  font-size: 16px;
+  color: white;
+}
+
+div.one-complexity {
+  position: absolute;
+  top: 500px;
+  left: 400px;
+  display: table-row;
+}
+
+div.one-complexity-left {
+  position: relative;
+  display: table-cell;
+  font-family: Abraham Lincoln;
+  font-size: 72px;
+  color: white;
+  width: 200px;
+}
+
+div.one-complexity-right {
+  position: relative;
+  display: table-cell;
+  width: 375px;
+  line-height: 12px;
+}
+
+span.one-complexity-right {
+  font-family: sans-serif;
+  font-size: 12px;
+  color: white;
+}
+
+div.one-services {
+  position: absolute;
+  display: table-row;
+  top: 800px;
+  left: 400px;
+}
+
+div.one-services-a {
+  position: relative;
+  display: table-cell;
+  width: 300px;
+  height: 200px;
+  padding-right: 50px;
+}
+
+span.one-services-heading {
+  font-family: Abraham Lincoln;
+  font-size: 20px;
+  color: orange;
+}
+
+div.one-services-body {
+  margin-top: 50px;
+}
+
+span.one-services-body {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+img.one-services-body {
+  text-align: center;
+}
+
+div.one-bar {
+  position: absolute;
+  left: 914px;
+  bottom: 50px;
+}
+
+img.one-bar-gold {
+  padding-right: 11px;
+}
+
+div.two {
+  position: absolute;
+  top: 3150px;
+  width: auto;
+  height: 1500px;
+  background-color: white;
+}
+
+div.two-welove {
+  position: absolute;
+  top: 260px;
+  left: 580px;
+  text-align: center;
+}
+
+div.two-welove-heading {
+  position: relative;
+  font-family: Abraham Lincoln;
+  font-size: 90px;
+  color: black;
+}
+
+div.two-welove-body {
+  position: relative;
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+img.two-bullseye {
+  position: absolute;
+  top: 500px;
+  left: 800px;
+}
+
+img.two-group2 {
+  position: absolute;
+  top: 1100px;
+  left: 435px;
+}
+
+div.two-honor {
+  position: absolute;
+  width: 500px;
+  text-align: right;
+  line-height: .9;
+  top: 1575px;
+  left: 775px;
+}
+
+span.two-honor-heading {
+  font-family: Abraham Lincoln;
+  font-size: 96px;
+  color: black;
+}
+
+span.two-honor-body {
+  font-family: Abraham Lincoln;
+  font-size: 24px;
+  color: black;
+}
+
+div.three {
+  position: absolute;
+  top: 5250px;
+  width: auto;
+  background-color: white;
+}
+
+img.three-rectangle {
+  position: absolute;
+  left: 50px;
+}
+
+img.three-tattoo {
+  position: absolute;
+  top: 75px;
+  left: 125px;
+}
+
+div.three-tattoo-prev {
+  position: absolute;
+  width: 400px;
+  height: 33px;
+  top: 125px;
+  left: 175px;
+}
+
+img.three-tattoo-prev_a {
+  position: relative;
+  width: 33px;
+  float: left;
+}
+
+img.three-tattoo-prev_b {
+  position: relative;
+  width: 173px;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+img.three-tattoo-prev_c {
+  position: relative;
+  width: 33px;
+  float: left;
+}
+
+div.three_whatwedo {
+  position: absolute;
+  width: 450px;
+  height: 200px;
+  font-family: Abraham Lincoln;
+  background-color: #694fca;
+  top: 225px;
+  left: 700px;
+}
+
+div.three_whatwedo_header {
+  position: relative;
+  font-size: 48px;
+  color: orange;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+div.three_whatwedo_body {
+  position: relative;
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+  padding-left: 20px;
+  line-height: 2
+}
+
+img.three-whatwedo-x {
+  position: absolute;
+  top: 10px;
+  left: 400px;
+}
+
+table.three {
+  position: absolute;
+  font-family: Abraham Lincoln;
+  font-size: 36px;
+  top: 225px;
+  left: 1200px;
+  width: 600px;
+}
+
+img.three-icon {
+  background-size: 20px;
+  width: 20 px;
+  height: 20 px;
+  padding-right:25px;
+}
+
+tr.three {
+  border-top: 1px black;
+  border-bottom: 1px black;
+}
+
+img.three-03 {
+  position: absolute;
+  width: 165px;
+  height: 165px;
+  top: 575px;
+  left: 1050px;
+}
+
+div.winter {
+  position: absolute;
+  top: 5500px;
+  height: 2560px;
+  width: 1920px;
+  background-image: url("../images/winter.png");
+  z-index: -5;
+}
+
+div.winter-text {
+  position: absolute;
+  top: 1250px;
+  left: 710px;
+  width: 500px;
+  height: 400px;
+  font-family: Abraham Lincoln;
+  font-size: 36px;
+  text-align: center;
+}
+
+span.winter-text-heading {}
+
+span.winter-text-body {
+  font-size: 24px;
+}
+
+img.winter-text-line {
+  color: black;
+}
+
+span.winter-text-subtext {
+  font-family: sans-serif;
+  font-size: 24px;
+}
+
+div.winter_test {
+  position: absolute;
+  bottom: 400px;
+  left: 500px;
+  width: 650px;
+  height: 600px
+}
+
+div.winter_test_customers {
+  position: absolute;
+  overflow: hidden;
+  width: 1000px;
+}
+
+div.winter_test_customers.a {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 450px;
+  text-align: center;
+  background-color: white;
+  margin-right: 20px;
+}
+
+div.winter_test_customers.b {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 450px;
+  background-color: #694fca;
+  text-align: center;
+  margin-right: 20px;
+}
+
+div.winter_test_customers.c {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 450px;
+  text-align: center;
+  background-color: white;
+}
+
+img.winter_test_customers_image {
+  /* width: 50%; */
+  /* height: 50%; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+img.winter_test_customers_stars {}
+
+p.winter_test_customers_name {
+  font-family: gotham black;
+  font-weight: bold;
+}
+
+p.winter_test_customers_location {
+  font-family: gotham black;
+  font-style: normal;
+  font-size: 12px;
+  color: gray;
+}
+
+footer {
+  position: absolute;
+  width: 1920px;
+  ;
+  height: 600px;
+  top: 7700px;
+  background-color: black;
+}
+
+ul.footer {
+  position: absolute;
+  display: table-row;
+  left: 400px;
+}
+
+li.footer {
+  display: table-cell;
+}
+
+img.footer-phone {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+img.footer-email {
+  margin-left: 200px;
+  margin-right: 10px;
+  margin-bottom: 11px;
+}
+
+img.footer-phone-number {
+  margin-right: 200px;
+  margin-bottom: 10px;
+}
+
+img.footer-email-info {
+  margin-bottom: 10px;
+}
+
+div.footer_box {
+  position: absolute;
+  height: 400px;
+  width: 1920;
+  top: 100px;
+  left: 300px;
+  overflow: visible;
+}
+
+div.footer_box_aboutus {
+  position: relative;
+  float: left;
+  width: 600px;
+  height: 400px;
+}
+
+p.footer_box_title {
+  font-family: gotham black;
+  color: white;
+}
+
+div.footer_box_aboutus_image {
+  position: absolute;
+  width: 400px;
+}
+
+img.footer_box_aboutus {
+  float: left;
+}
+
+div.footer_box_aboutus_soc {
+  float: left;
+}
+
+div.footer_box_aboutus_soc_img {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: -12px;
+  width: 350px;
+}
+
+img.sm {
+  float: left;
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+  color: gray;
+}
+
+p.footer_box_body {
+  font-family: gotham black;
+  font-size: 10px;
+  color: gray;
+}
+
+p.footer_box_aboutus_body {
+  font-family: gotham black;
+  font-size: 10px;
+  color: gray;
+  line-height: 2;
+}
+
+div.footer_box_newsletter {
+  float: left;
+  width: 300px;
+  height: 400px;
+}
+
+div.footer_box_fromblog {
+  float: left;
+  width: 300px;
+  height: 400px;
+}
+
+div.footer_box_newsletter_body {
+  margin-top: 20px;
+}
+
+p.footer_box_newsletter_email {
+  font-family: gotham black;
+  font-size: 10px;
+  color: gray;
+  margin-top: 20px;
+  width: 250px;
+  border: 1px solid gray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+}
+
+p.footer_box_newsletter_subscribe {
+  font-family: gotham black;
+  font-size: 12px;
+  color: gray;
+  background-color: #694fca;
+  width: 100px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+p.footer_box_fromblog {
+  font-family: gotham black;
+  font-size: 10px;
+  color: gray;
+}
+
+span.footer_box_fromblog_date {
+  font-family: gotham black;
+  font-size: 12px;
+  color: #694fca;
+}
+
+div.footer_box_fromblog_redesign {
+/* position: absolute; */
+  overflow: hidden;
+
+}
+
+img.footer_box_fromblog {
+  float: left;
+  clear: left;
+  margin-top: 20px;
+}
+
+p.footer_box_fromblog {
+  margin-top: 20px;
+  float: left;
+  /* clear: both; */
 }
