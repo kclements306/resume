@@ -1,0 +1,63 @@
+div {
+  margin-left: 50px
+}
+h3 {
+  padding-bottom: 1px;
+}
+ul {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+.container{
+  margin-left: 150px;
+  margin-right:50px;
+}
+.heading {
+  text-align: center;
+}
+.h3_text{
+  padding-bottom: 0px;
+  margin-bottom: 1px;
+}
+.summary {
+  padding-top: 0px;
+}
+
+.summary_text {
+  padding-top: 0px;
+}
+.technical_skills {
+
+}
+.technical_skills-text {
+
+}
+.work_experience {
+
+}
+.work_experience_date {
+
+}
+.work_experience_text{
+  padding-right: 50px
+}
+.education{
+
+}
+.education_text {
+
+}
+.p_indent {
+  padding-right: 150px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+}
+.h4_work{
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.h4_workdate {
+  margin-bottom: 2px;
+}
