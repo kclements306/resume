@@ -1,4 +1,37 @@
-div.top {}
+
+body {
+  font-family: 'Abraham Lincoln';
+}
+
+
+h1 {
+  font-family: 'Abraham Lincoln';
+  font-size: 64px;
+  color: orange;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Abraham Lincoln';
+  font-size: 36px;
+  color: white;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  font-family: 'Abraham Lincoln';
+  font-size: 36px;
+  color: gray;
+}
+
+nav {
+  font-family: 'sans-serif';
+  font-size: 20px;
+  color: gray;
+  margin-top: 30px;
+  text-align: center;
+}
 
 div.couple {
   position: absolute;
@@ -6,14 +39,6 @@ div.couple {
   height: 1950px;
   background-image: url("../images/couple.png");
   overflow: hidden;
-}
-
-nav.nav {
-  text-align: center;
-  margin-top: 30px;
-  font-family: sans-serif;
-  font-size: 18px;
-  color: gray;
 }
 
 div.logo {
@@ -30,36 +55,23 @@ img.logo {
 }
 
 span.nav {
-  padding-right: 20px;
+  padding-right: 30px;
 }
 
-div.honor {
-  font-family: Abraham Lincoln;
+/* div.honor {
+  font-family: 'Abraham Lincoln';
   font-size: 64px;
   color: orange;
   text-align: center;
   margin-top: 700px;
-}
-
-div.honor_subtext {
-  font-family: Abraham Lincoln;
-  font-size: 36px;
-  color: gray;
-  text-align: center;
-  padding-top: 10px;
+} */
+div.honor {
+  margin-top: 700px;
 }
 
 div.scroll {
   margin-top: 300px;
   text-align: center;
-  font-family: Abraham Lincoln;
-  font-size: 36px;
-  color: gray;
-}
-
-div.down_arrow {
-  text-align: center;
-  margin-top: 150px;
 }
 
 img.right-margin-phone {
@@ -72,7 +84,7 @@ img.right-margin-phone {
 
 nav.right-margin {
   position: absolute;
-  font-family: gotham black;
+  font-family: 'Gotham Black';
   font-size: 16px;
   color: gray;
   transform: rotate(-90deg);
@@ -90,7 +102,7 @@ span.right-margin-nav {
 
 div.right-margin-copyright {
   position: absolute;
-  font-family: gotham black;
+  font-family: 'Gotham Black';
   font-size: 16px;
   color: gray;
   transform: rotate(-90deg);
@@ -118,7 +130,7 @@ div.brushes {
   z-index: 10;
 }
 
-img.basket_brushes {
+img.basket-brushes {
   position: absolute;
   left: 700px;
   top: 435px;
@@ -131,13 +143,13 @@ div.invites {
 }
 
 span.invites {
-  font-family: Abraham Lincoln;
+  font-family: 'Abraham Lincoln';
   font-size: 64px;
   color: white;
 }
 
 span.invent {
-  font-family: Abraham Lincoln;
+  font-family: 'Abraham Lincoln';
   font-size: 16px;
   color: white;
 }
@@ -152,7 +164,7 @@ div.one-complexity {
 div.one-complexity-left {
   position: relative;
   display: table-cell;
-  font-family: Abraham Lincoln;
+  font-family: 'Abraham Lincoln';
   font-size: 72px;
   color: white;
   width: 200px;
@@ -187,7 +199,7 @@ div.one-services-a {
 }
 
 span.one-services-heading {
-  font-family: Abraham Lincoln;
+  font-family: 'Abraham Lincoln';
   font-size: 20px;
   color: orange;
 }
@@ -233,7 +245,7 @@ div.two-welove {
 
 div.two-welove-heading {
   position: relative;
-  font-family: Abraham Lincoln;
+  font-family: 'Abraham Lincoln';
   font-size: 90px;
   color: black;
 }
@@ -267,13 +279,13 @@ div.two-honor {
 }
 
 span.two-honor-heading {
-  font-family: Abraham Lincoln;
+  font-family: 'Abraham Lincoln';
   font-size: 96px;
   color: black;
 }
 
 span.two-honor-body {
-  font-family: Abraham Lincoln;
+  font-family: 'Abraham Lincoln';
   font-size: 24px;
   color: black;
 }
@@ -304,13 +316,13 @@ div.three-tattoo-prev {
   left: 175px;
 }
 
-img.three-tattoo-prev_a {
+img.three-tattoo-prev-a {
   position: relative;
   width: 33px;
   float: left;
 }
 
-img.three-tattoo-prev_b {
+img.three-tattoo-prev-b {
   position: relative;
   width: 173px;
   float: left;
@@ -319,23 +331,23 @@ img.three-tattoo-prev_b {
   padding-top: 5px;
 }
 
-img.three-tattoo-prev_c {
+img.three-tattoo-prev-c {
   position: relative;
   width: 33px;
   float: left;
 }
 
-div.three_whatwedo {
+div.three-whatwedo {
   position: absolute;
   width: 450px;
   height: 200px;
-  font-family: Abraham Lincoln;
+  font-family: 'Abraham Lincoln';
   background-color: #694fca;
   top: 225px;
   left: 700px;
 }
 
-div.three_whatwedo_header {
+div.three-whatwedo-header {
   position: relative;
   font-size: 48px;
   color: orange;
@@ -343,7 +355,7 @@ div.three_whatwedo_header {
   padding-top: 10px;
 }
 
-div.three_whatwedo_body {
+div.three-whatwedo-body {
   position: relative;
   font-family: sans-serif;
   font-size: 16px;
@@ -362,7 +374,7 @@ table.three {
   position: absolute;
   table-layout: auto;
   border-collapse: collapse;
-  font-family: Abraham Lincoln;
+  font-family: 'Abraham Lincoln';
   font-size: 36px;
   top: 225px;
   left: 1200px;
@@ -404,7 +416,7 @@ div.winter-text {
   left: 710px;
   width: 500px;
   height: 400px;
-  font-family: Abraham Lincoln;
+  font-family: 'Abraham Lincoln';
   font-size: 36px;
   text-align: center;
 }
@@ -424,7 +436,7 @@ span.winter-text-subtext {
   font-size: 24px;
 }
 
-div.winter_test {
+div.winter-test {
   position: absolute;
   bottom: 400px;
   left: 500px;
@@ -432,13 +444,13 @@ div.winter_test {
   height: 600px
 }
 
-div.winter_test_customers {
+div.winter-test-customers {
   position: absolute;
   overflow: hidden;
   width: 1000px;
 }
 
-div.winter_test_customers.a {
+div.winter-test-customers.a {
   position: relative;
   float: left;
   width: 300px;
@@ -448,7 +460,7 @@ div.winter_test_customers.a {
   margin-right: 20px;
 }
 
-div.winter_test_customers.b {
+div.winter-test-customers.b {
   position: relative;
   float: left;
   width: 300px;
@@ -458,7 +470,7 @@ div.winter_test_customers.b {
   margin-right: 20px;
 }
 
-div.winter_test_customers.c {
+div.winter-test-customers.c {
   position: relative;
   float: left;
   width: 300px;
@@ -467,22 +479,22 @@ div.winter_test_customers.c {
   background-color: white;
 }
 
-img.winter_test_customers_image {
+img.winter-test-customers-image {
   /* width: 50%; */
   /* height: 50%; */
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-img.winter_test_customers_stars {}
+img.winter-test-customers-stars {}
 
-p.winter_test_customers_name {
-  font-family: gotham black;
+p.winter-test-customers-name {
+  font-family: 'Gotham Black';
   font-weight: bold;
 }
 
-p.winter_test_customers_location {
-  font-family: gotham black;
+p.winter-test-customers-location {
+  font-family: 'Gotham Black';
   font-style: normal;
   font-size: 12px;
   color: gray;
@@ -491,7 +503,6 @@ p.winter_test_customers_location {
 footer {
   position: absolute;
   width: 1920px;
-  ;
   height: 600px;
   top: 7700px;
   background-color: black;
@@ -527,7 +538,7 @@ img.footer-email-info {
   margin-bottom: 10px;
 }
 
-div.footer_box {
+div.footer-box {
   position: absolute;
   height: 400px;
   width: 1920;
@@ -536,32 +547,32 @@ div.footer_box {
   overflow: visible;
 }
 
-div.footer_box_aboutus {
+div.footer-box-aboutus {
   position: relative;
   float: left;
   width: 600px;
   height: 400px;
 }
 
-p.footer_box_title {
-  font-family: gotham black;
+p.footer-box-title {
+  font-family: 'Gotham Black';
   color: white;
 }
 
-div.footer_box_aboutus_image {
+div.footer-box-aboutus-image {
   position: absolute;
   width: 400px;
 }
 
-img.footer_box_aboutus {
+img.footer-box-aboutus {
   float: left;
 }
 
-div.footer_box_aboutus_soc {
+div.footer-box-aboutus-soc {
   float: left;
 }
 
-div.footer_box_aboutus_soc_img {
+div.footer-box-aboutus-soc-img {
   position: absolute;
   margin-left: 20px;
   margin-top: -12px;
@@ -576,38 +587,38 @@ img.sm {
   color: gray;
 }
 
-p.footer_box_body {
-  font-family: gotham black;
+p.footer-box-body {
+  font-family: 'Gotham Black';
   font-size: 10px;
   color: gray;
 }
 
-p.footer_box_aboutus_body {
-  font-family: gotham black;
+p.footer-box-aboutus-body {
+  font-family: 'Gotham Black';
   font-size: 10px;
   color: gray;
   line-height: 2;
 }
 
-div.footer_box_newsletter {
+div.footer-box-newsletter {
   float: left;
   width: 300px;
   height: 400px;
 }
 
-div.footer_box_fromblog {
+div.footer-box-fromblog {
   float: left;
   width: 300px;
   height: 400px;
 }
 
-div.footer_box_newsletter_body {
+div.footer-box-newsletter-body {
   position: relative;
   top: 40px;
 }
 
-p.footer_box_newsletter_email {
-  font-family: gotham black;
+p.footer-box-newsletter-email {
+  font-family: 'Gotham Black';
   font-size: 10px;
   color: gray;
   margin-top: 20px;
@@ -618,8 +629,8 @@ p.footer_box_newsletter_email {
   padding-left: 15px;
 }
 
-p.footer_box_newsletter_subscribe {
-  font-family: gotham black;
+p.footer-box-newsletter-subscribe {
+  font-family: 'Gotham Black';
   font-size: 12px;
   color: gray;
   background-color: #694fca;
@@ -629,34 +640,33 @@ p.footer_box_newsletter_subscribe {
   padding-bottom: 10px;
 }
 
-p.footer_box_fromblog {
+p.footer-box-fromblog {
   position: relative;
-  font-family: gotham black;
+  font-family: 'Gotham Black';
   font-size: 10px;
   color: gray;
 }
 
-span.footer_box_fromblog_date {
-  font-family: gotham black;
+span.footer-box-fromblog-date {
+  font-family: 'Gotham Black';
   font-size: 12px;
   color: #694fca;
 }
 
-div.footer_box_fromblog_redesign {
+div.footer-box-fromblog-redesign {
   position: relative;
   overflow: hidden;
 }
 
-img.footer_box_fromblog {
+img.footer-box-fromblog {
   float: left;
   clear: left;
   margin-top: 20px;
 }
 
-p.footer_box_fromblog {
+p.footer-box-fromblog {
   position: relative;
   margin-left: 20px;
   margin-top: 20px;
   float: left;
-  /* clear: both; */
 }
