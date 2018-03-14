@@ -578,6 +578,7 @@ img.sm {
   width: 25px;
   margin-right: 10px;
   color: gray;
+  opacity: .5;
 }
 
 p.footer-box-body {
