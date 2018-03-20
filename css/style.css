@@ -26,19 +26,20 @@ h3 {
 }
 
 nav {
-  font-family: 'sans-serif';
-  font-size: 20px;
-  color: gray;
-  margin-top: 30px;
+  margin-top: 3%;
   text-align: center;
 }
 
-div.couple {
-  position: absolute;
-  width: 1920px;
-  height: 1950px;
+nav a {
+  font-family: 'Gotham Black';
+  font-size: 20px;
+  color: gray;
+  text-align: center;
+  margin-right: 1%;
+}
+
+section.couple {
   background-image: url("../images/couple.png");
-  overflow: hidden;
 }
 
 div.logo {
@@ -414,8 +415,6 @@ div.winter-text {
   text-align: center;
 }
 
-span.winter-text-heading {}
-
 span.winter-text-body {
   font-size: 24px;
 }
@@ -478,8 +477,6 @@ img.winter-test-customers-image {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
-img.winter-test-customers-stars {}
 
 p.winter-test-customers-name {
   font-family: 'Gotham Black';
