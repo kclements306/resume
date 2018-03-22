@@ -1,0 +1,117 @@
+div div {
+    background-color: #363636;
+    color: gray;
+    margin-bottom: 0%;
+    margin-top: 0%;
+}
+
+.content-row {
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+.content-column {
+    padding-left: 0%;
+    padding-right: 0%;    
+}
+
+.content-sample {
+    background-color: white;
+}
+
+.logo-header {
+    background-color: white;
+    margin: 0%;
+}
+
+.logo-image {
+
+}
+
+.row-info {
+    font-family: "Helvetica";
+    font-size: 1rem;
+}
+
+.header-info {
+    padding-top: 2%;
+}
+
+.header-phone {
+    padding-top: 2%;
+}
+
+.header-navbar {
+    background-color: #363636;
+}
+
+
+.header-login {
+    background-color: #363636;
+    color: gray;
+}
+
+.navbar-nav > li {
+    float: left;
+    position: relative;
+}
+
+.navbar-dark .navbar-nav .active a::after {
+    border-bottom: 5px solid white;
+    bottom: -10px;
+    content: " ";
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+
+.home {
+    padding-right: 5rem;
+}
+
+.fa-search {
+    margin-right: 0%;
+}
+
+footer {
+    background-color: #363636;
+    color: gray;
+}
+
+.footer-info {
+
+}
+
+.footer-text {
+    font-family: 'Helvetica';
+    font-size: .75rem;
+}
+
+.contact-info {
+    font-family: 'Helvetica';
+    font-size: .75rem;
+    display: flex;
+    align-items: baseline;
+    border-bottom: #999999;
+}
+
+.head {
+    color: #c0a878;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer-copyright {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.bg-dark {
+    background-color: #363636;
+}
+
+.navbar-dark {
+    color: #8d8d8d;
+}
