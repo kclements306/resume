@@ -19,7 +19,7 @@ div div {
     background-color: white;
 }
 
-.logo-header {
+.logo-header {/*FIXME: Black bars on the top and bottom of column*/
     background-color: white;
     margin: 0%;
 }
@@ -65,7 +65,7 @@ div div {
     position: relative;
 }
 
-.navbar-dark .navbar-nav .active a::after {
+.navbar-dark .navbar-nav .active a::after { /*FIXME: underlines entire column not just column name */
     border-bottom: 5px solid white;
     bottom: -10px;
     content: " ";
@@ -113,6 +113,7 @@ footer div div .footer-readmore span {
    padding-right: 1rem;
 }
 
+/*FIXME: underline of each list element runs entire length of column */
 .contact-info {
     font-family: 'Helvetica';
     font-size: .75rem;
@@ -129,6 +130,7 @@ footer div div .footer-readmore span {
     justify-content: space-between;
 }
 
+/* FIXME: "Designed By Faith34" needs to be further right */
 .footer-copyright {
     font-family: 'Helvetica';
     font-size: .75rem;    
@@ -139,6 +141,50 @@ footer div div .footer-readmore span {
 }
 .footer-copyright .designedby {
     
+}
+.page-aboutus row.aboutus {
+    background-color: #363636;
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-aboutus aboutus {
+   
+    
+}
+
+.page-aboutus .aboutus div span {
+    font-family: 'Helvetica';
+    font-size: 1rem;
+    color: #c0a878;
+}
+
+.page-aboutus section.text {
+    background-color: #363636;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+}
+
+.page-aboutus section.text p:nth-of-type(1) {
+    font-family: 'Verdana';
+    font-size: 3rem;
+    color: #c0a878;
+}
+
+.page-aboutus section.text p:nth-of-type(2) {
+    font-size: 1rem;
+    color: #c7c7c7;
+}
+
+.page-aboutus section.text p:nth-of-type(3) {
+    font-size: .75rem;
+    color: #c7c7c7;
+}
+
+.page-aboutus section.team {
+    display: flex;
+    background-color: white;
 }
 
 .bg-dark {
