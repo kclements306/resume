@@ -31,15 +31,13 @@ div div {
 .row-info {
     font-family: "Helvetica";
     font-size: 1rem;
-}
-
-.header-info {
-    padding-top: 2%;
-    padding-left: 2.9%;
-}
-
-.header-phone {
-    padding-top: 2%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 1%;
+    padding-left: 2%;
 }
 
 .header-navbar {
@@ -48,6 +46,17 @@ div div {
 
 .header-login {
     background-color: #363636;
+    color: gray;
+}
+
+.header button {
+    background-color: #363636;
+    color: gray;
+    width: 75%;
+    padding-right: 75%;
+}
+
+.social-media a {
     color: gray;
 }
 
@@ -133,7 +142,7 @@ footer div div .footer-readmore span {
 }
 
 .bg-dark {
-    background-color: #363636;
+    background-color: #363636 !important;
 }
 
 .navbar-dark {
