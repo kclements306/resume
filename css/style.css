@@ -35,6 +35,7 @@ div div {
 
 .header-info {
     padding-top: 2%;
+    padding-left: 2.9%;
 }
 
 .header-phone {
@@ -43,8 +44,7 @@ div div {
 
 .header-navbar {
     background-color: #363636;
-}
-
+ }
 
 .header-login {
     background-color: #363636;
@@ -65,7 +65,7 @@ div div {
     right: 0;
 }
 
-.home {
+nav div ul li {
     padding-right: 5rem;
 }
 
@@ -82,9 +82,26 @@ footer {
 
 }
 
+footer div div .col-head {
+    font-family: 'Helvetica';
+    font-size: 1.5rem;
+    color: #ababab;
+    padding-bottom: 4%;
+}
+
 .footer-text {
     font-family: 'Helvetica';
     font-size: .75rem;
+}
+
+footer div div .footer-readmore {
+    font-family: 'Helvetica';
+    font-size: .75rem;
+    color: #616161;
+}
+
+footer div div .footer-readmore span {
+   padding-right: 1rem;
 }
 
 .contact-info {
@@ -92,7 +109,8 @@ footer {
     font-size: .75rem;
     display: flex;
     align-items: baseline;
-    border-bottom: #999999;
+    border-bottom: .025rem solid gray;
+    
 }
 
 .head {
@@ -103,9 +121,15 @@ footer {
 }
 
 .footer-copyright {
+    font-family: 'Helvetica';
+    font-size: .75rem;    
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    background-color: #616161;
+}
+.footer-copyright .designedby {
+    
 }
 
 .bg-dark {
