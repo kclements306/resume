@@ -232,8 +232,26 @@ body.services p.facilities {
     color: #c0a878;
 }
 
+div.contact section.top {
+    margin-bottom: 5%;
+}
+
 div.contact div div div div p {
     margin-bottom: 1%;
+}
+
+div.contact div div div div a {
+    padding-right: .25rem;
+    color: #c7c7c7;
+}
+
+div.contact div div div div a:nth-of-type(2) {
+    color: #c0a878;
+}
+
+div.contact div div form button {
+    border: none;
+    background-color: #8d8d8d;
 }
 
 section.images {
