@@ -144,25 +144,25 @@ footer div div .footer-readmore span {
     background-color: #616161;
 }
 
-section.breadcrumbs {
+section.top div.breadcrumbs {
     background-color: #363636;
  }
 
-section.breadcrumbs p {
+section.top div.breadcrumbs p {
     font-family: 'Helvetica';
     font-size: 1rem;
     color: #c0a878;
 }
 
-section.breadcrumbs nav ol {
+section.top div.breadcrumbs nav ol {
     background-color: #363636;
     font-size: .65rem;
 }
-section.breadcrumbs nav ol li a {
+section.top div.breadcrumbs nav ol li a {
     color: #8d8d8d;
 }
 
-section.text {
+section.top div.text {
     background-color: #363636;
     padding-left: 10%;
     padding-right: 10%;
@@ -170,58 +170,59 @@ section.text {
     font-family: 'Times New Roman';
 }
 
-section.text p:nth-of-type(1) {
+section.top div.text p:nth-of-type(1) {
     font-size: 3rem;
     color: #c0a878;
 }
 
-section.text p:nth-of-type(2) {
+section.top div.text p:nth-of-type(2) {
     font-size: 1rem;
     color: #c7c7c7;
 }
 
-section.text p:nth-of-type(3) {
+section.top div.text p:nth-of-type(3) {
     font-size: .75rem;
     color: #c7c7c7;
 }
 
-.aboutus section.team {
+section.bottom div.blurb {
     background-color: white;
-    margin-top: 5%;
     text-align: center;
 }
 
-.aboutus div.team-text {
-    margin-top: 5%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 5%;
-}
-
-.aboutus div.team-text p.heading {
+section.bottom div.blurb p:nth-of-type(1) {
     font-size: 2.5rem;
     color: #c0a878;
+}
+
+section.bottom div.blurb p:nth-of-type(2) {
+    font-size: 1.25rem;
+    color: #c7c7c7;
+}
+
+.founders {
+    text-align: center;
 }
 
 div.products section.image {
     background-color: #363636;
 }
 
-div.contact section.contact-info {
+div.contact section.bottom div.contact-info {
     background-color: white;
 }
 
-div.contact section.contact-info div p.column-heading {
+div.contact section.bottom div.contact-info div p.column-heading {
     font-size: 3rem;
     color:black;
 }
 
-div.contact section.contact-info div div div p:nth-of-type(1) {
+div.contact section.bottom div.contact-info div div div p:nth-of-type(1) {
     font-size: .75rem;
     color: #c0a878;
 }
 
-div.contact section.contact-info div {
+div.contact section.bottom div.contact-info div {
     background-color: white;
 }
 
@@ -229,6 +230,31 @@ body.services p.facilities {
     font-family: 'Times New Roman';
     font-size: 2rem;
     color: #c0a878;
+}
+
+div.contact div div div div p {
+    margin-bottom: 1%;
+}
+
+section.images {
+    background-color: white;
+}
+
+section.images div {
+    background-color: white;
+}
+
+section.images p {
+    font-size: 3rem;
+    color: black;
+}
+section.images button {
+    background-color: white;
+}
+
+section.images div div img {
+    width: 25rem;
+    height: 25rem;
 }
 
 .bg-dark {
