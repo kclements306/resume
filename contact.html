@@ -2,12 +2,74 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>bootstrap exercise</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-
+    <div class="container-fluid contact">
+      <section class="d-md-flex justify-content-md-between pt-md-4 breadcrumbs">
+        <p>Contact</p>
+        <nav aria-label="breadcrumb navbar-expand-lg navbar-dark bg-dark">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#">Pages</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+          </ol>
+        </nav>
+      </section>
+      <section class="text">
+        <p>WHERE WE ARE</p>
+        <p>1300 Blvd Santa Monica, CA  2405  United States</p>
+        <p>02563234234</p>
+      </section>
+      <section class="row contact-info">
+        <div class="col-md">
+          <p class="column-heading">Contact Info</p>
+          <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore 
+            eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum 
+            zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option 
+            congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+          <div class="row address-email">
+            <div class="col-md address">
+              <p>Address:</p>
+              <p>795 Fake Ave, Door 6<br>Wonderland, CA 94107, USA</p>
+            </div>
+            <div class="col-md email">
+              <p>Email:</p>
+              <p>info@waxom.com<br>support@waxom.com</p>
+            </div>
+          </div>
+          <div class="row phone-social">
+            <div class="col-md phone">
+              <p>Phone &#38 Fax</p>
+              <p>+440 875369208<br>+440 353363114</p>
+            </div>
+            <div class="col-md social">
+              <p>Social Network:</p>
+              <a class="fa fa-facebook-official" href=""></a>
+              <a class="fa fa-twitter" href=""></a>
+              <a class="fa fa-instagram" href=""></a>
+              <a class="fa fa-envelope" href=""></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <p class="column-heading">Feedback</p>
+          <form class="form-group">
+            <input type="text" class="form-control align-self-md-stretch mb-md-2" name="input-name" id="" placeholder="Your Name">
+            <input type="email" class="form-control mb-md-2" name="input-email" id="" placeholder="Your Email Address">
+            <textarea name="input-message" class="form-control mb-md-4" id="" rows="4" placeholder="Your Message"></textarea>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </div>
   </body>
 </html>

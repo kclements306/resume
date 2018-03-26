@@ -1,3 +1,7 @@
+body {
+    background-color: #363636;
+}
+
 div div {
     background-color: #363636;
     color: gray;
@@ -139,52 +143,92 @@ footer div div .footer-readmore span {
     justify-content: space-between;
     background-color: #616161;
 }
-.footer-copyright .designedby {
-    
-}
-.page-aboutus row.aboutus {
+
+section.breadcrumbs {
     background-color: #363636;
-    display: flex;
-    justify-content: space-between;
-}
+ }
 
-.page-aboutus aboutus {
-   
-    
-}
-
-.page-aboutus .aboutus div span {
+section.breadcrumbs p {
     font-family: 'Helvetica';
     font-size: 1rem;
     color: #c0a878;
 }
 
-.page-aboutus section.text {
+section.breadcrumbs nav ol {
+    background-color: #363636;
+    font-size: .65rem;
+}
+section.breadcrumbs nav ol li a {
+    color: #8d8d8d;
+}
+
+section.text {
     background-color: #363636;
     padding-left: 10%;
     padding-right: 10%;
     text-align: center;
+    font-family: 'Times New Roman';
 }
 
-.page-aboutus section.text p:nth-of-type(1) {
-    font-family: 'Verdana';
+section.text p:nth-of-type(1) {
     font-size: 3rem;
     color: #c0a878;
 }
 
-.page-aboutus section.text p:nth-of-type(2) {
+section.text p:nth-of-type(2) {
     font-size: 1rem;
     color: #c7c7c7;
 }
 
-.page-aboutus section.text p:nth-of-type(3) {
+section.text p:nth-of-type(3) {
     font-size: .75rem;
     color: #c7c7c7;
 }
 
-.page-aboutus section.team {
-    display: flex;
+.aboutus section.team {
     background-color: white;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.aboutus div.team-text {
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+}
+
+.aboutus div.team-text p.heading {
+    font-size: 2.5rem;
+    color: #c0a878;
+}
+
+div.products section.image {
+    background-color: #363636;
+}
+
+div.contact section.contact-info {
+    background-color: white;
+}
+
+div.contact section.contact-info div p.column-heading {
+    font-size: 3rem;
+    color:black;
+}
+
+div.contact section.contact-info div div div p:nth-of-type(1) {
+    font-size: .75rem;
+    color: #c0a878;
+}
+
+div.contact section.contact-info div {
+    background-color: white;
+}
+
+body.services p.facilities {
+    font-family: 'Times New Roman';
+    font-size: 2rem;
+    color: #c0a878;
 }
 
 .bg-dark {
