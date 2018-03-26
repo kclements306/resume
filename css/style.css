@@ -2,25 +2,10 @@ body {
     background-color: #363636;
 }
 
-div div {
-    background-color: #363636;
-    color: gray;
-    margin-bottom: 0%;
-    margin-top: 0%;
-}
-
-.content-row {
-    padding-left: 0%;
-    padding-right: 0%;
-}
-
-.content-column {
-    padding-left: 0%;
-    padding-right: 0%;    
-}
-
-.content-sample {
+section.header div.logo {
     background-color: white;
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
 
 .logo-header {/*FIXME: Black bars on the top and bottom of column*/
@@ -91,10 +76,6 @@ footer {
     color: gray;
 }
 
-.footer-info {
-
-}
-
 footer div div .col-head {
     font-family: 'Helvetica';
     font-size: 1.5rem;
@@ -117,23 +98,35 @@ footer div div .footer-readmore span {
    padding-right: 1rem;
 }
 
+footer div div div a {
+    color: #8d8d8d;
+}
+
+footer div div div ul li {
+    font-family: 'Helvetica';
+    font-size: .75rem;
+    border-bottom: .2rem solid white;
+}
+
+footer div div div ul li div {
+    color: #c0a878;
+}
 /*FIXME: underline of each list element runs entire length of column */
-.contact-info {
+/* .contact-info {
     font-family: 'Helvetica';
     font-size: .75rem;
     display: flex;
     align-items: baseline;
-    border-bottom: .025rem solid gray;
-    
-}
 
-.head {
+} */
+
+/* .head {
     color: #c0a878;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-
+ */
 /* FIXME: "Designed By Faith34" needs to be further right */
 .footer-copyright {
     font-family: 'Helvetica';
@@ -142,6 +135,10 @@ footer div div .footer-readmore span {
     flex-wrap: nowrap;
     justify-content: space-between;
     background-color: #616161;
+}
+
+section.top {
+    background-color: #363636;
 }
 
 section.top div.breadcrumbs {
@@ -184,10 +181,14 @@ section.top div.text p:nth-of-type(3) {
     font-size: .75rem;
     color: #c7c7c7;
 }
-
-section.bottom div.blurb {
-    background-color: white;
+section.bottom {
     text-align: center;
+    background-color: white;
+    padding-bottom: 5%;
+}
+
+Section.bottom div.blurb {
+    margin-top: 7%;
 }
 
 section.bottom div.blurb p:nth-of-type(1) {
@@ -198,6 +199,11 @@ section.bottom div.blurb p:nth-of-type(1) {
 section.bottom div.blurb p:nth-of-type(2) {
     font-size: 1.25rem;
     color: #c7c7c7;
+}
+
+section.bottom div.bottom-cards div div {
+    border-width: .5rem;
+    border-color: black;
 }
 
 .founders {
@@ -273,12 +279,4 @@ section.images button {
 section.images div div img {
     width: 25rem;
     height: 25rem;
-}
-
-.bg-dark {
-    background-color: #363636 !important;
-}
-
-.navbar-dark {
-    color: #8d8d8d;
 }
