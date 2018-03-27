@@ -13,10 +13,6 @@ section.header div.logo {
     margin: 0%;
 }
 
-.logo-image {
-
-}
-
 .row-info {
     font-family: "Helvetica";
     font-size: 1rem;
@@ -177,22 +173,43 @@ section.top div.text p:nth-of-type(3) {
     font-size: .75rem;
     color: #c7c7c7;
 }
+
+section.top div.facilities {
+    margin-top: 5%;
+}
+
+section.top div.facilities p {
+    font-family: 'Times New Roman';
+    font-size: 2rem;
+    color: #c0a878;
+}
+
+section.top div.facilities div div p { /* FIXME: center align under Hotel Facilities */
+    font-family: 'Helvetica';
+    font-size: 1rem;
+    color: #c7c7c7;
+}
+
+section.top div.facilities div div i {
+    background-color: #8d5ba1;
+}
+
 section.bottom {
     text-align: center;
     background-color: white;
     padding-bottom: 5%;
 }
 
-section.bottom div div div div {
+section.bottom div.points div div {
     margin-top: 10%;
     border: none;
 }
 
-section.bottom div div div div img {
+section.bottom div.points div div img {
     width: 3rem;
 }
 
-section.bottom div div div div div {
+section.bottom div.points div div div {
     margin: 0%;
 }
 
@@ -221,6 +238,10 @@ section.bottom div.blurb p:nth-of-type(2) {
 section.bottom div.bottom-cards div div {
     border-width: .5rem;
     border-color: black;
+}
+
+section.bottom div.news {
+    border: .1rem solid black;
 }
 
 .founders {
