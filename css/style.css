@@ -29,10 +29,6 @@ section.header div.logo {
     padding-left: 2%;
 }
 
-.header-navbar {
-    background-color: #363636;
- }
-
 .header-login {
     background-color: #363636;
     color: gray;
@@ -187,7 +183,28 @@ section.bottom {
     padding-bottom: 5%;
 }
 
-Section.bottom div.blurb {
+section.bottom div div div div {
+    margin-top: 10%;
+    border: none;
+}
+
+section.bottom div div div div img {
+    width: 3rem;
+}
+
+section.bottom div div div div div {
+    margin: 0%;
+}
+
+section.bottom div.card-hotel div div h5 {
+    color: #c0a878
+}
+
+section.bottom div.card-hotel div div div {
+    color: #c0a878;
+}
+
+section.bottom div.blurb {
     margin-top: 7%;
 }
 
