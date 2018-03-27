@@ -244,6 +244,15 @@ section.bottom div.news {
     border: .1rem solid black;
 }
 
+section.bottom div.blue-black div:nth-of-type(1) {
+    color: white;
+    background-color: darkblue;
+}
+
+section.bottom div.blue-black div:nth-of-type(2) {
+    background-color: black;
+}
+
 .founders {
     text-align: center;
 }
@@ -317,4 +326,65 @@ section.images button {
 section.images div div img {
     width: 25rem;
     height: 25rem;
+}
+
+body.news {
+    background-color: white;
+    font-family: 'Helvetica';
+    font-size: 2rem;
+    color: black;
+}
+
+div.news div.card-one {
+    font-size: 1rem;
+    color: white;
+    background-color: #363636;
+    background-image: url("images/logo.png");
+}
+
+div.news div div div p:nth-of-type(2) {
+    font-size: .75rem;
+    color: #c7c7c7;
+}
+
+div.news div div div p:nth-of-type(3) {
+    color: #8d8d8d;
+}
+
+div.news div.card-row div div {
+    border: none;
+}
+
+div.news div.card-row div div div {
+    background-color: #8d5ba1;
+    /*background-color: #f7f7f7;*/
+}
+
+div.news div.card-row div div div p:nth-of-type(1) {
+    font-size: .75rem;
+    color: #c7c7c7;
+}
+
+div.news div.card-row div div div p:nth-of-type(2) {
+    color: #8d8d8d;
+}
+
+div.news div.card-row div div p:nth-of-type(1) {
+    font-size: .75rem;
+    color: #ababab;
+}
+
+div.news div.row2col1 div {
+    background-color: #363636;
+}
+
+div.news div.row2col1 div h5 {
+    font-family: 'Times New Roman';
+    color: white;
+}
+
+a.btn-primary {
+    background-color: #c0a878;
+    border: none;
+    border-radius: 0rem;
 }
