@@ -1,20 +1,21 @@
 body {
-    background-color: #363636;
+    /* background-color: #363636; */
+    font-family: 'Helvetica';
 }
 
-section.header div.logo {
-    background-color: white;
-    margin-top: 0%;
-    margin-bottom: 0%;
+h6 {
+    font-size: .75rem;
 }
 
-.logo-header {/*FIXME: Black bars on the top and bottom of column*/
-    background-color: white;
-    margin: 0%;
+section.header div.right-side {
+    background-color: #383838;
 }
 
+section.header div.right-side div.row-info {
+    font-size: 1rem;
+    color: #8d8d8d;
+}
 .row-info {
-    font-family: "Helvetica";
     font-size: 1rem;
     display: flex;
     flex-direction: row;
@@ -27,18 +28,18 @@ section.header div.logo {
 
 .header-login {
     background-color: #383838;
-    color: gray;
+    color: #8d8d8d;
 }
 
-.header button {
+section.header button {
     background-color: #363636;
-    color: gray;
+    color: #8d8d8d;
     width: 75%;
     padding-right: 75%;
 }
 
-.social-media a {
-    color: gray;
+section.header div.social-media a {
+    color: #8d8d8d;
 }
 
 .navbar-nav > li {
@@ -55,9 +56,9 @@ section.header div.logo {
     right: 0;
 }
 
-nav div ul li {
+/* nav div ul li {
     padding-right: 5rem;
-}
+} */
 
 .fa-search {
     margin-right: 0%;
@@ -97,7 +98,14 @@ footer div div div a {
 footer div div div ul li {
     font-family: 'Helvetica';
     font-size: .75rem;
-    border-bottom: .2rem solid white;
+
+}
+
+footer div div div ul li hr {
+    size: .01rem;
+    width: 100%;
+    border: .025rem solid #616161;
+
 }
 
 footer div div div ul li div {
