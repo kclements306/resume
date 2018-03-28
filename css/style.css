@@ -335,6 +335,10 @@ body.news {
     color: black;
 }
 
+div.news p {
+    font-size: 3rem;
+}
+
 div.news div.card-one {
     font-size: 1rem;
     color: white;
@@ -402,46 +406,87 @@ div.news div.view-all p {
     border: .05rem solid #8d8d8d;
 }
 
-div.news div.tabbed {
+div.tabbed {
     font-size: 1rem;
 }
 
-div.news div.popular {
+div.tabbed div.popular {
     border-top: solid #c0a878;
 }
 
-div.news div.popular p {
+div.popular p {
     color: #c0a878;
 }
 
-div.news div.recent {
+div.recent {
     background-color: #363636;
 }
 
-div.news div.recent p {
+div.recent p {
     color: white;
 }
 
-div.news div.tabbed {
+div.tabbed {
     border-left: .1rem solid #c7c7c7;
     border-right: .1rem solid #c7c7c7;
 }
 
-div.news div.tabbed-text div {
+div.tabbed-text div {
     margin-top: 5%;
     border-bottom: .1rem solid #c7c7c7;
     font-size: .75rem;
 } 
 
-
-div.news div.tabbed-text div:nth-of-type(2) {
+div.tabbed-text div:nth-of-type(2) {
     color: #c0a878;
 }
 
-div.news div.tabbed-text div:nth-of-type(5) {
+div.tabbed-text div:nth-of-type(5) {
     color: #c0a878;
 }
 
 div.news-details {
     background-color: white;
 }
+
+body.news-details {
+    font-family: 'Helvetica';
+    font-size: 3rem;
+}
+
+div.news-details div.imagebox {
+    height: 20%;
+    background-image: url ("images/discover.png");
+    background-color: #363636;
+}
+div.news-details div.textbox {
+    border: .1rem solid #ababab;
+}
+
+div.news-details div.news-text p.header {
+    font-size: 2rem;
+}
+
+div.news-details div.icons p {
+    font-size: .75rem;
+    color: #8d8d8d;
+}
+
+div.news-details div.icons a.btn-primary {
+    background-color: #c0a878;
+    border: none;
+    border-radius: 0rem;
+}
+
+div.news-details div.icons span {
+    color: #ababab;
+}
+
+div.news-details div.icons span.facebook {
+    color: #c0a878;
+}
+
+div.news-details div.news-text p.text {
+    font-size: 1rem;
+}
+
