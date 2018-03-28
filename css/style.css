@@ -356,7 +356,12 @@ div.news div.card-row div div {
 }
 
 div.news div.card-row div div div {
-    background-color: #8d5ba1;
+    background-color: #8d5ba1; /*TODO: change the background back */
+    /*background-color: #f7f7f7;*/
+}
+
+div.news div.card-row div div div:nth-of-type(4) {
+    background-color:#363636; /*TODO: change the background back */
     /*background-color: #f7f7f7;*/
 }
 
@@ -383,8 +388,60 @@ div.news div.row2col1 div h5 {
     color: white;
 }
 
-a.btn-primary {
+div.news a.btn-primary {
     background-color: #c0a878;
     border: none;
     border-radius: 0rem;
+}
+
+div.news div.view-all p {
+    font-size: 1rem;
+    color: #8d8d8d;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border: .05rem solid #8d8d8d;
+}
+
+div.news div.tabbed {
+    font-size: 1rem;
+}
+
+div.news div.popular {
+    border-top: solid #c0a878;
+}
+
+div.news div.popular p {
+    color: #c0a878;
+}
+
+div.news div.recent {
+    background-color: #363636;
+}
+
+div.news div.recent p {
+    color: white;
+}
+
+div.news div.tabbed {
+    border-left: .1rem solid #c7c7c7;
+    border-right: .1rem solid #c7c7c7;
+}
+
+div.news div.tabbed-text div {
+    margin-top: 5%;
+    border-bottom: .1rem solid #c7c7c7;
+    font-size: .75rem;
+} 
+
+
+div.news div.tabbed-text div:nth-of-type(2) {
+    color: #c0a878;
+}
+
+div.news div.tabbed-text div:nth-of-type(5) {
+    color: #c0a878;
+}
+
+div.news-details {
+    background-color: white;
 }
