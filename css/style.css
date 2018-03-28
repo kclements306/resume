@@ -26,7 +26,7 @@ section.header div.logo {
 }
 
 .header-login {
-    background-color: #363636;
+    background-color: #383838;
     color: gray;
 }
 
@@ -126,15 +126,16 @@ footer div div div ul li div {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    background-color: #616161;
+    background-color: #3f3f3f;
+    color: #8d8d8d;
 }
 
 section.top {
-    background-color: #363636;
+    background-color: #383838;
 }
 
 section.top div.breadcrumbs {
-    background-color: #363636;
+    background-color: #383838;
  }
 
 section.top div.breadcrumbs p {
@@ -144,7 +145,7 @@ section.top div.breadcrumbs p {
 }
 
 section.top div.breadcrumbs nav ol {
-    background-color: #363636;
+    background-color: #383838;
     font-size: .65rem;
 }
 section.top div.breadcrumbs nav ol li a {
@@ -455,7 +456,7 @@ body.news-details {
 }
 
 div.news-details div.imagebox {
-    height: 20%;
+    height: 40%;
     background-image: url ("images/discover.png");
     background-color: #363636;
 }
