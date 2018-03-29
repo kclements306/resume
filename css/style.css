@@ -3,6 +3,10 @@ body {
     font-family: 'Helvetica';
 }
 
+h5 {
+    font-size: 1rem;
+}
+
 h6 {
     font-size: .75rem;
 }
@@ -25,6 +29,10 @@ section.header div.right-side div.row-info {
     padding-top: 1%;
     padding-left: 2%;
 }
+
+/*
+    Header section
+*/
 
 .header-login {
     background-color: #383838;
@@ -56,14 +64,13 @@ section.header div.social-media a {
     right: 0;
 }
 
-/* nav div ul li {
-    padding-right: 5rem;
-} */
-
 .fa-search {
     margin-right: 0%;
 }
 
+/*
+    Footer Section
+*/
 footer {
     background-color: #363636;
     color: gray;
@@ -111,23 +118,10 @@ footer div div div ul li hr {
 footer div div div ul li div {
     color: #c0a878;
 }
-/*FIXME: underline of each list element runs entire length of column */
-/* .contact-info {
-    font-family: 'Helvetica';
-    font-size: .75rem;
-    display: flex;
-    align-items: baseline;
 
-} */
-
-/* .head {
-    color: #c0a878;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
- */
-/* FIXME: "Designed By Faith34" needs to be further right */
+/*
+    copyright section
+*/
 section.copyright {
     font-family: 'Helvetica';
     font-size: .75rem;    
@@ -137,6 +131,10 @@ section.copyright {
     background-color: #3f3f3f;
     color: #8d8d8d;
 }
+
+/*
+    top section
+*/
 
 section.top {
     background-color: #383838;
@@ -203,6 +201,10 @@ section.top div.facilities div div i {
     background-color: #8d5ba1;
 }
 
+/*
+    bottom section
+*/
+
 section.bottom {
     text-align: center;
     background-color: white;
@@ -260,6 +262,16 @@ section.bottom div.blue-black div:nth-of-type(1) {
 
 section.bottom div.blue-black div:nth-of-type(2) {
     background-color: black;
+}
+
+div.gallery section.top img {
+    width: 40rem;
+    height: 20rem;
+}
+
+div.gallery section.bottom img {
+    width: 10rem;
+    height: 10rem;
 }
 
 .founders {
