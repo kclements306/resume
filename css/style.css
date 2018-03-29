@@ -128,12 +128,12 @@ footer div div div ul li div {
 }
  */
 /* FIXME: "Designed By Faith34" needs to be further right */
-.footer-copyright {
+section.copyright {
     font-family: 'Helvetica';
     font-size: .75rem;    
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background-color: #3f3f3f;
     color: #8d8d8d;
 }
@@ -266,7 +266,7 @@ section.bottom div.blue-black div:nth-of-type(2) {
     text-align: center;
 }
 
-div.products section.image {
+section.bottom div.products section.image {
     background-color: #363636;
 }
 
