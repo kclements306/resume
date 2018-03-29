@@ -229,48 +229,48 @@ div.top div.facilities div div i {
     bottom section
 */
 
-section.bottom {
+div.bottom {
     text-align: center;
     background-color: white;
     padding-bottom: 5%;
 }
 
-section.bottom div.points div div {
+div.bottom div.points div div {
     margin-top: 10%;
     border: none;
 }
 
-section.bottom div.points div div img {
+div.bottom div.points div div img {
     width: 3rem;
 }
 
-section.bottom div.points div div div {
+div.bottom div.points div div div {
     margin: 0%;
 }
 
-section.bottom div.card-hotel div div h5 {
+div.bottom div.card-hotel div div h5 {
     color: #c0a878
 }
 
-section.bottom div.card-hotel div div div {
+div.bottom div.card-hotel div div div {
     color: #c0a878;
 }
 
-section.bottom div.blurb {
+div.bottom div.blurb {
     margin-top: 7%;
 }
 
-section.bottom div.blurb p:nth-of-type(1) {
+div.bottom div.blurb p:nth-of-type(1) {
     font-size: 2.5rem;
     color: #c0a878;
 }
 
-section.bottom div.blurb p:nth-of-type(2) {
+div.bottom div.blurb p:nth-of-type(2) {
     font-size: 1.25rem;
     color: #c7c7c7;
 }
 
-section.bottom div.bottom-cards div div {
+div.bottom div.bottom-cards div div {
     border-width: .5rem;
     border-color: black;
 }
@@ -293,13 +293,13 @@ div.index div.view-all {
     border: .1rem solid #c7c7c7;
 }
 
-section.bottom div.blue-black div:nth-of-type(1) {
+div.bottom div.blue-black div:nth-of-type(1) {
     opacity: .5;
     color: white;
     background-color: darkblue;
 }
 
-section.bottom div.blue-black div:nth-of-type(2) {
+div.bottom div.blue-black div:nth-of-type(2) {
     opacity: .5;
     background-color: black;
 }
@@ -309,17 +309,17 @@ div.gallery div.top img {
     height: 20rem;
 }
 
-div.gallery section.bottom img {
+div.gallery div.bottom img {
     width: 10rem;
     height: 10rem;
 }
 
-div.gallery section.bottom div div button:nth-of-type(1) {
+div.gallery div.bottom div div button:nth-of-type(1) {
     border-bottom: .1rem solid #c0a878;
     color: #c0a878;
 }
 
-div.products section.bottom div div button:nth-of-type(1) {
+div.products div.bottom div div button:nth-of-type(1) {
     border-bottom: .1rem solid #c0a878;
     color: #c0a878;
 }
@@ -328,25 +328,25 @@ div.products section.bottom div div button:nth-of-type(1) {
     text-align: center;
 }
 
-section.bottom div.products section.image {
+div.bottom div.products section.image {
     background-color: #363636;
 }
 
-div.contact section.bottom div.contact-info {
+div.contact div.bottom div.contact-info {
     background-color: white;
 }
 
-div.contact section.bottom div.contact-info div p.column-heading {
+div.contact div.bottom div.contact-info div p.column-heading {
     font-size: 3rem;
     color:black;
 }
 
-div.contact section.bottom div.contact-info div div div p:nth-of-type(1) {
+div.contact div.bottom div.contact-info div div div p:nth-of-type(1) {
     font-size: .75rem;
     color: #c0a878;
 }
 
-div.contact section.bottom div.contact-info div {
+div.contact div.bottom div.contact-info div {
     background-color: white;
 }
 
@@ -557,4 +557,19 @@ div.news-details div.icons span.facebook {
 
 div.news-details div.news-text p.text {
     font-size: 1rem;
+}
+
+div.index div.weather {
+    background: linear-gradient(to bottom right, #ebd889, #eba417);
+}
+
+div.index div.gallery {
+    font-size: .75rem;
+    background: linear-gradient(to bottom right, #808080, #3c3c3c);
+}
+
+div.index div.virtual-tour {
+    font-size: 1rem;
+    color: #8d8d8d;
+    background-color: #ebebeb;
 }
