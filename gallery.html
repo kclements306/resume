@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Gallery</title>
+  <link rel="stylesheet" href="css/fontello.css">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -11,30 +12,193 @@
 
 <body>
   <div class="container-fluid gallery">
+    <section class="row header">
+      <div class="col-md-2 align-self-md-center logo">
+        <img class="img-fluid" src="images/logo.png" alt="">
+      </div>
+      <div class="col-md-10 right-side">
+        <div class="row row-info align-items-center pt-md-2">
+          <div class="col-md-3 header-info">
+            <i class="icon-mail-1"></i>
+            <span>info@hellohelp.com</span>
+          </div>
+          <div class="col-md-3 header-phone">
+            <i class="icon-phone-in-talk"></i>
+            <span>+440 875369208</span>
+          </div>
+          <div class="col-md-2">
+            <div class="dropdown header-login">
+              <button class="btn btn-secondary dropdown-toggle log-in" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                LOG IN
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <form class="form-horizontal" method="post" accept-charset="UTF-8">
+                  <input id="sp_uname" class="form-control login" type="text" name="sp_uname" placeholder="Username.." />
+                  <input id="sp_pass" class="form-control login" type="password" name="sp_pass" placeholder="Password.." />
+                  <input class="btn btn-primary" type="submit" name="submit" value="login" />
+                </form>>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="dropdown header-language">
+              <button class="btn btn-secondary dropdown-toggle language" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                EN
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item active" href="#">EN</a>
+                <a class="dropdown-item" href="#">TR</a>
+                <a class="dropdown-item" href="#">ES</a>
+                <a class="dropdown-item" href="#">PT</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 social-media">
+            <a class="icon-facebook-squared" href=""></a>
+            <a class="icon-twitter" href=""></a>
+            <a class="icon-instagram" href=""></a>
+            <a class="icon-mail-1" href=""></a>
+          </div>
+        </div>
+        <div class="row header-navbar">
+          <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-md-center" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item home">
+                    <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item about-us">
+                    <a class="nav-link" href="aboutus.html">About&nbsp;Us</a>
+                  </li>
+                  <li class="nav-item dropdown services">
+                    <a class="nav-link dropdown-toggle" href="services.html" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                      Services
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown products">
+                    <a class="nav-link dropdown-toggle" href="products.html" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                      Products
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                      <a class="dropdown-item" href="#">Lorem Ipsum&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="icon-play-circled"></span>
+                      </a>
+                    </div>
+                  </li>
+                  <li class="nav-item active gallery">
+                    <a class="nav-link" href="gallery.html">Gallery<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item contact">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                  </li>
+                  <li class="nav-item search">
+                    <a class="nav-link" href="#">
+                      <i class="icon-search"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="top mb-md-5">
       <div class="d-md-flex justify-content-md-between pt-md-4 breadcrumbs">
-          <p>Gallery</p>
-          <nav aria-label="breadcrumb navbar-expand-lg navbar-dark bg-dark">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="index.html">Home</a>
-              </li>
-              <li class="breadcrumb-item">
-                <a href="#">Pages</a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">Contact</li>
-            </ol>
-          </nav>
+        <p>Gallery</p>
+        <nav aria-label="breadcrumb navbar-expand-lg navbar-dark bg-dark">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#">Pages</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+          </ol>
+        </nav>
       </div>
       <div class="d-md-flex justify-content-md-center my-md-3">
         <img src="images/default-image.png" alt="1">
       </div>
       <div>
-
+        <br>
+        <br>
+        <br>
       </div>
     </section>
     <section class="bottom flex-md-column">
-      <p class="text-left"><h4 class="text-left">Gallery</h4></p>
+      <p class="text-left">
+        <h4 class="text-left">Gallery</h4>
+      </p>
       <div class="images d-flex justify-content-between">
         <div class="button-selection">
           <button type="button" class="btn btn-outline-dark">All</button>
@@ -48,41 +212,115 @@
           <button type="button" class="btn btn-outline-dark">&gt;</button>
         </div>
       </div>
-      <div class="images-table d-md-flex flex-md-nowrap">
-        <div class="images-column d-md-flex flex-md-column">
-          <input type="image" src="images/default-image.png">
-          <img src="images/default-image.png" alt="1">
-          <img src="images/default-image.png" alt="2">
-          <img src="images/default-image.png" alt="3">
+      <div class="images-table mt-3">
+        <div class="row images-column">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
         </div>
-        <div class="images-column d-md-flex flex-md-column">
-          <img src="images/default-image.png" alt="4">
-          <img src="images/default-image.png" alt="5">
-          <img src="images/default-image.png" alt="6">
+        <br>
+        <div class="row images-column">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
         </div>
-        <div class="images-column d-md-flex flex-md-column">
-          <img src="images/default-image.png" alt="7">
-          <img src="images/default-image.png" alt="8">
-          <img src="images/default-image.png" alt="9">
-        </div>
-        <div class="images-column d-md-flex flex-md-column">
-          <img src="images/default-image.png" alt="10">
-          <img src="images/default-image.png" alt="11">
-          <img src="images/default-image.png" alt="12">
-        </div>
-        <div class="images-column d-md-flex flex-md-column">
-          <img src="images/default-image.png" alt="13">
-          <img src="images/default-image.png" alt="14">
-          <img src="images/default-image.png" alt="15">
-        </div>
-        <div class="images-column d-md-flex flex-md-column">
-          <img src="images/default-image.png" alt="16">
-          <img src="images/default-image.png" alt="17">
-          <img src="images/default-image.png" alt="18">
+        <br>
+        <div class="row images-column">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
+          <input class="col-md" type="image" src="images/default-image.png">
         </div>
       </div>
-      <div class="">
-
+    </section>
+    <footer class="row">
+      <div class="row footer-info">
+        <div class="col-md-3">
+          <div class="col-head">NortSea About</div>
+          <div class="footer-text">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.
+            </p>
+          </div>
+          <div class="footer-readmore">
+            <span>Read More</span>
+            <span class="fa fa-caret-right"></span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="col-head">NortSea Hotel</div>
+          <div>
+            <a href="aboutus.html">About Us</a>
+          </div>
+          <div>
+            <a href="services.html">Services</a>
+          </div>
+          <div>
+            <a href="contact.html">Contacts</a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="col-head">Contact Us</div>
+          <div class="contact">
+            <ul class="list-unstyled">
+              <li class="row mt-md-1 mb-md-0">
+                <!-- FIXME: li has -15 px margins cause hr to be too long -->
+                <div class="col-md-4 d-flex justify-content-between">
+                  <p class="icon-location"></p>
+                  <p class="">Address:</p>
+                </div>
+                <p class="col-md-8">1100 Pico Blvd
+                  <br>Santa Monica, CA 90405
+                  <br>United States</p>
+                <hr class="my-md-0">
+              </li>
+              <li class="row mt-md-1 mb-md-0">
+                <div class="col-md-4 d-flex justify-content-between">
+                  <p class="icon-phone"></p>
+                  <p>Phone:</p>
+                </div>
+                <p class="col-md-8">+440 1233123208</p>
+                <hr class="my-md-0">
+              </li>
+              <li class="row mt-md-1 mb-md-0">
+                <div class="col-md-4 d-flex justify-content-between">
+                  <p class="icon-paper-plane d-flex pl-0"></p>
+                  <p>Email:</p>
+                </div>
+                <p class="col-md-8">support@nortsea.com</p>
+                <hr class="my-md-0">
+              </li>
+              <li class="row mt-md-1">
+                <div class="col-md-4 d-flex justify-content-between">
+                  <p class="icon-compass d-flex"></p>
+                  <p>GPS:</p>
+                </div>
+                <p class="col-md-8">12.021211-118.469009</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 my-auto">
+          <img src="images/logo-footer.png" alt="">
+        </div>
+      </div>
+    </footer>
+    <section class="copyright d-flex justify-content-between">
+      <div class="d-md-inline-flex my-md-0 mx-md-0">
+        <h6 class="copyright">Copyright
+          <i class="fa fa-copyright"></i> 2015 NORTSEA
+          <i>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</i>About NORTSEA
+          <i>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</i>Contact Support
+        </h6>
+      </div>
+      <div class="d-md-inline-flex mr-md-0">
+        <h6 class="designedby">Designed by Faith34</h6>
       </div>
     </section>
   </div>

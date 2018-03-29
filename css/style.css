@@ -19,6 +19,7 @@ section.header div.right-side div.row-info {
     font-size: 1rem;
     color: #8d8d8d;
 }
+
 .row-info {
     font-size: 1rem;
     display: flex;
@@ -34,7 +35,7 @@ section.header div.right-side div.row-info {
     Header section
 */
 
-.header-login {
+section.header-login {
     background-color: #383838;
     color: #8d8d8d;
 }
@@ -50,12 +51,12 @@ section.header div.social-media a {
     color: #8d8d8d;
 }
 
-.navbar-nav > li {
+section.header .navbar-nav > li {
     float: left;
     position: relative;
 }
 
-.navbar-dark .navbar-nav .active a::after { /*FIXME: underlines entire column not just column name */
+section.header .navbar-dark .navbar-nav .active a::after {
     border-bottom: 5px solid white;
     bottom: -10px;
     content: " ";
@@ -64,7 +65,7 @@ section.header div.social-media a {
     right: 0;
 }
 
-.fa-search {
+header.section .fa-search {
     margin-right: 0%;
 }
 
@@ -155,6 +156,29 @@ section.top div.breadcrumbs nav ol {
     font-size: .65rem;
 }
 section.top div.breadcrumbs nav ol li a {
+    color: #8d8d8d;
+}
+
+section.top div.top div {
+    color: #c7c7c7;
+}
+
+section.top div.top div p:nth-of-type(1) {
+    font-family: 'Helvetica' narrow;
+    font-size: 3rem;
+}
+
+section.top div.top div p:nth-of-type(2) {
+    font-size: 4rem;
+}
+
+section.top div.top a {
+    background-color: #c7c7c7;
+    color: #616161;
+}
+
+section.top div.reservation div p {
+    background-color: #c7c7c7;
     color: #8d8d8d;
 }
 
@@ -256,11 +280,13 @@ section.bottom div.news {
 }
 
 section.bottom div.blue-black div:nth-of-type(1) {
+    opacity: .5;
     color: white;
     background-color: darkblue;
 }
 
 section.bottom div.blue-black div:nth-of-type(2) {
+    opacity: .5;
     background-color: black;
 }
 
@@ -272,6 +298,16 @@ div.gallery section.top img {
 div.gallery section.bottom img {
     width: 10rem;
     height: 10rem;
+}
+
+div.gallery section.bottom div div button:nth-of-type(1) {
+    border-bottom: .1rem solid #c0a878;
+    color: #c0a878;
+}
+
+div.products section.bottom div div button:nth-of-type(1) {
+    border-bottom: .1rem solid #c0a878;
+    color: #c0a878;
 }
 
 .founders {
@@ -300,11 +336,15 @@ div.contact section.bottom div.contact-info div {
     background-color: white;
 }
 
-body.services p.facilities {
+div.services p.facilities {
     font-family: 'Times New Roman';
     font-size: 2rem;
     color: #c0a878;
 }
+
+div.services div.facilities div div p {
+
+} 
 
 div.contact section.top {
     margin-bottom: 5%;
@@ -381,13 +421,11 @@ div.news div.card-row div div {
 }
 
 div.news div.card-row div div div {
-    background-color: #8d5ba1; /*TODO: change the background back */
-    /*background-color: #f7f7f7;*/
+    background-color: #f7f7f7;
 }
 
 div.news div.card-row div div div:nth-of-type(4) {
-    background-color:#363636; /*TODO: change the background back */
-    /*background-color: #f7f7f7;*/
+    background-color:#363636;
 }
 
 div.news div.card-row div div div p:nth-of-type(1) {
@@ -510,4 +548,3 @@ div.news-details div.icons span.facebook {
 div.news-details div.news-text p.text {
     font-size: 1rem;
 }
-
