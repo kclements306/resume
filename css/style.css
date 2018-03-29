@@ -11,11 +11,11 @@ h6 {
     font-size: .75rem;
 }
 
-section.header div.right-side {
+div.header div.right-side {
     background-color: #383838;
 }
 
-section.header div.right-side div.row-info {
+div.header div.right-side div.row-info {
     font-size: 1rem;
     color: #8d8d8d;
 }
@@ -35,28 +35,28 @@ section.header div.right-side div.row-info {
     Header section
 */
 
-section.header-login {
+div.header-login {
     background-color: #383838;
     color: #8d8d8d;
 }
 
-section.header button {
+div.header button {
     background-color: #363636;
     color: #8d8d8d;
     width: 75%;
     padding-right: 75%;
 }
 
-section.header div.social-media a {
+div.header div.social-media a {
     color: #8d8d8d;
 }
 
-section.header .navbar-nav > li {
+div.header .navbar-nav > li {
     float: left;
     position: relative;
 }
 
-section.header .navbar-dark .navbar-nav .active a::after {
+div.header .navbar-dark .navbar-nav .active a::after {
     border-bottom: 5px solid white;
     bottom: -10px;
     content: " ";
@@ -123,7 +123,7 @@ footer div div div ul li div {
 /*
     copyright section
 */
-section.copyright {
+div.copyright {
     font-family: 'Helvetica';
     font-size: .75rem;    
     display: flex;
@@ -137,52 +137,52 @@ section.copyright {
     top section
 */
 
-section.top {
+div.top {
     background-color: #383838;
 }
 
-section.top div.breadcrumbs {
+div.top div.breadcrumbs {
     background-color: #383838;
  }
 
-section.top div.breadcrumbs p {
+div.top div.breadcrumbs p {
     font-family: 'Helvetica';
     font-size: 1rem;
     color: #c0a878;
 }
 
-section.top div.breadcrumbs nav ol {
+div.top div.breadcrumbs nav ol {
     background-color: #383838;
     font-size: .65rem;
 }
-section.top div.breadcrumbs nav ol li a {
+div.top div.breadcrumbs nav ol li a {
     color: #8d8d8d;
 }
 
-section.top div.top div {
+div.top div.top div {
     color: #c7c7c7;
 }
 
-section.top div.top div p:nth-of-type(1) {
+div.top div.top div p:nth-of-type(1) {
     font-family: 'Helvetica' narrow;
     font-size: 3rem;
 }
 
-section.top div.top div p:nth-of-type(2) {
+div.top div.top div p:nth-of-type(2) {
     font-size: 4rem;
 }
 
-section.top div.top a {
+div.top div.top a {
     background-color: #c7c7c7;
     color: #616161;
 }
 
-section.top div.reservation div p {
+div.top div.reservation div p {
     background-color: #c7c7c7;
     color: #8d8d8d;
 }
 
-section.top div.text {
+div.top div.text {
     background-color: #363636;
     padding-left: 10%;
     padding-right: 10%;
@@ -190,38 +190,38 @@ section.top div.text {
     font-family: 'Times New Roman';
 }
 
-section.top div.text p:nth-of-type(1) {
+div.top div.text p:nth-of-type(1) {
     font-size: 3rem;
     color: #c0a878;
 }
 
-section.top div.text p:nth-of-type(2) {
+div.top div.text p:nth-of-type(2) {
     font-size: 1rem;
     color: #c7c7c7;
 }
 
-section.top div.text p:nth-of-type(3) {
+div.top div.text p:nth-of-type(3) {
     font-size: .75rem;
     color: #c7c7c7;
 }
 
-section.top div.facilities {
+div.top div.facilities {
     margin-top: 5%;
 }
 
-section.top div.facilities p {
+div.top div.facilities p {
     font-family: 'Times New Roman';
     font-size: 2rem;
     color: #c0a878;
 }
 
-section.top div.facilities div div p { /* FIXME: center align under Hotel Facilities */
+div.top div.facilities div div p { /* FIXME: center align under Hotel Facilities */
     font-family: 'Helvetica';
     font-size: 1rem;
     color: #c7c7c7;
 }
 
-section.top div.facilities div div i {
+div.top div.facilities div div i {
     background-color: #8d5ba1;
 }
 
@@ -275,8 +275,22 @@ section.bottom div.bottom-cards div div {
     border-color: black;
 }
 
-section.bottom div.news {
-    border: .1rem solid black;
+div.index div.news {
+    border: .1rem solid #c7c7c7;
+}
+
+div.index div.announcements {
+    border: .1rem solid #c7c7c7;
+}
+
+div.index div.products {
+    border: .1rem solid #c7c7c7;
+}
+
+div.index div.view-all {
+    font-size: .5rem;
+    color: #c7c7c7;
+    border: .1rem solid #c7c7c7;
 }
 
 section.bottom div.blue-black div:nth-of-type(1) {
@@ -290,7 +304,7 @@ section.bottom div.blue-black div:nth-of-type(2) {
     background-color: black;
 }
 
-div.gallery section.top img {
+div.gallery div.top img {
     width: 40rem;
     height: 20rem;
 }
@@ -342,11 +356,7 @@ div.services p.facilities {
     color: #c0a878;
 }
 
-div.services div.facilities div div p {
-
-} 
-
-div.contact section.top {
+div.contact div.top {
     margin-bottom: 5%;
 }
 
