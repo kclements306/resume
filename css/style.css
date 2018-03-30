@@ -20,7 +20,7 @@ div.header div.right-side div.row-info {
     color: #8d8d8d;
 }
 
-.row-info {
+div.header .row-info {
     font-size: 1rem;
     display: flex;
     flex-direction: row;
@@ -35,7 +35,7 @@ div.header div.right-side div.row-info {
     Header section
 */
 
-div.header-login {
+div.header div.header-login {
     background-color: #383838;
     color: #8d8d8d;
 }
@@ -406,8 +406,21 @@ body.news {
     color: black;
 }
 
-div.news p {
+div.news p.left-column-header {
     font-size: 3rem;
+}
+
+div.news div.image-text p:nth-of-type(1){
+    padding-top: 10%;
+    font-size: 2rem;
+}
+
+div.news div.image-text p:nth-of-type(2){
+    font-size: 1rem;
+}
+
+div.news div.image-text p:nth-of-type(3){
+    font-size: 1rem;
 }
 
 div.news div.card-one {
@@ -467,50 +480,47 @@ div.news a.btn-primary {
     border-radius: 0rem;
 }
 
-div.news div.view-all p {
+div.news div.view-all { /*TODO: remove class name on p tag in line 409 this changes font size */
+    margin-top: 2%;
     font-size: 1rem;
     color: #8d8d8d;
-    padding-top: 1%;
-    padding-bottom: 1%;
     border: .05rem solid #8d8d8d;
 }
 
 div.tabbed {
     font-size: 1rem;
+    border-left: .1rem solid #c7c7c7;
+    border-right: .1rem solid #c7c7c7;
+    border-bottom: .1rem solid #c7c7c7;
+    margin-bottom: 20%;
 }
 
 div.tabbed div.popular {
     border-top: solid #c0a878;
 }
 
-div.popular p {
+div.tabbed div.popular p {
     color: #c0a878;
 }
 
-div.recent {
+div.tabbed div.recent {
     background-color: #363636;
 }
 
-div.recent p {
+div.tabbed div.recent p {
     color: white;
 }
 
-div.tabbed {
-    border-left: .1rem solid #c7c7c7;
-    border-right: .1rem solid #c7c7c7;
-}
-
-div.tabbed-text div {
+div.tabbed div.tabbed-text div {
     margin-top: 5%;
-    border-bottom: .1rem solid #c7c7c7;
     font-size: .75rem;
 } 
 
-div.tabbed-text div:nth-of-type(2) {
+div.tabbed div.tabbed-text div:nth-of-type(2) {
     color: #c0a878;
 }
 
-div.tabbed-text div:nth-of-type(5) {
+div.tabbed div.tabbed-text div:nth-of-type(5) {
     color: #c0a878;
 }
 
@@ -564,12 +574,12 @@ div.index div.weather {
 }
 
 div.index div.gallery {
-    font-size: .75rem;
+    font-size: .5rem;
     background: linear-gradient(to bottom right, #808080, #3c3c3c);
 }
 
 div.index div.virtual-tour {
-    font-size: 1rem;
+    font-size: .75rem;
     color: #8d8d8d;
     background-color: #ebebeb;
 }
