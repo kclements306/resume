@@ -487,6 +487,10 @@ div.news div.view-all { /*TODO: remove class name on p tag in line 409 this chan
     border: .05rem solid #8d8d8d;
 }
 
+div.news div.dark-one {
+    background-color: #383838;
+}
+
 div.tabbed {
     font-size: 1rem;
     border-left: .1rem solid #c7c7c7;
