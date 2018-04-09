@@ -291,7 +291,7 @@ var Book = function (args) {
     returns:
       instance of Library object
 */
-var Singleton = (function () {
+var Singleton = ( function () {
 
   var instance;
 
@@ -341,13 +341,6 @@ var searchObject = ['{"author": "ein", "title": "and"}'];
 
 window.gLib = new Library();
 
-function run() {
-  var instance1 = Singleton.getInstance();
-  var instance2 = Singleton.getInstance();
-
-  alert("Same instance? " + (instance1 === instance2));
-}
-
-window.singleton = new Singleton();
-window.instance1 = singleton.getInstance();
-window.instance2 = singleton.getInstance();
+// window.singleton = new Singleton();
+window.instance1 = Singleton.getInstance();
+window.instance2 = Singleton.getInstance();
