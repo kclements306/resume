@@ -309,30 +309,6 @@ var Book = function (args) {
   this.pubDate = new Date(args.pubDate);
 };
 
-/*
-  Singleton - creates a single instance of Library object
-    returns:
-      instance of Library object
-*/
-var Singleton = ( function () {
-
-  var instance;
-
-  function createInstance() {
-    var library = new Library();
-    return library;
-  }
-
-  return {
-    getInstance: function () {
-      if (!instance) {
-        instance = createInstance();
-      }
-      return instance;
-    }
-  };
-}) ();
-
 var gIt = new Book({title: "It", author: "Stephen King", numPages: 1116, pubDate: "September 12, 1986"});
 var gCatcherInTheRye = new Book({title: "Catcher in the Rye", author: "JD Salinger", numPages: 277, pubDate: "July 16, 1951"});
 var gStarshipTroopers = new Book({title: "Starship Troopers", author: "Robert Heinlein", numPages: 263, pubDate: "November 2, 1959"});
