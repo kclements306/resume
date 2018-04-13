@@ -205,7 +205,7 @@ var library = (function() {
       */
       displayLibrary : function () {
         books.forEach(function(book) {
-          // console.log(book);
+          console.log(book);
         });
       },
 
