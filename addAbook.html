@@ -24,6 +24,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Add</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -34,7 +37,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Remove</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Remove a Book</a>
+                            <a class="dropdown-item" href="#">Remove a Book By Title</a>
                             <a class="dropdown-item" href="#">Remove All Books From An Author</a>
                         </div>
                     </li>
@@ -58,11 +61,22 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="col-md-6 bookForm mt-3 justify-content-center">
-            <form class="bookForm" action="">
-                <div class="justify-content-between"><div><span>Author Name: </span></div><div><input type="text" name="author"></div></div>
-                <div><div><span>Book Title: </span></div><div><input type="text" name="title"></div></div>
-                <div><div><span>Number of Pages: </span></div><div><input type="text" name="numPages"></div></div>
-                <div><div><span>Publication Date: </span></div><div><input type="date" name="pubDate"></div></div>
+            <form class="formAddABook" action="">
+                <table class="mt-2">
+                    <tr>
+                        <td><span>Author Name: </span></td>
+                        <td><input type="text" name="author"></td>
+                        <td><span>Book Title: </span></td>
+                        <td><input type="text" name="title"></td>
+                    </tr>
+                    <tr>
+                        <td><span>Number of Pages: </span></td>
+                        <td><input type="text" name="numPages"></td>
+                        <td><span>Publication Date: </span></td>
+                        <td><input type="date" name="pubDate"></td>
+                    </tr>
+                </table>
+                <div class="text-center"><input type="submit" value="submit"></div>
             </form>
         </div>
         <div class="col-md-3"></div>
