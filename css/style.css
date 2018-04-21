@@ -17,3 +17,41 @@ div.bookForm {
     height: 7rem;
     width: 15rem;
 }
+
+.allDiv {
+    display: none;
+}
+
+.home {
+    display: flex;
+    width: 100%;
+}
+
+div.libraryTable {
+    background-color: white;
+}
+
+th.author {
+    width: 30%;
+}
+
+th.title {
+    width: 40%;
+}
+
+th.numPages {
+    width: 5%;
+}
+
+th.pubDate {
+    width: 20%;
+}
+
+th.remove {
+    width: 5%;
+}
+
+td.remove img {
+    width: 35%;
+    height: auto;
+}

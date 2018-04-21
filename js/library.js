@@ -284,24 +284,3 @@ var Book = function (args) {
     this.numPages = args.numPages;
     this.pubDate = new Date(args.pubDate);
 };
-
-var gIt = new Book({title: "It", author: "Stephen King", numPages: 1116, pubDate: "September 12, 1986"});
-var gCatcherInTheRye = new Book({title: "Catcher in the Rye", author: "JD Salinger", numPages: 277, pubDate: "July 16, 1951"});
-var gStarshipTroopers = new Book({title: "Starship Troopers", author: "Robert Heinlein", numPages: 263, pubDate: "November 2, 1959"});
-var gStrangerInAStrangeLand = new Book({title: "Stranger in a Strange Land", author: "Robert Heinlein", numPages: 516, pubDate: "June 1, 1961"});
-var gTheStand = new Book({title: "The Stand", author: "Stephen King",  numPages: 1153, pubDate: "April 14, 1978"});
-var g1984 = new Book({title: "1984", author: "George Orwell", numPages: 328, pubDate: "June 8, 1949"});
-var gTheNakedAndTheDead = new Book({title: "The Naked and the Dead", author: "Norman Mailer", numPages: 721, pubDate: "July 10, 1948"});
-var gThePuppetMasters = new Book({title: "The Puppet Masters", author: "Robert Heinlein", numPages: 307, pubDate: "March 10, 1951"});
-var gPrideAndPrejudice = new Book({title: "Pride and Prejudice", author: "Jane Austin", numPages: 249, pubDate: "January 28, 1813"});
-var gCarrie = new Book({title: "Carrie", author: "Stephen King", numPages: 253, pubDate: "April 5, 1974"});
-
-
-var arrayOfBooks = [ gIt, gCatcherInTheRye, gStarshipTroopers, gStrangerInAStrangeLand, gTheStand ];
-
-var allBooks = [ gIt, gCatcherInTheRye, gStarshipTroopers, gStrangerInAStrangeLand, gTheStand, g1984, gTheNakedAndTheDead, gThePuppetMasters, gPrideAndPrejudice, gCarrie ];
-
-var searchObject = ["{\"author\": \"ein\", \"title\": \"and\"}"];
-
-var lib1 = new library("one");
-var lib2 = new library("two");
