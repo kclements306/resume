@@ -3,43 +3,45 @@ var lib = new library("one");
 
 $(document).ready( function() {
     lib.getLibraryFromLocalStorage();
+ 
     // lib.books.forEach( function(book) {
     //     console.log(book);
     // });
 
-    $("#displayTable").DataTable( {
-        data: this.books,
+    var homeTable = $("#displayTable").DataTable( {
+        data: lib.books,
         columns: [
             { data: "author" },
             { data: "title" },
             { data: "numPages" },
-            { data: "pubDate"}
+            { data: "pubDate", render: function(data, type, row, meta) {
+                return data.toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric"}); }
+            },
+            { "orderable": false, data: "icons", render: function(data, type, row, meta) {
+                return ('<a href="javascript:deleteRow(' + row + ')"> <img class="delete" src="images/update.png"> ' +
+                '<a href="javascript:deleteRow(' + row + ')"> <img class="delete" src="images/delete.png">')
+            }}
         ]
     });
-    var _this = this;
 
-    function createBookDisplayTable () {
-        var bookCount = 0;
-        var nodeClass = ".dataRow0";
-        var originalDataRow = $(nodeClass);
-        var tableRow = originalDataRow.cloneNode(true);
-        lib.books.forEach( function (book) {
-            tableRow.children("author").data = book.author;
-            tableRow.children("title").data = book.title;
-            tableRow.children("numPages").data = book.numPages;
-            tableRow.children("pubDate").data = book.pubDate.toDateString;
-            $(".tableBody").append(tableRow);
-            tableRow = originalDataRow.cloneNode(true);
-        });
-
-        return true;
-    }
-
-    $("#formAddABook").on("submit", function() {
-        var book;
-        var inputs = $("#formAddABook :input"); 
-        book = new Book({title: inputs[1].value, author: inputs[0].value, numPages: inputs[2].value, 
-            pubDate: new Date(inputs[3].value)});
-        _this.lib.addBook(book);
+    var addTable = $("#addModalTable").DataTable( {
+        
     });
+
+    // $(".modal-content").resizable({
+    //     alsoResize: ".modal-header, .modal-body, .modal-footer"
+    // });
+    // $("modal-diaglog").draggable();
+    $("#btnAddABook").on ( "click", function() {
+        addTable.row.add( [
+            $(".inpAuthor").val(),
+            $(".inpTitle").val(),
+            $(".inpNumPages").val(),
+            $(".inpPubDate").val()
+        ] ).draw( false );
+    } );
+
+    $(".addTableBody").on( "click", ".addTableBody", function () {
+        addTable.cell( this ).edit();
+    } );
 });
