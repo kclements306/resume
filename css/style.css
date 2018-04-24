@@ -12,8 +12,13 @@ img.tgIcon {
    height: 3rem; 
 }
 
-img.delete,img.update {
-    width: 35%;
+button.dt-edit {
+    width: 3rem;
+    height: auto;
+}
+
+button.dt-delete {
+    width: 3rem;
     height: auto;
 }
 
@@ -42,11 +47,11 @@ div.addModal {
 }
 
 th.author {
-    width: 30%;
+    width: 25%;
 }
 
 th.title {
-    width: 45%;
+    width: 40%;
 }
 
 th.numPages {
@@ -58,12 +63,7 @@ th.pubDate {
 }
 
 th.remove {
-    width: 5%;
-}
-
-div.addModal {
-    width: 30rem;
-    height: auto;
+    width: 10%;
 }
 
 input.inpNumPages {

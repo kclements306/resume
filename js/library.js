@@ -52,6 +52,7 @@ library.prototype.addBook = function (book) {
       true - if a book was removed
 */
 library.prototype.removeBookByTitle = function (title) {
+    console.log("title:" + title);
     var notDeletedBooks = [];
     var hasDeletedBook = false;
     if (title !== null) { // title not a valid input
