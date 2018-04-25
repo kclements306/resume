@@ -126,12 +126,26 @@ $( function() {
             $this = $(this);
             var parsedHTML = $.parseHTML($this.parents("tr").html());
             var author = $(parsedHTML[0]).html();
-            var title = $(parsedHTML[1]).html();
-            for(var i=0; i < dtRow[0].cells.length; i++){
-                $("div.modal-body").append("Cell (column, row) \" + dtRow[0].cells[i]._DT_CellIndex.column+\", \" + dtRow[0].cells[i]._DT_CellIndex.row + \" => innerHTML : \" + dtRow[0].cells[i].innerHTML +\"<br/>");
-            }  
+            var originalTitle = $(parsedHTML[1]).html();
+            $("#editModalAuthor").text(author);
+            $("#editModalTitle").text(originalTitle);
+            $("#editModalTitle").attr("name", originalTitle);
             $("#editModal").modal("show");
         });
+    });
+
+    $("#btnSaveEdit").on ("click", function() {
+        var author = $("#editModalAuthor").val();
+        var title = $("#editModalTitle").val();
+        var originalTitle = $("#editModalTitle").attr("name");
+        var books = lib.getBookByTitle(originalTitle);
+        var book = books[0];
+        book.author = author;
+        book.title = title;
+        // lib.removeBookByTitle(originalTitle);
+        lib.addBook(book);
+        lib.saveLibraryToLocalStorage();
+        location.reload(false);
     });
 
     // Delete Row
