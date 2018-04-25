@@ -7,6 +7,10 @@ body {
     background-size: cover;
 }
 
+h6 {
+    color: red;
+}
+
 img.tgIcon {
    width: 12rem;
    height: 3rem; 
@@ -35,6 +39,10 @@ div.bookForm {
 .home {
     display: flex;
     width: 100%;
+}
+
+thead {
+    font-size: 1.25rem;
 }
 
 div.libraryTable {

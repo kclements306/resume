@@ -52,7 +52,6 @@ library.prototype.addBook = function (book) {
       true - if a book was removed
 */
 library.prototype.removeBookByTitle = function (title) {
-    console.log("title:" + title);
     var notDeletedBooks = [];
     var hasDeletedBook = false;
     if (title !== null) { // title not a valid input
@@ -280,8 +279,8 @@ library.prototype.search = function (searchObject) {
 
 // Book object
 var Book = function (args) {
-    this.title = args.title.trim();
-    this.author = args.author.trim();
+    this.title = args.title;
+    this.author = args.author;
     this.numPages = args.numPages;
     this.pubDate = new Date(args.pubDate);
 };

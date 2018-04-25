@@ -1,4 +1,5 @@
 var lib = new library("one");
+var booksToAdd = [];
 $( function() {
     
     lib.getLibraryFromLocalStorage();
@@ -12,10 +13,6 @@ $( function() {
             { data: "numPages" },
             { data: "pubDate", render: function(data, type, row, meta) {
                 return data.toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric"}); } },
-            // { "orderable": false, data: "icons", render: function(data, type, row, meta) {
-            //     return ("<a href=\"javascript:updateRow("+type+");\"> <img class=\"delete\" src=\"images/update2.png\"> " +
-            //     "<a href=\"javascript:deleteRow("+type+");\"> <img class=\"delete\" src=\"images/delete.png\">");
-            // } }
             { orderable: false, data: "icons", render: function(data, type, row, meta) {
                 return (
                     "<button type=\"button\" class=\"btn btn-primary btn-xs dt-edit m-2\">" + 
@@ -32,17 +29,44 @@ $( function() {
         pageResize: true
     });
 
-    // $(".modal-content").resizable({
-    //     alsoResize: ".modal-header, .modal-body, .modal-footer"
-    // });
-    // $("modal-diaglog").draggable();
+    // Add a book to global array booksToAdd
     $("#btnAddABook").on ( "click", function() {
+        // save the values that were inputted
+        var jsonBook = {};
+        var author =  $(".inpAuthor").val();
+        var title = $(".inpTitle").val();
+        var numPages = $(".inpNumPages").val();
+        var pubDate = $(".inpPubDate").val();
+        jsonBook["author"] = author;
+        jsonBook["title"] = title;
+        jsonBook["numPages"] = numPages;
+        jsonBook["pubDate"] = pubDate; 
+        booksToAdd.push(new Book(jsonBook));
+        // clear the input tags to show the placeholder value
+        $(".inpAuthor").val("");
+        $(".inpTitle").val("");
+        $(".inpNumPages").val("");
+        $(".inpPubDate").val("");
+        // add the book to the modal table
         addTable.row.add( [
-            $(".inpAuthor").val(),
-            $(".inpTitle").val(),
-            $(".inpNumPages").val(),
-            $(".inpPubDate").val()
+            author,
+            title,
+            numPages,
+            pubDate
         ] ).draw( false );
+    } );
+
+    // Save all books in booksToAdd array to library.books array
+    $("#btnSaveBooks").on ( "click", function() {
+        lib.addBooks(booksToAdd);   //add the new books
+        lib.saveLibraryToLocalStorage();
+        addTable.clear();   // empty the add books modal table
+        // clear the input tags to show the placeholder value
+        $(".inpAuthor").val("");
+        $(".inpTitle").val("");
+        $(".inpNumPages").val("");
+        $(".inpPubDate").val("");
+        location.reload(false); // reload the new library
     } );
 
     $(".addTableBody").on( "click", ".addTableBody", function () {
@@ -58,9 +82,39 @@ $( function() {
     $(".modal-dialog").draggable();
 
     $("#addModal").on("show.bs.modal", function() {
+        booksToAdd = [];
         $(this).find(".modal-body").css({
             "max-height": "100%"
         });
+    });
+
+    $("#showAllAuthorsModal").on("show.bs.modal", function() {
+        $("#authorsToDeleteHTML").remove();
+        var insertString = "<div id=\"authorsToDeleteHTML\">";
+        var authors = lib.getAuthors();
+        authors.forEach( function (author) {
+            insertString = insertString + "<p class=\"authorToDelete\">" + author + "</p>";
+        });
+        insertString = insertString + "</div>";
+        $(insertString).insertAfter("#authorsMarker");
+    });
+
+    $("p.authorToDelete").mousedown( function() {
+        var author = $(this).val();
+        if( confirm("Are you sure you want to delete this author?") ) {
+            alert(author);
+        } 
+        // $( this ).append( "<br/><span style='color:green;'>Mouse up event fired.</span>" );
+    });
+
+    // Grab a random book to recommend
+    $("#recommendModal").on ("show.bs.modal", function() {
+        var book = lib.getRandomBook();
+        $("#imgRecommendImage").attr("src", "images/" + book.title + ".jpg");
+        $("#pRecommendTitle").text(book.title);
+        $("#pRecommendAuthor").text(book.author);
+        $("#pRecommendNumPages").text(book.numPages);
+        $("#pRecommendPubDate").text(book.pubDate.toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric"}));
     });
 
     // Edit Author or Title

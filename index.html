@@ -28,23 +28,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item pr-3">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add a Book</button>
+                    </li>
+                    <li class="nav-item pr-3">
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#showAllAuthorsModal">Show All Authors</button>
+                    </li>
+
                     <li class="nav-item">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add</button>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Remove</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="removeABookByTitle.html">Remove a Book by Title</a>
-                            <a class="dropdown-item" href="removeAllBooksByAuthor.html">Remove All Books By An Author</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Get</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="getARandomBook.html">Get a Random Book</a>
-                            <a class="dropdown-item" href="getARandomAuthor.html">Get a Random Author</a>
-                            <a class="dropdown-item" href="getAllAuthorsInLibrary.html">Get All Authors in Library</a>
-                        </div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#recommendModal">Recommend a Book</button>
                     </li>
                 </ul>
             </div>
@@ -58,7 +50,7 @@
                         <tr id="headerRow">
                             <th class="author text-center">Author</th>
                             <th class="title text-center">Title</th>
-                            <th class="numPages text-center">Number of Pages</th>
+                            <th class="numPages text-center">Pages</th>
                             <th class="pubDate text-center">Publication Date</th>
                             <th class="remove text-center"></th>
                         </tr>
@@ -91,7 +83,7 @@
                                 <tr>
                                     <th>Author</th>
                                     <th>Title</th>
-                                    <th>Number of Pages</th>
+                                    <th>Pages</th>
                                     <th>Publication Date</th>
                                 </tr>
                             </thead>
@@ -107,9 +99,9 @@
                         <input type="date" class="inpPubDate" name=pubDate>        
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-primary" id="btnAddABook">Add a Book</button>
+                        <button type="button" class="btn btn-primary" id="btnAddABook">Add a book to the list</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="btnSaveBooks">Save Book(s)</button>        
+                        <button type="button" class="btn btn-primary" id="btnSaveBooks">Save Book(s) to Library</button>        
                     </div>
                 </div>
             </div>
@@ -141,6 +133,53 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" id="btnSaveEdit">Save Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="showAllAuthorsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">All Authors In The Library</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <h6 id="authorsMarker">To delete all books by an author click on their name:</h6>
+                            <div id="authorsToDeleteHTML"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="recommendModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">We Recommend</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="align-content-center">
+                            <img src="" alt="" id="imgRecommendImage">
+                            <div class="align-content-center">
+                                <p id="pRecommendTitle"></p>
+                                <p id="pRecommendAuthor"></p>
+                                <p id="pRecommendNumPages"></p>
+                                <p id="pRecommendPubDate"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
