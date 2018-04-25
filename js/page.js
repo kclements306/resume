@@ -93,18 +93,21 @@ $( function() {
         var insertString = "<div id=\"authorsToDeleteHTML\">";
         var authors = lib.getAuthors();
         authors.forEach( function (author) {
-            insertString = insertString + "<p class=\"authorToDelete\">" + author + "</p>";
+            // insertString = insertString + "<p class=\"authorToDelete\">" + author + "</p>";
+            insertString = insertString + "<button type=\"button\" class=\"btn btn-outline-secondary authorToDelete\">" + author + "</button>";
         });
         insertString = insertString + "</div>";
         $(insertString).insertAfter("#authorsMarker");
     });
 
-    $("p.authorToDelete").mousedown( function() {
-        var author = $(this).val();
-        if( confirm("Are you sure you want to delete this author?") ) {
-            alert(author);
+    // $("button.authorToDelete").on ( "click", function() {
+    $(document).on("click", ".authorToDelete", function(){
+        var author = $(this).text();
+        if( confirm("Are you sure you want to delete all the books by " + author + " ?")) {
+            lib.removeBooksByAuthor(author);
+            lib.saveLibraryToLocalStorage();
+            location.reload(false);
         } 
-        // $( this ).append( "<br/><span style='color:green;'>Mouse up event fired.</span>" );
     });
 
     // Grab a random book to recommend
