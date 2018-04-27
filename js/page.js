@@ -24,8 +24,7 @@ page.prototype.init = function () {
             },
             { orderable: false, data: "icons",
                 render: function () {
-                    // return ("<i class=\"material-icons editRow mx-2\">create</i> " + "<i class=\"material-icons deleteRow\">delete</i>");
-                    return ("<img src=\"images/edit.png\" class=\"editRow mx2\"> <img src=\"images/delete.png\" class=\"deleteRow\">");
+                    return ("<i class=\"material-icons editRow mx-2\">create</i> " + "<i class=\"material-icons deleteRow\">delete</i>");
                 }
             }
         ]
@@ -52,9 +51,7 @@ page.prototype._bindEvents = function () {
 
 // Show the modal to add books.
 page.prototype.modalAdd = function () {
-    // $(this).find(".modal-body").css({
-    //     "max-height": "100%"
-    // });
+
 };
 
 // This function takes the values from the input elements in the addModal modal and saves them to the booksToAdd array
@@ -72,7 +69,8 @@ page.prototype.btnAddBookToList = function () {
     $(".inpNumPages").val("");
     $(".inpPubDate").val("");
     // add the book to the modal table
-    this.addTable.row.add([ author, title, numPages, pubDate ]).draw(false);
+    this.addTable.row.add([ author, title, numPages, pubDate ]);
+    this.addTable.draw(false);
 };
 
 // Save all books in booksToAdd array to the library
@@ -87,6 +85,7 @@ page.prototype.btnSaveBooksToLibrary = function () {
         $(".inpNumPages").val("");
         $(".inpPubDate").val("");
         $("#addModal .close").click();
+        location.reload();
     }
 };
 
@@ -127,10 +126,11 @@ page.prototype.btnSaveEdit = function () {
     var book = books[0];
     book.author = author;
     book.title = title;
-    // lib.removeBookByTitle(originalTitle);
+    this.lib.removeBookByTitle(originalTitle);
     this.lib.addBook(book);
     this.lib.saveLibraryToLocalStorage();
-    location.reload(false);
+    // this.homeTable.draw(false);
+    location.reload();
 };
 
 page.prototype.btnDeleteByAuthor = function () {
@@ -138,64 +138,30 @@ page.prototype.btnDeleteByAuthor = function () {
     if (confirm("Are you sure you want to delete all the books by " + author + " ?")) {
         this.lib.removeBooksByAuthor(author);
         this.lib.saveLibraryToLocalStorage();
-        location.reload(false);
     }
 };
 
 // edit Author or Title in row
 page.prototype.iconEditAuthorAndTitle = function (e) {
-    var t0 = $(e.currentTarget).parent();
-    console.log("$(e.currentTarget).parent():" + t0);
-    var t1 = t0.parent();
-    console.log("t0.parent():" + t1);
-    var $tr = $(e.currentTarget).parent().parent().parent("tr"); // get parent tr
-    console.log($tr);
-
-    // var author = $(parsedHTML[0]).html();
-    // var originalTitle = $(parsedHTML[1]).html();
-    // $("#editModalAuthor").text(author);
-    // $("#editModalTitle").text(originalTitle);
-    // $("#editModalTitle").attr("name", originalTitle);
-    // $("#editModal").modal("show");
-
-    // var parsedHTML = $.parseHTML(this.parents("tr").html());
-    
-    // var author = $(parsedHTML[0]).html();
-    // var originalTitle = $(parsedHTML[1]).html();
-    // $("#editModalAuthor").text(author);
-    // $("#editModalTitle").text(originalTitle);
-    // $("#editModalTitle").attr("name", originalTitle);
-    // $("#editModal").modal("show");
-    // $(".dt-edit").each( function () {
-    // $(this).on("click", function (evt){
-    //     $this = $(this);
-    //     var parsedHTML = $.parseHTML($this.parents("tr").html());
-    //     var author = $(parsedHTML[0]).html();
-    //     var originalTitle = $(parsedHTML[1]).html();
-    //     $("#editModalAuthor").text(author);
-    //     $("#editModalTitle").text(originalTitle);
-    //     $("#editModalTitle").attr("name", originalTitle);
-    //     $("#editModal").modal("show");
-    // });
+    var parsedHTML = $.parseHTML($(e.currentTarget).parent().parent("tr").html());
+    var author = $(parsedHTML[0]).html();
+    var originalTitle = $(parsedHTML[1]).html();
+    $("#editModalAuthor").text(author);
+    $("#editModalTitle").text(originalTitle);
+    $("#editModalTitle").attr("name", originalTitle);
+    $("#editModal").modal("show");
 };
 
-// delete row
+// delete row from the table and the library
 page.prototype.iconDeleteRow = function (e) {
-    var $tr = $(e.currentTarget).parent("tr");
-    console.log($tr);
-    this.bookArr.splice($tr.attr("data-id"), 1);
-    $tr.remove();
-    // $(".dt-delete").each( function () {
-    // $(this).on("click", function() {
-    //     $this = $(this);
-    //     var parsedHTML = $.parseHTML($this.parents("tr").html());
-    //     var title = $(parsedHTML[1]).html();
-    //     if( confirm("Are you sure you want to delete this row?") ) {
-    //         this.lib.removeBookByTitle(title);
-    //         this.lib.saveLibraryToLocalStorage();
-    //         location.reload(false);
-    //     }
-    // });
+    var parsedHTML = $.parseHTML($(e.currentTarget).parent().parent("tr").html());
+    var title = $(parsedHTML[1]).html();
+    if( confirm("Are you sure you want to delete this row?") ) {
+        this.lib.removeBookByTitle(title);
+        this.lib.saveLibraryToLocalStorage();
+        this.homeTable.row($(e.currentTarget).parent().parent("tr")).remove();
+        this.homeTable.draw(false);
+    }
 };
 
 $(function () {
