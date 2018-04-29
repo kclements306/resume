@@ -130,6 +130,7 @@ page.prototype.btnSaveEdit = function () {
     this.lib.addBook(book);
     this.lib.saveLibraryToLocalStorage();
     // this.homeTable.draw(false);
+    // $("#editModal").modal("hide");
     location.reload();
 };
 
@@ -141,25 +142,26 @@ page.prototype.btnDeleteByAuthor = function () {
     }
 };
 
-// edit Author or Title in row
+// edit Author and/or Title in the selected row
 page.prototype.iconEditAuthorAndTitle = function (e) {
-    var parsedHTML = $.parseHTML($(e.currentTarget).parent().parent("tr").html());
-    var author = $(parsedHTML[0]).html();
-    var originalTitle = $(parsedHTML[1]).html();
+    var tableRow = $(e.currentTarget).parent().parent("tr");
+    var author = tableRow.children("td:nth-child(1)").text();
+    var originalTitle = tableRow.children("td:nth-child(2)").text();
     $("#editModalAuthor").text(author);
     $("#editModalTitle").text(originalTitle);
-    $("#editModalTitle").attr("name", originalTitle);
-    $("#editModal").modal("show");
+    $("#editModalTitle").attr("name", originalTitle);   // save the title
+    $("#editModal").modal("show");      // pop the edit modal
+    this.homeTable.draw(false);
 };
 
-// delete row from the table and the library
+// delete the selected row from the table and the corresponding book from the library
 page.prototype.iconDeleteRow = function (e) {
-    var parsedHTML = $.parseHTML($(e.currentTarget).parent().parent("tr").html());
-    var title = $(parsedHTML[1]).html();
-    if( confirm("Are you sure you want to delete this row?") ) {
+    var tableRow = $(e.currentTarget).parent().parent("tr");
+    var title = tableRow.children("td:nth-child(2)").text();
+    if( confirm("Are you sure you want to delete \"" + title + "\" ?") ) {
         this.lib.removeBookByTitle(title);
         this.lib.saveLibraryToLocalStorage();
-        this.homeTable.row($(e.currentTarget).parent().parent("tr")).remove();
+        this.homeTable.row(tableRow).remove();
         this.homeTable.draw(false);
     }
 };
