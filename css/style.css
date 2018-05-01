@@ -1,63 +1,66 @@
-div {
-  margin-left: 50px
-}
-h3 {
-  padding-bottom: 1px;
-}
-ul {
-  padding-top: 1px;
-  padding-bottom: 1px;
-}
-.container{
-  margin-left: 150px;
-  margin-right:50px;
-}
-.heading {
-  text-align: center;
-}
-.h3_text{
-  padding-bottom: 0px;
-  margin-bottom: 1px;
-}
-.summary {
-  padding-top: 0px;
+body {
+    font-family: Arial;
+    background: url(../images/11.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.summary_text {
-  padding-top: 0px;
+h6 {
+    color: red;
 }
-.technical_skills {
 
+img.tgIcon {
+   width: 12rem;
+   height: 3rem; 
 }
-.technical_skills-text {
 
+thead {
+    font-size: 1.25rem;
 }
-.work_experience {
 
+div.libraryTable {
+    background-color: white;
+    width: 80%;
 }
-.work_experience_date {
 
+div.addModal {
+    resize: both;
 }
-.work_experience_text{
-  padding-right: 50px
-}
-.education{
 
+th.author {
+    width: 35%;
 }
-.education_text {
 
+th.title {
+    width: 40%;
 }
-.p_indent {
-  padding-right: 150px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-top: 0px;
+
+th.numPages {
+    width: 5%;
 }
-.h4_work{
-  padding-bottom: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+
+th.pubDate {
+    width: 13%;
 }
-.h4_workdate {
-  margin-bottom: 2px;
+
+th.remove {
+    width: 7%;
+}
+
+input.inpNumPages {
+    width: 3rem;
+}
+
+i.editRow {
+    color: blue;
+}
+
+i.deleteRow {
+    color: red;
+}
+
+ul.allAuthorsList {
+    list-style-type: none;
 }
