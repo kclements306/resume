@@ -60,3 +60,7 @@ i.editRow {
 i.deleteRow {
     color: red;
 }
+
+ul.allAuthorsList {
+    list-style-type: none;
+}

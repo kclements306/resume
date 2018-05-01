@@ -42,7 +42,7 @@ page.prototype._bindEvents = function () {
     $("#btnSaveBooks").on("click", $.proxy(this.btnSaveBooksToLibrary, this));
     $("#btnAddABook").on("click", $.proxy(this.btnAddBook, this));
     $("#btnSaveEdit").on("click", $.proxy(this.btnSaveEdit, this));
-    $("#showAllAuthorsModal").on("click", $.proxy(this.btnAuthorToDelete, this));
+    $("#showAllAuthorsModal").on("click", ".allAuthorsList", $.proxy(this.btnAuthorToDelete, this));
     $("#displayTable").on("click", ".deleteRow", "i", $.proxy(this.iconDeleteRow, this));
     $("#displayTable").on("click", ".editRow", "i", $.proxy(this.iconEditAuthorAndTitle, this));
     $("#showAllAuthorsModal").on("show.bs.modal", $.proxy(this.modalShowAllAuthors, this));
@@ -90,16 +90,15 @@ page.prototype.btnSaveBooksToLibrary = function () {
 };
 
 // This modal will show all unique authors in the library and allow users to delete all books by an
-// author by clicking on their names
+// author by clicking on their name
 page.prototype.modalShowAllAuthors = function () {
-    $("#authorsToDeleteHTML").remove(); // clear out any old buttons
-    var insertString = "<div id=\"authorsToDeleteHTML\">";
+    $("#allAuthorsList").empty(); // clear out any old html
+    var insertString = "";
     var authors = this.lib.getAuthors();
     authors.forEach(function (author) {
-        insertString = insertString + "<button type=\"button\" class=\"btn btn-outline-secondary authorToDelete\">" + author + "</button>";
+        insertString = insertString + "<li class=\"allAuthorsList\">" + author + "</li>";
     });
-    insertString = insertString + "</div>";
-    $(insertString).insertAfter("#authorsMarker");
+    $("#allAuthorsList").append(insertString);
 };
 
 // Get a random book to recommend
@@ -134,12 +133,14 @@ page.prototype.btnSaveEdit = function () {
     location.reload();
 };
 
-page.prototype.btnDeleteByAuthor = function () {
-    var author = $(this).text();
+page.prototype.btnAuthorToDelete = function (e) {
+    
+    var author = $(e.currentTarget).text();
     if (confirm("Are you sure you want to delete all the books by " + author + " ?")) {
         this.lib.removeBooksByAuthor(author);
         this.lib.saveLibraryToLocalStorage();
     }
+    location.reload();
 };
 
 // edit Author and/or Title in the selected row
