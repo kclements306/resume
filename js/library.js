@@ -195,7 +195,7 @@ class Library {
     saveLibraryToLocalStorage() {
 
         try {
-            localStorage.setItem("library", JSON.stringify(this.books));
+            localStorage.setItem(this.libraryName, JSON.stringify(this.books));
             return true;
         } catch (exception) {
             return false;
@@ -213,7 +213,7 @@ class Library {
         var _this = this;
         var jsonLibrary;
         try {
-            jsonLibrary = JSON.parse(localStorage.getItem("library"));
+            jsonLibrary = JSON.parse(localStorage.getItem(this.libraryName));
             jsonLibrary.forEach(function (jsonBook) {
                 _this.addBook(new Book(jsonBook));
             });
@@ -456,6 +456,6 @@ class Page extends Library {
 }
 
 $(function () {
-    window.page = new Page("Library");
+    window.page = new Page("library");
     window.page.init();
 });
