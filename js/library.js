@@ -37,8 +37,8 @@ class Library {
           true - if a book was removed
     */
     removeBookByTitle(title) {
-        var notDeletedBooks = [];
-        var hasDeletedBook = false;
+        let notDeletedBooks = [];
+        let hasDeletedBook = false;
         if (title !== null) { // title not a valid input
             this.books.forEach(function (book) { // walk through the library
                 if (book.title == title) {
@@ -60,8 +60,8 @@ class Library {
     */
     removeBooksByAuthor(authorName) {
 
-        var hasDeletes = false; // true if any books had to be deleted
-        var notDeletedBooks = []; // new array with all undeleted books
+        let hasDeletes = false; // true if any books had to be deleted
+        let notDeletedBooks = []; // new array with all undeleted books
         if (authorName !== null) {
             this.books.forEach(function (book) { // walk through all the books in the library
                 if (authorName !== book.author) { // look for an exact match
@@ -85,7 +85,7 @@ class Library {
     */
     getRandomBook() {
 
-        var i; // random index into array of books
+        let i; // random index into array of books
         if ((typeof Array != "undefined") && (this.books.length != 0)) {
             i = Math.floor(Math.random() * this.books.length);
             return this.books[i];
@@ -102,9 +102,9 @@ class Library {
         null array if no books are found
     */
     getBookByTitle(title) {
-        var foundBooks = [];
+        let foundBooks = [];
         if (title !== null) {
-            var regex = new RegExp(title, "i");
+            let regex = new RegExp(title, "i");
             this.books.forEach(function (book) {
                 if (regex.test(book.title)) {
                     foundBooks.push(book);
@@ -121,9 +121,9 @@ class Library {
     */
     getBooksByAuthor(authorName) {
 
-        var foundBooks = [];
+        let foundBooks = [];
         if (authorName !== null) {
-            var regex = new RegExp(authorName, "i");
+            let regex = new RegExp(authorName, "i");
             this.books.forEach(function (book) {
                 if (regex.test(book.author)) { // returns true if authorName is found anywhere in string, ignores case
                     foundBooks.push(book);
@@ -141,9 +141,9 @@ class Library {
     */
     addBooks(books) {
 
-        var _this = this;
-        var isBookAdded = false;
-        var addedCounter = 0;
+        let _this = this;
+        let isBookAdded = false;
+        let addedCounter = 0;
         books.forEach(function (book) {
             isBookAdded = _this.addBook(book);
             if (isBookAdded) {
@@ -160,8 +160,8 @@ class Library {
           array of strings - each string an unique author's name
     */
     getAuthors() {
-        var authors = []; // Array of authors in library
-        var author; // name of current author
+        let authors = []; // Array of authors in library
+        let author; // name of current author
         this.books.forEach(function (book) {
             author = book.author;
             if (authors.indexOf(author) == -1) { // if author not in array
@@ -179,7 +179,7 @@ class Library {
         string - author name
     */
     getRandomAuthorName() {
-        var book = this.getRandomBook(); // random book from library
+        let book = this.getRandomBook(); // random book from library
         if (book == null) {
             return null;
         }
@@ -210,8 +210,8 @@ class Library {
     */
     getLibraryFromLocalStorage() {
 
-        var _this = this;
-        var jsonLibrary;
+        let _this = this;
+        let jsonLibrary;
         try {
             jsonLibrary = JSON.parse(localStorage.getItem(this.libraryName));
             jsonLibrary.forEach(function (jsonBook) {
@@ -230,18 +230,18 @@ class Library {
     */
     search(searchObject) {
 
-        var i, j, k;
-        var searchText;
-        var keys;
-        var values;
-        var results = [];
-        var result = [];
+        let i, j, k;
+        let searchText;
+        let keys;
+        let values;
+        let results = [];
+        let result = [];
         for (i = 0; i < searchObject.length; ++i) {
             searchText = JSON.parse(searchObject[i]);
             keys = Object.keys(searchText);
             values = Object.values(searchText);
             for (j = 0; j < keys.length; ++j) {
-                var key = keys[j];
+                let key = keys[j];
                 if (key == "title") {
                     result = this.getBookByTitle(values[j]);
                     if (result !== null) {
@@ -277,7 +277,8 @@ class Book {
 class Page extends Library {
     constructor(libraryName) {
         super(libraryName);
-        this.booksToAdd = [];
+        this.booksToAdd = [];   // array of books to add to library
+        this.editTableRow;      // The table row being edited.
     }
 
     // get library from local storage and bind events.
@@ -339,10 +340,10 @@ class Page extends Library {
     // then it adds the book to the addModal table to display.
     btnAddBookToList() {
         // save the values that were inputted
-        var author = $(".inpAuthor").val();
-        var title = $(".inpTitle").val();
-        var numPages = $(".inpNumPages").val();
-        var pubDate = $(".inpPubDate").val();
+        let author = $(".inpAuthor").val();
+        let title = $(".inpTitle").val();
+        let numPages = $(".inpNumPages").val();
+        let pubDate = $(".inpPubDate").val();
         this.booksToAdd.push(new Book({
             author: author,
             title: title,
@@ -362,16 +363,20 @@ class Page extends Library {
     // Save all books in booksToAdd array to the library
     btnSaveBooksToLibrary() {
         if (Array.isArray(this.booksToAdd) && this.booksToAdd.length) { // make sure there are books to add
+            let _this = this;
             this.addBooks(this.booksToAdd); //add the new books to the library
             this.saveLibraryToLocalStorage();
+            this.booksToAdd.forEach(function (book) {     // add books to table
+                _this.homeTable.row.add(book);
+            });
             // clear the table and the input fields in the add modal
             this.addTable.clear();
             $(".inpAuthor").val("");
             $(".inpTitle").val("");
             $(".inpNumPages").val("");
             $(".inpPubDate").val("");
-            $("#addModal .close").click();
-            location.reload();
+            this.homeTable.draw(false);  //  Show the new books
+            $("#addModal").modal("hide");
         }
     }
 
@@ -379,8 +384,8 @@ class Page extends Library {
     // author by clicking on their name
     modalShowAllAuthors() {
         $("#allAuthorsList").empty(); // clear out any old html
-        var insertString = "";
-        var authors = this.getAuthors();
+        let insertString = "";
+        let authors = this.getAuthors();
         authors.forEach(function (author) {
             insertString = insertString + "<li class=\"allAuthorsList\">" + author + "</li>";
         });
@@ -389,7 +394,7 @@ class Page extends Library {
 
     // Get a random book to recommend
     modalRecommend() {
-        var book = this.getRandomBook();
+        let book = this.getRandomBook();
         $("#imgRecommendImage").attr("src", "images/" + book.title + ".jpg");
         $("#pRecommendTitle").text(book.title);
         $("#pRecommendAuthor").text(book.author);
@@ -404,47 +409,43 @@ class Page extends Library {
     // After finishing editing the book title and/or author save the book to the library and 
     // then save the library to local storage
     btnSaveEdit() {
-        var author = $("#editModalAuthor").val();
-        var title = $("#editModalTitle").val();
-        var originalTitle = $("#editModalTitle").attr("name");
-        var books = this.getBookByTitle(originalTitle);
-        var book = books[0];
+        let author = $("#editModalAuthor").val();
+        let title = $("#editModalTitle").val();
+        let originalTitle = $("#editModalTitle").attr("data-originalTitle");
+        let books = this.getBookByTitle(originalTitle); // getBookByTitle returns an array
+        let book = books[0];    // should have only one book in the array
         book.author = author;
         book.title = title;
         this.removeBookByTitle(originalTitle);
         this.addBook(book);
         this.saveLibraryToLocalStorage();
-        // this.homeTable.draw(false);
-        // $("#editModal").modal("hide");
         location.reload();
     }
 
     btnAuthorToDelete(e) {
-
-        var author = $(e.currentTarget).text();
+        let author = $(e.currentTarget).text();
         if (confirm("Are you sure you want to delete all the books by " + author + " ?")) {
             this.removeBooksByAuthor(author);
             this.saveLibraryToLocalStorage();
         }
-        location.reload();
+        location.reload();  //  Refresh the table
     }
 
     // edit Author and/or Title in the selected row
     iconEditAuthorAndTitle(e) {
-        var tableRow = $(e.currentTarget).parent().parent("tr");
-        var author = tableRow.children("td:nth-child(1)").text();
-        var originalTitle = tableRow.children("td:nth-child(2)").text();
+        this.editTableRow = $(e.currentTarget).parent().parent("tr");
+        let author = this.editTableRow.children("td:nth-child(1)").text();
+        let originalTitle = this.editTableRow.children("td:nth-child(2)").text();
         $("#editModalAuthor").text(author);
         $("#editModalTitle").text(originalTitle);
-        $("#editModalTitle").attr("name", originalTitle); // save the title
+        $("#editModalTitle").attr("data-originalTitle", originalTitle); // save the title
         $("#editModal").modal("show"); // pop the edit modal
-        this.homeTable.draw(false);
     }
 
     // delete the selected row from the table and the corresponding book from the library
     iconDeleteRow(e) {
-        var tableRow = $(e.currentTarget).parent().parent("tr");
-        var title = tableRow.children("td:nth-child(2)").text();
+        let tableRow = $(e.currentTarget).parent().parent("tr");
+        let title = tableRow.children("td:nth-child(2)").text();
         if (confirm("Are you sure you want to delete \"" + title + "\" ?")) {
             this.removeBookByTitle(title);
             this.saveLibraryToLocalStorage();
