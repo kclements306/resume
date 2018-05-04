@@ -1,7 +1,9 @@
 var page = function () {
 
-    this.lib = new library("library");
-    this.booksToAdd = [];
+    this.lib = new library("library");  // create an instance of the library object
+    this.booksToAdd = [];   // array of books to add from addTable
+    this.editTableRow;      // Table row in homeTable being edited
+    this.originalTitle;     // Title of book being edited
 };
 
 // get library from local storage and bind events.
@@ -120,17 +122,18 @@ page.prototype.modalRecommend = function () {
 page.prototype.btnSaveEdit = function () {
     var author = $("#editModalAuthor").val();
     var title = $("#editModalTitle").val();
-    var originalTitle = $("#editModalTitle").attr("name");
-    var books = this.lib.getBookByTitle(originalTitle);
-    var book = books[0];
+    var books = this.lib.getBookByTitle(this.originalTitle);     // getBookByTitle returns an array
+    var book = books[0];    // Should have only one book in the array
     book.author = author;
     book.title = title;
-    this.lib.removeBookByTitle(originalTitle);
+    this.lib.removeBookByTitle(this.originalTitle);
     this.lib.addBook(book);
     this.lib.saveLibraryToLocalStorage();
-    // this.homeTable.draw(false);
-    // $("#editModal").modal("hide");
-    location.reload();
+    this.editTableRow.children("td:nth-child(1)").text(author);
+    this.editTableRow.children("td:nth-child(2)").text(title);
+    this.homeTable.draw(false);
+    $("#editModal").modal("hide");
+    // location.reload();
 };
 
 page.prototype.btnAuthorToDelete = function (e) {
@@ -145,14 +148,12 @@ page.prototype.btnAuthorToDelete = function (e) {
 
 // edit Author and/or Title in the selected row
 page.prototype.iconEditAuthorAndTitle = function (e) {
-    var tableRow = $(e.currentTarget).parent().parent("tr");
-    var author = tableRow.children("td:nth-child(1)").text();
-    var originalTitle = tableRow.children("td:nth-child(2)").text();
-    $("#editModalAuthor").text(author);
-    $("#editModalTitle").text(originalTitle);
-    $("#editModalTitle").attr("name", originalTitle);   // save the title
+    this.editTableRow = $(e.currentTarget).parent().parent("tr");
+    var author = this.editTableRow.children("td:nth-child(1)").text();
+    this.originalTitle = this.editTableRow.children("td:nth-child(2)").text();
+    $("#editModalAuthor").val(author);
+    $("#editModalTitle").val(this.originalTitle);
     $("#editModal").modal("show");      // pop the edit modal
-    this.homeTable.draw(false);
 };
 
 // delete the selected row from the table and the corresponding book from the library
