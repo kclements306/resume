@@ -279,6 +279,7 @@ class Page extends Library {
         super(libraryName);
         this.booksToAdd = [];   // array of books to add to library
         this.editTableRow;      // The table row being edited.
+        this.originalTitle;     // Save the book's original title before editing
     }
 
     // get library from local storage and bind events.
@@ -411,15 +412,17 @@ class Page extends Library {
     btnSaveEdit() {
         let author = $("#editModalAuthor").val();
         let title = $("#editModalTitle").val();
-        let originalTitle = $("#editModalTitle").attr("data-originalTitle");
-        let books = this.getBookByTitle(originalTitle); // getBookByTitle returns an array
+        let books = this.getBookByTitle(this.originalTitle); // getBookByTitle returns an array
         let book = books[0];    // should have only one book in the array
         book.author = author;
         book.title = title;
-        this.removeBookByTitle(originalTitle);
+        this.removeBookByTitle(this.originalTitle);
         this.addBook(book);
         this.saveLibraryToLocalStorage();
-        location.reload();
+        this.editTableRow.children("td:nth-child(1)").text(author); // update the table
+        this.editTableRow.children("td:nth-child(2)").text(title);
+        this.homeTable.draw(false);
+        $("#editModal").modal("hide");
     }
 
     btnAuthorToDelete(e) {
@@ -435,10 +438,9 @@ class Page extends Library {
     iconEditAuthorAndTitle(e) {
         this.editTableRow = $(e.currentTarget).parent().parent("tr");
         let author = this.editTableRow.children("td:nth-child(1)").text();
-        let originalTitle = this.editTableRow.children("td:nth-child(2)").text();
-        $("#editModalAuthor").text(author);
-        $("#editModalTitle").text(originalTitle);
-        $("#editModalTitle").attr("data-originalTitle", originalTitle); // save the title
+        this.originalTitle = this.editTableRow.children("td:nth-child(2)").text();
+        $("#editModalAuthor").val(author);
+        $("#editModalTitle").val(this.originalTitle);
         $("#editModal").modal("show"); // pop the edit modal
     }
 
