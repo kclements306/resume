@@ -1,7 +1,9 @@
 class Meetup {
-    constructor(name) {
+    constructor(name, map) {
         this.name = name;
+        this.localMap = map;
         this.meetings = [];
+        this.failedResponse;
     }
 
     init() {
@@ -19,6 +21,7 @@ class Meetup {
                 { data: "memberCount" }
             ]
         });
+        // this.initMap();
     }
 
     _bindEvents() {
@@ -37,6 +40,7 @@ class Meetup {
             type: "GET",
             url: "https://api.meetup.com/2/cities",
             data: {
+                key: "72537b757e3776256c4d57246262",
                 country: country,
                 state: state,
                 page: rowCount
@@ -44,7 +48,8 @@ class Meetup {
         }).done(function (response) {
             _this.processData(response);
         }).fail(function (response) {
-            console.log(response);
+            _this.failedResponse= response;
+            console.log(failedResponse);
         });
     }
 
@@ -68,8 +73,17 @@ class Meetup {
         results.forEach(objMeeting => { // save meeting data to meetings
             (_this.meetings).push(new Meeting(objMeeting));
         });
-        console.log(this.saveMeetingsToLocalStorage());
-        this.populateTable();
+        this.saveMeetingsToLocalStorage();
+        //this.populateTable();
+        results.forEach(meeting => {
+            let latlng = new google.maps.LatLng(meeting.lat, meeting.long);
+            let marker = new google.maps.Marker({
+                position: latlng,
+                label: (meeting.ranking + 1).toString(),
+                title: meeting.city,
+                map: _this.localMap
+            });
+        });
     }
 
     /*
@@ -106,21 +120,6 @@ class Meetup {
         } catch (exception) {
             return false; // local storage is full or inaccessable or error parsing json object
         }
-    };
-
-    initMap() {
-        let uluru = {
-            lat: -25.363,
-            lng: 131.044
-        };
-        let map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 4,
-            center: uluru
-        });
-        let marker = new google.maps.Marker({
-            position: uluru,
-            map: map
-        });
     }
 }
 
@@ -140,7 +139,23 @@ class Meeting {
     }
 }
 
+function initMap() {
+    let start = {
+        lat: 38.83333,
+        lng: -98.58333
+    };
+    this.map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: start
+    });
+    // let marker = new google.maps.Marker({
+    //     position: start,
+    //     map: this.map
+    // });
+}
+
 $(function () {
-    window.meetup = new Meetup("meetup");
+    window.map;
+    window.meetup = new Meetup("meetup", this.map);
     window.meetup.init();
 });
