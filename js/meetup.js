@@ -75,15 +75,16 @@ class Meetup {
         });
         this.saveMeetingsToLocalStorage();
         //this.populateTable();
-        results.forEach(meeting => {
-            let latlng = new google.maps.LatLng(meeting.lat, meeting.long);
-            let marker = new google.maps.Marker({
-                position: latlng,
-                label: (meeting.ranking + 1).toString(),
-                title: meeting.city,
-                map: _this.localMap
-            });
-        });
+        // results.forEach(meeting => {
+        //     let latlng = new google.maps.LatLng(meeting.lat, meeting.long);
+        //     let marker = new google.maps.Marker({
+        //         position: latlng,
+        //         label: (meeting.ranking + 1).toString(),
+        //         title: meeting.city,
+        //         map: _this.localMap
+        //     });
+        // });
+        mapData(results);
     }
 
     /*
@@ -121,6 +122,21 @@ class Meetup {
             return false; // local storage is full or inaccessable or error parsing json object
         }
     }
+
+    initMap() {
+        let start = {
+            lat: 38.83333,
+            lng: -98.58333
+        };
+        this.localMap = new google.maps.Map(document.getElementById("map"), {
+            zoom: 4,
+            center: start
+        });
+        // let marker = new google.maps.Marker({
+        //     position: start,
+        //     map: this.map
+        // });
+    }
 }
 
 class Meeting {
@@ -144,7 +160,7 @@ function initMap() {
         lat: 38.83333,
         lng: -98.58333
     };
-    this.map = new google.maps.Map(document.getElementById("map"), {
+    window.map = new google.maps.Map(document.getElementById("map"), {
         zoom: 4,
         center: start
     });
@@ -152,6 +168,24 @@ function initMap() {
     //     position: start,
     //     map: this.map
     // });
+}
+
+function mapData(meetings) {
+
+    meetings.forEach(meeting => {
+        let latlng;
+        let marker;
+        console.log(meeting.lat, meeting.lon);
+        latlng = new google.maps.LatLng(meeting.lat, meeting.lon);
+        marker = new google.maps.Marker({
+            position: latlng,
+            label: (meeting.ranking + 1).toString(),
+            title: meeting.city,
+            map: window.map
+        });
+        // console.log(latlng, marker);
+    });
+    return false;
 }
 
 $(function () {
