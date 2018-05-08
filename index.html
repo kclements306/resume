@@ -18,31 +18,21 @@
 
 <body>
   <div class="container-fluid">
-    <div class="" row>
-      <input type="text" class="col-md-3" placeholder="Country" id="country">
-      <input type="text" class="col-md-3" placeholder="State" id="state">
-      <input type="text" class="col-md-3" placeholder="Row Count" id="rowCount">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <input type="text" class="col-md-1" placeholder="Country" id="country">
+      <input type="text" class="col-md-1" placeholder="State" id="state">
+      <input type="text" class="col-md-1" placeholder="Row Count" id="rowCount">
       <input type="button" value="Submit" class="col-md-1" id="btnInput">
+      <div class="col-md-4"></div>
     </div>
-    <div>
-      <table class="table-striped table-bordered meetupTable" id="meetupTable" style="width:100%">
-        <thead>
-          <tr id="headerRow">
-            <th class="country">Country</th>
-            <th class="state">State</th>
-            <th class="city">City</th>
-            <th class="zip">Zip</th>
-            <th>Ranking</th>
-            <th>Member Count</th>
-          </tr>
-        </thead>
-        <tbody class="tableBody">
-        </tbody>
-      </table>
-    </div>
-    <div class="map" id="map">
+    <div class="row">
+      <div class="col-md-8 map" id="map"></div>
+      <div class="col-md-4" id="rightColumn">
 
+      </div>
     </div>
+
   </div>
 </body>
 

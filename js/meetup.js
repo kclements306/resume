@@ -172,10 +172,10 @@ function initMap() {
 
 function mapData(meetings) {
 
+    let htmlText = "";
     meetings.forEach(meeting => {
-        let latlng;
-        let marker;
-        console.log(meeting.lat, meeting.lon);
+        let latlng = null;
+        let marker = null;
         latlng = new google.maps.LatLng(meeting.lat, meeting.lon);
         marker = new google.maps.Marker({
             position: latlng,
@@ -183,9 +183,18 @@ function mapData(meetings) {
             title: meeting.city,
             map: window.map
         });
-        // console.log(latlng, marker);
+        console.log(meeting);
+        htmlText += "Ranking: " + (meeting.ranking + 1).toString() + "<br>";
+        htmlText += "Location: " + meeting.city + ",&nbsp;" + meeting.state + "&nbsp;&nbsp;" + meeting.zip  + "&nbsp;&nbsp;";
+        htmlText +=  meeting.localized_country_name + "<br>";
+        htmlText += "Member Count: " + meeting.member_count + "<br><br>";
     });
+    $("#rightColumn").append(htmlText);
     return false;
+}
+
+function clearMarkers(meetings) {
+    this.map.clearOverlays();
 }
 
 $(function () {
