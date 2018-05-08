@@ -2,26 +2,11 @@ class Meetup {
     constructor(name, map) {
         this.name = name;
         this.localMap = map;
-        this.meetings = [];
         this.failedResponse;
     }
 
     init() {
         this._bindEvents();
-        // This datatable is displayed on the home page
-        this.meetupTable = $("#meetupTable").DataTable({
-            serverSide: false,
-            data: this.meetings,
-            columns: [
-                { data: "country" },
-                { data: "state" },
-                { data: "city" },
-                { data: "zip" },
-                { data: "ranking" },
-                { data: "memberCount" }
-            ]
-        });
-        // this.initMap();
     }
 
     _bindEvents() {
@@ -33,8 +18,6 @@ class Meetup {
         let country = $("#country").val();
         let state = $("#state").val();
         let rowCount = $("#rowCount").val();
-        this.meetupTable.clear();
-        this.meetings = [];
         $.ajax({
             dataType: "jsonp",
             type: "GET",
@@ -49,42 +32,21 @@ class Meetup {
             _this.processData(response);
         }).fail(function (response) {
             _this.failedResponse= response;
-            console.log(failedResponse);
         });
-    }
-
-    /*
-
-    */
-    populateTable() {
-        let _this = this;
-        (this.meetings).forEach(meeting => {
-            _this.meetupTable.row.add(meeting);
-        });
-        this.meetupTable.draw();
     }
 
     /*
 
     */
     processData(response) {
-        let _this = this;
         let results = response.results;
-        results.forEach(objMeeting => { // save meeting data to meetings
-            (_this.meetings).push(new Meeting(objMeeting));
-        });
-        this.saveMeetingsToLocalStorage();
-        //this.populateTable();
-        // results.forEach(meeting => {
-        //     let latlng = new google.maps.LatLng(meeting.lat, meeting.long);
-        //     let marker = new google.maps.Marker({
-        //         position: latlng,
-        //         label: (meeting.ranking + 1).toString(),
-        //         title: meeting.city,
-        //         map: _this.localMap
-        //     });
-        // });
+        $("#country").val("");
+        $("#state").val("");
+        $("#rowCount").val("");
+        $("#rightColumn").empty();
+        clearMarkers();
         mapData(results);
+        this.saveMeetingsToLocalStorage(results);
     }
 
     /*
@@ -93,9 +55,9 @@ class Meetup {
                 true -  if meetings was saved in local storage
                 false - if meetings was not saved in local storage
     */
-    saveMeetingsToLocalStorage() {
+    saveMeetingsToLocalStorage(results) {
         try {
-            localStorage.setItem(this.name, JSON.stringify(this.meetings));
+            localStorage.setItem(this.name, JSON.stringify(results));
             return true;
         } catch (exception) {
             return false;
@@ -139,22 +101,6 @@ class Meetup {
     }
 }
 
-class Meeting {
-    constructor(args) {
-        this.city = args.city,
-        this.country = args.country,
-        this.distance = args.distance,
-        this.id = args.id,
-        this.localizedCountryName = args.localized_country_name,
-        this.lon = args.lon,
-        this.lat = args.lat;
-        this.memberCount = args.member_count,
-        this.ranking = args.ranking,
-        this.state = args.state,
-        this.zip = args.zip;
-    }
-}
-
 function initMap() {
     let start = {
         lat: 38.83333,
@@ -183,7 +129,7 @@ function mapData(meetings) {
             title: meeting.city,
             map: window.map
         });
-        console.log(meeting);
+        this.markers.push(marker);      // Save the maker so they can be deleted
         htmlText += "Ranking: " + (meeting.ranking + 1).toString() + "<br>";
         htmlText += "Location: " + meeting.city + ",&nbsp;" + meeting.state + "&nbsp;&nbsp;" + meeting.zip  + "&nbsp;&nbsp;";
         htmlText +=  meeting.localized_country_name + "<br>";
@@ -193,12 +139,15 @@ function mapData(meetings) {
     return false;
 }
 
-function clearMarkers(meetings) {
-    this.map.clearOverlays();
+function clearMarkers() {
+    this.markers.forEach( function (marker) {
+        marker.setMap(null);
+    });
 }
 
 $(function () {
     window.map;
+    window.markers = [];
     window.meetup = new Meetup("meetup", this.map);
     window.meetup.init();
 });
