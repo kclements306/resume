@@ -161,7 +161,14 @@ class Meetup {
 }
 
 function initMap() {
- 
+    let center = {
+        lat: 38.83333,
+        lng: -98.58333
+    };
+    let map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: center
+    });
 }
 
 $(function () {
