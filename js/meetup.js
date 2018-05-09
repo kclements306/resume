@@ -94,14 +94,9 @@ class Meetup {
         clearMarkers - clears the markers from the map, if any.  The markers are stored in an array called markers.
     */
     clearMarkers() {
-        let center = {
-            lat: 38.83333,
-            lng: -98.58333
-        };
         this.markers.forEach( function (marker) {
             marker.setMap(null);
         });
-        // this.map.setCenter(center, 4);  // re-center and set zoom level to defaults
     }
 
     /*
