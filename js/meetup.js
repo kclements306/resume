@@ -1,4 +1,4 @@
-var map;    // used by google maps call back to instaniate a google map object
+var googleMap;    // used by google maps call back to instaniate a google map object
 class Meetup {
     constructor(name) {
         this.name = name;
@@ -115,7 +115,7 @@ class Meetup {
                 position: latlng,
                 label: (meeting.ranking + 1).toString(),
                 title: meeting.city,
-                map: map
+                map: googleMap
             });
             bounds.extend(latlng);
             this.markers.push(marker);      // Save the maker so they can be deleted
@@ -124,7 +124,7 @@ class Meetup {
             htmlText +=  meeting.localized_country_name + "<br>";
             htmlText += "Member Count: " + meeting.member_count + "<br></p>";
         });
-        map.fitBounds(bounds);
+        googleMap.fitBounds(bounds);
         $("#rightColumn").append(htmlText);
         return false;
     }
@@ -138,7 +138,7 @@ function initMap() {
         lat: 38.83333,
         lng: -98.58333
     };
-    map = new google.maps.Map(document.getElementById("map"), {
+    googleMap = new google.maps.Map(document.getElementById("map"), {
         zoom: 4,
         center: center
     });
