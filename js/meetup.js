@@ -1,4 +1,5 @@
 var googleMap;    // used by google maps call back to instaniate a google map object
+
 class Meetup {
     constructor(name) {
         this.name = name;
@@ -132,6 +133,7 @@ class Meetup {
 
 /*
     initMap - creates a google maps object and initializes it to show the US
+        callback function in google maps api call
 */
 function initMap() {
     let center = {
