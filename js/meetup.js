@@ -145,7 +145,7 @@ class Meetup {
             htmlText += "<p class=\"meetupData\"> Ranking: " + (meeting.ranking + 1).toString() + "<br>";
             htmlText += "Location: " + meeting.city + ",&nbsp;" + meeting.state + "&nbsp;&nbsp;" + meeting.zip  + "&nbsp;&nbsp;";
             htmlText +=  meeting.localized_country_name + "<br>";
-            htmlText += "Member Count: " + meeting.member_count + "<br><br></p>";
+            htmlText += "Member Count: " + meeting.member_count + "<br></p>";
         });
         this.map.fitBounds(bounds);
         $("#rightColumn").append(htmlText);
