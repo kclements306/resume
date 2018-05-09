@@ -1,13 +1,12 @@
+var map;    // used by google maps call back to instaniate a google map object
 class Meetup {
     constructor(name) {
         this.name = name;
         this.markers = [];
-        this.map;
         this.failedResponse;
     }
 
     init() {
-        this.initMap();
         this._bindEvents();
     }
 
@@ -24,7 +23,6 @@ class Meetup {
             no error checking is done on the inputs
 
     */
-
     btnGetMeetupData() {
         let _this = this;
         let country = $("#country").val();
@@ -49,9 +47,7 @@ class Meetup {
 
     /*
         processData - processes the data received from the meetup ajax call in btnGetMeetupData.  
-            response - is the response from the meetup ajax call, which is of the form {}
-
-
+            response - is the response from the meetup ajax call, which is of the form {results[], meta[]}
     */
     processData(response) {
         let meetings = response.results;
@@ -95,20 +91,6 @@ class Meetup {
     }
 
     /*
-        initMap - creates a google maps object and initializes it to show the US
-    */
-    initMap() {
-        let center = {
-            lat: 38.83333,
-            lng: -98.58333
-        };
-        this.map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 4,
-            center: center
-        });
-    }
-
-    /*
         clearMarkers - clears the markers from the map, if any.  The markers are stored in an array called markers.
     */
     clearMarkers() {
@@ -119,7 +101,7 @@ class Meetup {
         this.markers.forEach( function (marker) {
             marker.setMap(null);
         });
-        this.map.setCenter(center, 4);  // re-center and set zoom level to defaults
+        // this.map.setCenter(center, 4);  // re-center and set zoom level to defaults
     }
 
     /*
@@ -138,7 +120,7 @@ class Meetup {
                 position: latlng,
                 label: (meeting.ranking + 1).toString(),
                 title: meeting.city,
-                map: this.map
+                map: map
             });
             bounds.extend(latlng);
             this.markers.push(marker);      // Save the maker so they can be deleted
@@ -147,18 +129,21 @@ class Meetup {
             htmlText +=  meeting.localized_country_name + "<br>";
             htmlText += "Member Count: " + meeting.member_count + "<br></p>";
         });
-        this.map.fitBounds(bounds);
+        map.fitBounds(bounds);
         $("#rightColumn").append(htmlText);
         return false;
     }
 }
 
+/*
+    initMap - creates a google maps object and initializes it to show the US
+*/
 function initMap() {
     let center = {
         lat: 38.83333,
         lng: -98.58333
     };
-    let map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
         zoom: 4,
         center: center
     });
