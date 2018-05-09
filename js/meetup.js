@@ -1,17 +1,29 @@
 class Meetup {
-    constructor(name, map) {
+    constructor(name) {
         this.name = name;
-        this.localMap = map;
+        this.markers = [];
+        this.map;
         this.failedResponse;
     }
 
     init() {
+        this.initMap();
         this._bindEvents();
     }
 
+    /*
+        _bindEvents - binds DOM events to the method used to process the event
+            returns false when all events are bound.
+    */
     _bindEvents() {
         $("#btnInput").on("click", $.proxy(this.btnGetMeetupData, this));
     }
+
+    /*
+        btnGetMeetupData - when the submit button is clicked this method processes the request.
+            no error checking is done on the inputs
+
+    */
 
     btnGetMeetupData() {
         let _this = this;
@@ -29,24 +41,28 @@ class Meetup {
                 page: rowCount
             }
         }).done(function (response) {
-            _this.processData(response);
+            _this.processData(response);        // process the data received from meetup
         }).fail(function (response) {
-            _this.failedResponse= response;
+            _this.failedResponse= response;     // save the failed response to inspect in the console
         });
     }
 
     /*
+        processData - processes the data received from the meetup ajax call in btnGetMeetupData.  
+            response - is the response from the meetup ajax call, which is of the form {}
+
 
     */
     processData(response) {
-        let results = response.results;
-        $("#country").val("");
+        let meetings = response.results;
+        $("#country").val("");          // clear the input elements 
         $("#state").val("");
         $("#rowCount").val("");
-        $("#rightColumn").empty();
-        clearMarkers();
-        mapData(results);
-        this.saveMeetingsToLocalStorage(results);
+        $("#rightColumn").empty();      // empty the rightColumn div of any html
+        this.clearMarkers();            // remove any markers from older runs
+        this.mapData(meetings);          // map the meetup data
+        this.saveMeetingsToLocalStorage(meetings);   // save the results arry to local storage
+        return false;
     }
 
     /*
@@ -55,9 +71,9 @@ class Meetup {
                 true -  if meetings was saved in local storage
                 false - if meetings was not saved in local storage
     */
-    saveMeetingsToLocalStorage(results) {
+    saveMeetingsToLocalStorage(meetings) {
         try {
-            localStorage.setItem(this.name, JSON.stringify(results));
+            localStorage.setItem(this.name, JSON.stringify(meetings));
             return true;
         } catch (exception) {
             return false;
@@ -85,69 +101,70 @@ class Meetup {
         }
     }
 
+    /*
+        initMap - creates a google maps object and initializes it to show the US
+    */
     initMap() {
-        let start = {
+        let center = {
             lat: 38.83333,
             lng: -98.58333
         };
-        this.localMap = new google.maps.Map(document.getElementById("map"), {
+        this.map = new google.maps.Map(document.getElementById("map"), {
             zoom: 4,
-            center: start
+            center: center
         });
-        // let marker = new google.maps.Marker({
-        //     position: start,
-        //     map: this.map
-        // });
+    }
+
+    /*
+        clearMarkers - clears the markers from the map, if any.  The markers are stored in an array called markers.
+    */
+    clearMarkers() {
+        let center = {
+            lat: 38.83333,
+            lng: -98.58333
+        };
+        this.markers.forEach( function (marker) {
+            marker.setMap(null);
+        });
+        this.map.setCenter(center, 4);  // re-center and set zoom level to defaults
+    }
+
+    /*
+        mapData - maps the meetup data
+            meetings is the data returned from the meetup ajax call
+    */
+    mapData(meetings) {
+
+        let htmlText = "";
+        let latlng = null;
+        let marker = null;
+        let bounds = new google.maps.LatLngBounds();
+        meetings.forEach( meeting => {
+            latlng = new google.maps.LatLng(meeting.lat, meeting.lon);
+            marker = new google.maps.Marker({
+                position: latlng,
+                label: (meeting.ranking + 1).toString(),
+                title: meeting.city,
+                map: this.map
+            });
+            bounds.extend(latlng);
+            this.markers.push(marker);      // Save the maker so they can be deleted
+            htmlText += "<p class=\"meetupData\"> Ranking: " + (meeting.ranking + 1).toString() + "<br>";
+            htmlText += "Location: " + meeting.city + ",&nbsp;" + meeting.state + "&nbsp;&nbsp;" + meeting.zip  + "&nbsp;&nbsp;";
+            htmlText +=  meeting.localized_country_name + "<br>";
+            htmlText += "Member Count: " + meeting.member_count + "<br><br></p>";
+        });
+        this.map.fitBounds(bounds);
+        $("#rightColumn").append(htmlText);
+        return false;
     }
 }
 
 function initMap() {
-    let start = {
-        lat: 38.83333,
-        lng: -98.58333
-    };
-    window.map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 4,
-        center: start
-    });
-    // let marker = new google.maps.Marker({
-    //     position: start,
-    //     map: this.map
-    // });
-}
-
-function mapData(meetings) {
-
-    let htmlText = "";
-    meetings.forEach(meeting => {
-        let latlng = null;
-        let marker = null;
-        latlng = new google.maps.LatLng(meeting.lat, meeting.lon);
-        marker = new google.maps.Marker({
-            position: latlng,
-            label: (meeting.ranking + 1).toString(),
-            title: meeting.city,
-            map: window.map
-        });
-        this.markers.push(marker);      // Save the maker so they can be deleted
-        htmlText += "Ranking: " + (meeting.ranking + 1).toString() + "<br>";
-        htmlText += "Location: " + meeting.city + ",&nbsp;" + meeting.state + "&nbsp;&nbsp;" + meeting.zip  + "&nbsp;&nbsp;";
-        htmlText +=  meeting.localized_country_name + "<br>";
-        htmlText += "Member Count: " + meeting.member_count + "<br><br>";
-    });
-    $("#rightColumn").append(htmlText);
-    return false;
-}
-
-function clearMarkers() {
-    this.markers.forEach( function (marker) {
-        marker.setMap(null);
-    });
+ 
 }
 
 $(function () {
-    window.map;
-    window.markers = [];
-    window.meetup = new Meetup("meetup", this.map);
+    window.meetup = new Meetup("meetup");
     window.meetup.init();
 });
