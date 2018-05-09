@@ -62,7 +62,6 @@ class Meetup {
         this.clearMarkers();            // remove any markers from older runs
         this.mapData(meetings);          // map the meetup data
         this.saveMeetingsToLocalStorage(meetings);   // save the results arry to local storage
-        return false;
     }
 
     /*
@@ -83,21 +82,15 @@ class Meetup {
     /*
         getMeetingsFromLocalStorage - retrieves meetings in local storage
             returns:
-                true -  if meetings was successfully retrived from local storage
-                false - if meetings was not successfully retrived from local storage
+                meetings[] -    if meetings was successfully retrived from local storage
+                null -          if meetings was not successfully retrived from local storage
     */
     getMeetingsFromLocalStorage() {
 
-        var _this = this;
-        var jsonMeetings;
         try {
-            jsonMeetings = JSON.parse(localStorage.getItem(this.name));
-            jsonMeetings.forEach(function (jsonMeeting) {
-                _this.addBook(new Meeting(jsonMeeting));
-            });
-            return true; // able to get meetings from local storage 
+            return JSON.parse(localStorage.getItem(this.name));
         } catch (exception) {
-            return false; // local storage is full or inaccessable or error parsing json object
+            return null; // local storage is full or inaccessable or error parsing json object
         }
     }
 
