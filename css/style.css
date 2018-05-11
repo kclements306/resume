@@ -1,0 +1,9 @@
+div.map {
+  height: 600px;
+  width: 100%;
+}
+
+p.meetupData {
+  font-family: Arial;
+  font-size: .75rem;
+}
