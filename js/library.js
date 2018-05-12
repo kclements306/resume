@@ -267,10 +267,13 @@ class Library {
 class Book {
 
     constructor(args) {
+        this._id = args._id;
         this.title = args.title;
         this.author = args.author;
         this.numPages = args.numPages;
         this.pubDate = new Date(args.pubDate);
+        this.cover = args.cover;
+        this.__v = args.__v;
     }
 }
 
@@ -285,13 +288,14 @@ class Page extends Library {
     // get library from local storage and bind events.
     // homeTable and addTable are here to make sure lib is populated first.
     init() {
-        this.getLibraryFromLocalStorage();
+        this.getLibraryFromDB();
         this._bindEvents();
 
         // This datatable is displayed on the home page
         this.homeTable = $("#displayTable").DataTable({
             data: this.books,
             columns: [
+                { data: "_id" },
                 { data: "author" },
                 { data: "title" },
                 { data: "numPages" },
@@ -304,6 +308,8 @@ class Page extends Library {
                         });
                     }
                 },
+                { data: "cover" },
+                { data: "__v" },
                 {   orderable: false,
                     data: "icons",
                     render: function () {
@@ -446,16 +452,55 @@ class Page extends Library {
 
     // delete the selected row from the table and the corresponding book from the library
     iconDeleteRow(e) {
-        let tableRow = $(e.currentTarget).parent().parent("tr");
-        let title = tableRow.children("td:nth-child(2)").text();
-        if (confirm("Are you sure you want to delete \"" + title + "\" ?")) {
-            this.removeBookByTitle(title);
-            this.saveLibraryToLocalStorage();
+        let tableRow = $(e.currentTarget).closest("tr");
+        let book = $("#displayTable").dataTable().fnGetData( tableRow );   // get the data for the row
+        if (confirm("Are you sure you want to delete \"" + book.title + "\" ?")) {
+            // this.removeBookByTitle(title);
+            // this.saveLibraryToLocalStorage();
+            this.removeBookById(book._id);
             this.homeTable.row(tableRow).remove();
             this.homeTable.draw(false);
         }
     }
 
+    removeBookById(id) {
+        let url = "http://localhost:3000/library/:" + id;
+        console.log(url);
+        $.ajax ({
+            dataType: "json",
+            type: "DELETE",
+            url: url
+        }).done( console.log(response) ).fail( console.log(response) );
+    }
+
+    /*
+        getLibraryFromDB - will get the entire library from the database
+    */
+    getLibraryFromDB() {
+        $.ajax ({
+            dataType: "json",
+            type: "GET",
+            url: "http://localhost:3000/library/"
+        }).done($.proxy(this.addDataToTable, this)).fail($.proxy(this.failedResponse, this)
+        );
+    }
+
+    /*
+        addDataToTable - adds the response data to the table and hides the _id, cover and __v columns
+    */
+    addDataToTable(response) {
+        let table = this.homeTable;
+        response.forEach( function (object){
+            let book = new Book(object);
+            table.row.add(book);
+        });
+        table.columns( [ 0, 5, 6 ] ).visible( false );  // hide _id, cover and __v columns
+        table.draw();
+    }
+
+    failedResponse(response) {
+        console.log(response);
+    }
 }
 
 $(function () {

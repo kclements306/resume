@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/datatables.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="js/jquery-3.3.1.js" charset="utf-8"></script>
@@ -14,7 +15,6 @@
     <script src="js/bootstrap.bundle.js" charset="utf-8"></script>
     <script src="js/datatables.js" charset="utf8"></script>
     <script src="js/library.js" charset="utf-8"></script>
-    <!-- <script src="js/page.js" type="module" charset="utf-8"></script> -->
 </head>
 
 <body>
@@ -48,10 +48,13 @@
                 <table class="table-striped table-bordered libraryTable" id="displayTable" style="width:100%">
                     <thead>
                         <tr id="headerRow">
+                            <th class="_id text-center">_id</th>
                             <th class="author text-center">Author</th>
                             <th class="title text-center">Title</th>
                             <th class="numPages text-center">Pages</th>
                             <th class="pubDate text-center">Publication Date</th>
+                            <th class="cover text-center">Cover</th>
+                            <th class="__v text-center">__v</th>
                             <th class="remove text-center"></th>
                         </tr>
                     </thead>
