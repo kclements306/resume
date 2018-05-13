@@ -348,14 +348,17 @@ class Page extends Library {
     btnAddBookToList() {
         // save the values that were inputted
         let author = $(".inpAuthor").val();
-        let title = $(".inpTitle").val();
+        let title = $(".inpTitle").val();729725729
         let numPages = $(".inpNumPages").val();
         let pubDate = $(".inpPubDate").val();
         this.booksToAdd.push(new Book({
+            _id : 0,
             author: author,
             title: title,
             numPages: numPages,
-            pubDate: pubDate
+            pubDate: pubDate,
+            cover: "No cover",
+            __v: 0
         }));
         // clear the input tags to show the placeholder value
         $(".inpAuthor").val("");
@@ -372,8 +375,9 @@ class Page extends Library {
         if (Array.isArray(this.booksToAdd) && this.booksToAdd.length) { // make sure there are books to add
             let _this = this;
             this.addBooks(this.booksToAdd); //add the new books to the library
-            this.saveLibraryToLocalStorage();
+            // this.saveLibraryToLocalStorage();
             this.booksToAdd.forEach(function (book) {     // add books to table
+                _this.addBookToLibrary(book);
                 _this.homeTable.row.add(book);
             });
             // clear the table and the input fields in the add modal
@@ -392,16 +396,29 @@ class Page extends Library {
     modalShowAllAuthors() {
         $("#allAuthorsList").empty(); // clear out any old html
         let insertString = "";
-        let authors = this.getAuthors();
+        let authors = this.getAllAuthors();
         authors.forEach(function (author) {
             insertString = insertString + "<li class=\"allAuthorsList\">" + author + "</li>";
         });
         $("#allAuthorsList").append(insertString);
     }
 
+    getAllAuthors() {
+        let authors = [];
+        let data = this.homeTable.rows().data();
+        data.each(function (book) {
+            if (authors.indexOf(book.author) == -1) {    // if author not in array
+                authors.push(book.author);               //    add it
+            }
+        });
+        return authors;
+    }
+
     // Get a random book to recommend
     modalRecommend() {
-        let book = this.getRandomBook();
+        let rowCount = this.homeTable.rows().count();
+        let randomCount = Math.floor(Math.random() * (rowCount + 1));
+        let book = new Book(this.homeTable.row(randomCount).data());
         $("#imgRecommendImage").attr("src", "images/" + book.title + ".jpg");
         $("#pRecommendTitle").text(book.title);
         $("#pRecommendAuthor").text(book.author);
@@ -442,7 +459,7 @@ class Page extends Library {
 
     // edit Author and/or Title in the selected row
     iconEditAuthorAndTitle(e) {
-        this.editTableRow = $(e.currentTarget).parent().parent("tr");
+        this.editTableRow = $(e.currentTarget).closest("tr");
         let author = this.editTableRow.children("td:nth-child(1)").text();
         this.originalTitle = this.editTableRow.children("td:nth-child(2)").text();
         $("#editModalAuthor").val(author);
@@ -455,22 +472,37 @@ class Page extends Library {
         let tableRow = $(e.currentTarget).closest("tr");
         let book = $("#displayTable").dataTable().fnGetData( tableRow );   // get the data for the row
         if (confirm("Are you sure you want to delete \"" + book.title + "\" ?")) {
-            // this.removeBookByTitle(title);
-            // this.saveLibraryToLocalStorage();
             this.removeBookById(book._id);
             this.homeTable.row(tableRow).remove();
             this.homeTable.draw(false);
         }
     }
 
-    removeBookById(id) {
-        let url = "http://localhost:3000/library/:" + id;
-        console.log(url);
+    getBookById(id) {
         $.ajax ({
             dataType: "json",
+            type: "GET",
+            url: "http://localhost:3000/library/" + id
+        }).done( function(response) {
+            console.log(response);
+        }).fail( function(response) {
+            console.log(response);
+        });
+    }
+
+    /*
+        removeBookById - removes a book from the database
+    */
+    removeBookById(id) {
+        $.ajax ({
+            url: "http://localhost:3000/library/" + id,
+            dataType: "json",
             type: "DELETE",
-            url: url
-        }).done( console.log(response) ).fail( console.log(response) );
+        }).done( function(response) {
+            console.log(response);
+        }).fail( function(response) {
+            console.log(response);
+        });
     }
 
     /*
@@ -481,8 +513,7 @@ class Page extends Library {
             dataType: "json",
             type: "GET",
             url: "http://localhost:3000/library/"
-        }).done($.proxy(this.addDataToTable, this)).fail($.proxy(this.failedResponse, this)
-        );
+        }).done($.proxy(this.addDataToTable, this)).fail($.proxy(this.failedResponse, this));
     }
 
     /*
@@ -500,6 +531,22 @@ class Page extends Library {
 
     failedResponse(response) {
         console.log(response);
+    }
+
+    /*
+
+    */
+    addBookToLibrary(book) {
+        $.ajax ({
+            dataType: "json",
+            type: "POST",
+            data: book,
+            url: "http://localhost:3000/library/",
+        }).done( function(response) {
+            console.log(response);
+        }).fail( function(response) {
+            console.log(response);
+        });
     }
 }
 
