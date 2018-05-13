@@ -185,82 +185,6 @@ class Library {
         }
         return book.author;
     }
-
-    /*
-      saveLibraryToLocalStorage - saves all the books in the library to local localStorage
-        returns:
-          true -  if library was saved in local storage
-          false - if the library was not saved in local storage
-    */
-    saveLibraryToLocalStorage() {
-
-        try {
-            localStorage.setItem(this.libraryName, JSON.stringify(this.books));
-            return true;
-        } catch (exception) {
-            return false;
-        }
-    }
-
-    /*
-      getLibraryFromLocalStorage - retrieves the books in local storage and inserts them into the library
-        returns:
-          true -  if books was successfully retrived from local storage
-          false - if books was not successfully retrived from local storage
-    */
-    getLibraryFromLocalStorage() {
-
-        let _this = this;
-        let jsonLibrary;
-        try {
-            jsonLibrary = JSON.parse(localStorage.getItem(this.libraryName));
-            jsonLibrary.forEach(function (jsonBook) {
-                _this.addBook(new Book(jsonBook));
-            });
-            return true; // able to get library from local storage 
-        } catch (exception) {
-            return false; // local storage is full or inaccessable or error parsing json object
-        }
-    }
-
-    /*
-      search - searches the library given the criteria in searchObject
-        returns:
-          array of books - empty if nothing is found
-    */
-    search(searchObject) {
-
-        let i, j, k;
-        let searchText;
-        let keys;
-        let values;
-        let results = [];
-        let result = [];
-        for (i = 0; i < searchObject.length; ++i) {
-            searchText = JSON.parse(searchObject[i]);
-            keys = Object.keys(searchText);
-            values = Object.values(searchText);
-            for (j = 0; j < keys.length; ++j) {
-                let key = keys[j];
-                if (key == "title") {
-                    result = this.getBookByTitle(values[j]);
-                    if (result !== null) {
-                        for (k = 0; k < result.length; ++k) {
-                            results.push(result[k]);
-                        }
-                    }
-                } else if (key == "author") {
-                    result = this.getBooksByAuthor(values[j]);
-                    if (result !== null) {
-                        for (k = 0; k < result.length; ++k) {
-                            results.push(result[k]);
-                        }
-                    }
-                }
-            }
-        }
-        return results;
-    }
 }
 
 // Book object
@@ -343,12 +267,14 @@ class Page extends Library {
 
     }
 
-    // This function takes the values from the input elements in the addModal modal and saves them to the booksToAdd array
-    // then it adds the book to the addModal table to display.
+    /*
+        btnAddBookToList - takes the values from the input elements in the addModal modal and saves them to the booksToAdd array.
+            if the title is not found in the main table it adds the book to the addModal table to display.
+    */
     btnAddBookToList() {
         // save the values that were inputted
         let author = $(".inpAuthor").val();
-        let title = $(".inpTitle").val();729725729
+        let title = $(".inpTitle").val();
         let numPages = $(".inpNumPages").val();
         let pubDate = $(".inpPubDate").val();
         this.booksToAdd.push(new Book({
@@ -365,16 +291,34 @@ class Page extends Library {
         $(".inpTitle").val("");
         $(".inpNumPages").val("");
         $(".inpPubDate").val("");
-        // add the book to the modal table
-        this.addTable.row.add([author, title, numPages, pubDate]);
-        this.addTable.draw(false);
+        if (this.findTitleInTable(title)) { // pop an alert but don't add the book to the table
+            alert("Duplicate title: " + title + " found in table");
+        } else {    // add the book to the modal table
+            this.addTable.row.add([author, title, numPages, pubDate]);
+            this.addTable.draw(false);
+        }
+    }
+
+    /*
+        findTitleInTable - looks for duplicate titles in the table
+            returns:
+                true - if duplicate is found
+                false - title is not in table
+    */
+    findTitleInTable(title) {
+        let index = this.homeTable.columns(2).data().eq( 0 ).indexOf( title );
+        if (index === -1 ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // Save all books in booksToAdd array to the library
     btnSaveBooksToLibrary() {
         if (Array.isArray(this.booksToAdd) && this.booksToAdd.length) { // make sure there are books to add
             let _this = this;
-            this.addBooks(this.booksToAdd); //add the new books to the library
+            // this.addBooks(this.booksToAdd); //add the new books to the library
             // this.saveLibraryToLocalStorage();
             this.booksToAdd.forEach(function (book) {     // add books to table
                 _this.addBookToLibrary(book);
@@ -416,6 +360,7 @@ class Page extends Library {
 
     // Get a random book to recommend
     modalRecommend() {
+        // let book = this.getRandomBookFromTable();
         let rowCount = this.homeTable.rows().count();
         let randomCount = Math.floor(Math.random() * (rowCount + 1));
         let book = new Book(this.homeTable.row(randomCount).data());
@@ -513,20 +458,31 @@ class Page extends Library {
             dataType: "json",
             type: "GET",
             url: "http://localhost:3000/library/"
-        }).done($.proxy(this.addDataToTable, this)).fail($.proxy(this.failedResponse, this));
+        }).done($.proxy(this.addResponseToTable, this)
+        ).fail($.proxy(this.failedResponse, this));
     }
 
     /*
-        addDataToTable - adds the response data to the table and hides the _id, cover and __v columns
+        addResponseToTable - adds the response data to the table and hides the _id, cover and __v columns
     */
-    addDataToTable(response) {
-        let table = this.homeTable;
-        response.forEach( function (object){
-            let book = new Book(object);
-            table.row.add(book);
-        });
-        table.columns( [ 0, 5, 6 ] ).visible( false );  // hide _id, cover and __v columns
-        table.draw();
+    addResponseToTable(response) {
+        let _self = this;
+        if (response instanceof Array) {
+            response.forEach( function (object) {
+                _self.addBookToTable(new Book(object));
+            });
+        } else {
+            this.addBookToTable(new Book(response));
+        }
+    }
+
+    /*
+        addBookToTable - adds a book to the table and hides the _id, cover and __v columns 
+    */
+    addBookToTable(book) {
+        this.homeTable.row.add(book);
+        this.homeTable.columns( [ 0, 5, 6 ] ).visible( false );
+        this.homeTable.row().draw(false);
     }
 
     failedResponse(response) {
@@ -542,11 +498,8 @@ class Page extends Library {
             type: "POST",
             data: book,
             url: "http://localhost:3000/library/",
-        }).done( function(response) {
-            console.log(response);
-        }).fail( function(response) {
-            console.log(response);
-        });
+        }).done($.proxy(this.addResponseToTable, this)
+        ).fail($.proxy(this.failedResponse, this));
     }
 }
 
