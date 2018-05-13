@@ -335,8 +335,10 @@ class Page extends Library {
         }
     }
 
-    // This modal will show all unique authors in the library and allow users to delete all books by an
-    // author by clicking on their name
+    /*
+        modalShowAllAuthors - This modal will show all unique authors in the library and allow users to delete all books by an
+            author by clicking on their name
+    */
     modalShowAllAuthors() {
         $("#allAuthorsList").empty(); // clear out any old html
         let insertString = "";
@@ -347,6 +349,10 @@ class Page extends Library {
         $("#allAuthorsList").append(insertString);
     }
 
+    /*
+        getAllAuthors - Gets all authors in the table.
+            returns a string array of all authors in the table.
+    */
     getAllAuthors() {
         let authors = [];
         let data = this.homeTable.rows().data();
@@ -358,9 +364,11 @@ class Page extends Library {
         return authors;
     }
 
-    // Get a random book to recommend
+    /*
+        modalRecommend - Get a random book to recommend
+            returns: a book
+    */
     modalRecommend() {
-        // let book = this.getRandomBookFromTable();
         let rowCount = this.homeTable.rows().count();
         let randomCount = Math.floor(Math.random() * (rowCount + 1));
         let book = new Book(this.homeTable.row(randomCount).data());
