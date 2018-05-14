@@ -1,195 +1,5 @@
-class Library {
-
-    constructor(libraryName) {
-        this.libraryName = libraryName;
-        this.books = [];
-    }
-    /*
-      addBook -  adds a book to the Library
-        returns:
-          false - if duplicate title is found and nothing added
-          true - if book was not in library and has been added
-    */
-    addBook(book) {
-        if (book == null) {
-            return false;
-        } else if (this.books.length !== 0) {
-            if (this.books.every(isTitleUnique)) {
-                this.books.push(book);
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            this.books.push(book);
-            return true;
-        }
-
-        function isTitleUnique(bookToAdd) {
-            return bookToAdd.title.toLowerCase() !== book.title.toLowerCase();
-        }
-    }
-
-    /*
-      removeBookByTitle -  Remove a book if title exactly matches book title
-        returns:
-          false - if a book was not removed
-          true - if a book was removed
-    */
-    removeBookByTitle(title) {
-        let notDeletedBooks = [];
-        let hasDeletedBook = false;
-        if (title !== null) { // title not a valid input
-            this.books.forEach(function (book) { // walk through the library
-                if (book.title == title) {
-                    hasDeletedBook = true;
-                } else {
-                    notDeletedBooks.push(book);
-                }
-            });
-            this.books = notDeletedBooks;
-        }
-        return hasDeletedBook;
-    }
-
-    /*
-      removeBooksByAuthor - Remove all books if authorName exacly matches Book's author from the library
-        returns
-          true - if book(s) were removed
-          false - if no books matched
-    */
-    removeBooksByAuthor(authorName) {
-
-        let hasDeletes = false; // true if any books had to be deleted
-        let notDeletedBooks = []; // new array with all undeleted books
-        if (authorName !== null) {
-            this.books.forEach(function (book) { // walk through all the books in the library
-                if (authorName !== book.author) { // look for an exact match
-                    notDeletedBooks.push(book);
-                } else {
-                    hasDeletes = true;
-                }
-            });
-        } else {
-            return false;
-        }
-        this.books = notDeletedBooks;
-        return hasDeletes;
-    }
-
-    /*
-      getRandomBook - returns a random book from the library
-        returns:
-          null - if no books in library
-          Book object - if library has books
-    */
-    getRandomBook() {
-
-        let i; // random index into array of books
-        if ((typeof Array != "undefined") && (this.books.length != 0)) {
-            i = Math.floor(Math.random() * this.books.length);
-            return this.books[i];
-        } else {
-            return null;
-        }
-    }
-
-    /*
-      getBookByTitle - Returns all books that completely or partially matches the string title passed into the function
-
-      returns:
-        array of Book object(s) if the title either totally or partially matches book title(s)
-        null array if no books are found
-    */
-    getBookByTitle(title) {
-        let foundBooks = [];
-        if (title !== null) {
-            let regex = new RegExp(title, "i");
-            this.books.forEach(function (book) {
-                if (regex.test(book.title)) {
-                    foundBooks.push(book);
-                }
-            });
-        }
-        return foundBooks;
-    }
-
-    /*
-      get BooksByAuthor - Finds all books where the author’s name partially or completely matches the authorName argument
-        returns:
-          array of Book objects, can be empty if no book is found matching the search parameters
-    */
-    getBooksByAuthor(authorName) {
-
-        let foundBooks = [];
-        if (authorName !== null) {
-            let regex = new RegExp(authorName, "i");
-            this.books.forEach(function (book) {
-                if (regex.test(book.author)) { // returns true if authorName is found anywhere in string, ignores case
-                    foundBooks.push(book);
-                }
-            });
-        }
-        return foundBooks;
-    }
-
-    /*
-      addBooks -  adds an array of Book objects to the library
-        returns:
-          number of books added to library
-
-    */
-    addBooks(books) {
-
-        let _this = this;
-        let isBookAdded = false;
-        let addedCounter = 0;
-        books.forEach(function (book) {
-            isBookAdded = _this.addBook(book);
-            if (isBookAdded) {
-                ++addedCounter;
-            }
-        });
-        return addedCounter;
-    }
-
-    /*
-      getAuthors - Find the distinct authors’ names from all books in your library
-        returns:
-          empty array - if nothing is found.
-          array of strings - each string an unique author's name
-    */
-    getAuthors() {
-        let authors = []; // Array of authors in library
-        let author; // name of current author
-        this.books.forEach(function (book) {
-            author = book.author;
-            if (authors.indexOf(author) == -1) { // if author not in array
-                authors.push(author); //    add it
-            }
-        });
-        return authors;
-    }
-
-    /*
-      getRandomAuthorName - Retrieves a random author name from the library
-
-      Returns:
-        null - if library is empty
-        string - author name
-    */
-    getRandomAuthorName() {
-        let book = this.getRandomBook(); // random book from library
-        if (book == null) {
-            return null;
-        }
-        return book.author;
-    }
-}
-
 // Book object
 class Book {
-
     constructor(args) {
         this._id = args._id;
         this.title = args.title;
@@ -201,12 +11,12 @@ class Book {
     }
 }
 
-class Page extends Library {
-    constructor(libraryName) {
-        super(libraryName);
+class Library {
+    constructor() {
         this.booksToAdd = [];   // array of books to add to library
         this.editTableRow;      // The table row being edited.
         this.originalTitle;     // Save the book's original title before editing
+        this.books = [];
     }
 
     // get library from local storage and bind events.
@@ -218,6 +28,11 @@ class Page extends Library {
         // This datatable is displayed on the home page
         this.homeTable = $("#displayTable").DataTable({
             data: this.books,
+            // ajax: {
+            //     dataType: "json",
+            //     type: "GET",
+            //     url: "http://localhost:3000/library/"
+            // },
             columns: [
                 { data: "_id" },
                 { data: "author" },
@@ -245,7 +60,8 @@ class Page extends Library {
 
         // The add datatable is used when adding boooks it's inside the modal addModal
         this.addTable = $("#addModalTable").DataTable({
-
+            paging: false,
+            searching: false
         });
     }
 
@@ -300,7 +116,7 @@ class Page extends Library {
     }
 
     /*
-        findTitleInTable - looks for duplicate titles in the table
+        findTitleInTable - looks for the title in the table
             returns:
                 true - if duplicate is found
                 false - title is not in table
@@ -308,9 +124,9 @@ class Page extends Library {
     findTitleInTable(title) {
         let index = this.homeTable.columns(2).data().eq( 0 ).indexOf( title );
         if (index === -1 ) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 
@@ -370,9 +186,9 @@ class Page extends Library {
     */
     modalRecommend() {
         let rowCount = this.homeTable.rows().count();
-        let randomCount = Math.floor(Math.random() * (rowCount + 1));
+        let randomCount = Math.floor(Math.random() * rowCount);
         let book = new Book(this.homeTable.row(randomCount).data());
-        $("#imgRecommendImage").attr("src", "images/" + book.title + ".jpg");
+        $("#imgRecommendImage").attr("src", book.cover);
         $("#pRecommendTitle").text(book.title);
         $("#pRecommendAuthor").text(book.author);
         $("#pRecommendNumPages").text(book.numPages);
@@ -512,6 +328,6 @@ class Page extends Library {
 }
 
 $(function () {
-    window.page = new Page("library");
-    window.page.init();
+    window.library = new Library();
+    window.library.init();
 });
