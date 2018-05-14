@@ -82,6 +82,7 @@
                                     <th>Title</th>
                                     <th>Pages</th>
                                     <th>Publication Date</th>
+                                    <th>Book Cover</th>
                                 </tr>
                             </thead>
                             <tbody class="addTableBody">
@@ -93,7 +94,8 @@
                         <input type="text" class="inpAuthor" name="author" placeholder="Author">
                         <input type="text" class="inpTitle" name="title" placeholder="Title">
                         <input type="text" class="inpNumPages" name="numPages" placeholder="1">
-                        <input type="date" class="inpPubDate" name=pubDate>        
+                        <input type="date" class="inpPubDate" name="pubDate"> 
+                        <textarea class="textCover" rows="1" cols="15" placeholder="base64"></textarea>    
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-primary" id="btnAddABook">Add a book to the list</button>

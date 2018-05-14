@@ -93,13 +93,14 @@ class Library {
         let title = $(".inpTitle").val();
         let numPages = $(".inpNumPages").val();
         let pubDate = $(".inpPubDate").val();
+        let cover = $(".textCover").val();
         this.booksToAdd.push(new Book({
             _id : 0,
             author: author,
             title: title,
             numPages: numPages,
             pubDate: pubDate,
-            cover: "No cover",
+            cover: cover,
             __v: 0
         }));
         // clear the input tags to show the placeholder value
@@ -107,10 +108,11 @@ class Library {
         $(".inpTitle").val("");
         $(".inpNumPages").val("");
         $(".inpPubDate").val("");
+        $(".textCover").val("");
         if (this.findTitleInTable(title)) { // pop an alert but don't add the book to the table
             alert("Duplicate title: " + title + " found in table");
         } else {    // add the book to the modal table
-            this.addTable.row.add([author, title, numPages, pubDate]);
+            this.addTable.row.add([author, title, numPages, pubDate, cover]);
             this.addTable.draw(false);
         }
     }
@@ -138,10 +140,9 @@ class Library {
             // this.saveLibraryToLocalStorage();
             this.booksToAdd.forEach(function (book) {     // add books to table
                 _this.addBookToLibrary(book);
-                _this.homeTable.row.add(book);
             });
             // clear the table and the input fields in the add modal
-            this.addTable.clear();
+            this.addTable.clear().draw();
             $(".inpAuthor").val("");
             $(".inpTitle").val("");
             $(".inpNumPages").val("");
@@ -248,6 +249,7 @@ class Library {
     }
 
     getBookById(id) {
+        let _this = this;
         $.ajax ({
             dataType: "json",
             type: "GET",
@@ -255,7 +257,7 @@ class Library {
         }).done( function(response) {
             console.log(response);
         }).fail( function(response) {
-            console.log(response);
+            _this.failedResponse(response);
         });
     }
 
@@ -263,6 +265,7 @@ class Library {
         removeBookById - removes a book from the database
     */
     removeBookById(id) {
+        let _this = this;
         $.ajax ({
             url: "http://localhost:3000/library/" + id,
             dataType: "json",
@@ -270,7 +273,7 @@ class Library {
         }).done( function(response) {
             console.log(response);
         }).fail( function(response) {
-            console.log(response);
+            _this.failedResponse(response);
         });
     }
 
@@ -278,26 +281,18 @@ class Library {
         getLibraryFromDB - will get the entire library from the database
     */
     getLibraryFromDB() {
+        let _this = this;
         $.ajax ({
             dataType: "json",
             type: "GET",
             url: "http://localhost:3000/library/"
-        }).done($.proxy(this.addResponseToTable, this)
-        ).fail($.proxy(this.failedResponse, this));
-    }
-
-    /*
-        addResponseToTable - adds the response data to the table and hides the _id, cover and __v columns
-    */
-    addResponseToTable(response) {
-        let _self = this;
-        if (response instanceof Array) {
+        }).done( function (response) {
             response.forEach( function (object) {
-                _self.addBookToTable(new Book(object));
+                _this.addBookToTable(new Book(object));
             });
-        } else {
-            this.addBookToTable(new Book(response));
-        }
+        }).fail( function (response) {
+            _this.failedResponse(response);
+        });
     }
 
     /*
@@ -317,13 +312,17 @@ class Library {
 
     */
     addBookToLibrary(book) {
+        let _this = this;
         $.ajax ({
             dataType: "json",
             type: "POST",
             data: book,
             url: "http://localhost:3000/library/",
-        }).done($.proxy(this.addResponseToTable, this)
-        ).fail($.proxy(this.failedResponse, this));
+        }).done( function (response) {
+            _this.addBookToTable(new Book(response));       // The response will have the _id field
+        }).fail( function (response) {
+            _this.failedResponse(response);
+        });
     }
 }
 
