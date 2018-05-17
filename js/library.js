@@ -16,7 +16,8 @@ class Library {
         this.booksToAdd = [];   // array of books to add to library
         this.editTableRow;      // The table row being edited.
         this.originalTitle;     // Save the book's original title before editing
-        this.books = [];
+        this.bookToEdit;       // book being edited
+        // this.books = [];
     }
 
     // get library from local storage and bind events.
@@ -24,17 +25,16 @@ class Library {
     init() {
         this.getLibraryFromDB();
         this._bindEvents();
-
         // This datatable is displayed on the home page
         this.homeTable = $("#displayTable").DataTable({
-            data: this.books,
-            // ajax: {
-            //     dataType: "json",
-            //     type: "GET",
-            //     url: "http://localhost:3000/library/"
-            // },
+            // data: this.books,
+            ajax: {
+                dataType: "json",
+                type: "GET",
+                url: "http://localhost:3000/library/"
+            },
             columns: [
-                { data: "_id" },
+                { data: "_id", defaultContent: "", visible: false },
                 { data: "author" },
                 { data: "title" },
                 { data: "numPages" },
@@ -47,8 +47,8 @@ class Library {
                         });
                     }
                 },
-                { data: "cover" },
-                { data: "__v" },
+                { data: "cover", defaultContent: "", visible: false },
+                { data: "__v", defaultContent: "", visible: false },
                 {   orderable: false,
                     data: "icons",
                     render: function () {
@@ -112,7 +112,7 @@ class Library {
         if (this.findTitleInTable(title)) { // pop an alert but don't add the book to the table
             alert("Duplicate title: " + title + " found in table");
         } else {    // add the book to the modal table
-            this.addTable.row.add([author, title, numPages, pubDate, cover]);
+            this.addTable.row.add([0, author, title, numPages, pubDate, cover.substring[0, 24], 0]);
             this.addTable.draw(false);
         }
     }
@@ -159,26 +159,11 @@ class Library {
     modalShowAllAuthors() {
         $("#allAuthorsList").empty(); // clear out any old html
         let insertString = "";
-        let authors = this.getAllAuthors();
-        authors.forEach(function (author) {
-            insertString = insertString + "<li class=\"allAuthorsList\">" + author + "</li>";
-        });
+        this.homeTable.columns( 1 ).data().eq( 0 ).sort().unique()  // Get each author in the Author column
+            .each( function (author) {
+                insertString = insertString + "<li class=\"allAuthorsList\">" + author + "</li>";
+            });      
         $("#allAuthorsList").append(insertString);
-    }
-
-    /*
-        getAllAuthors - Gets all authors in the table.
-            returns a string array of all authors in the table.
-    */
-    getAllAuthors() {
-        let authors = [];
-        let data = this.homeTable.rows().data();
-        data.each(function (book) {
-            if (authors.indexOf(book.author) == -1) {    // if author not in array
-                authors.push(book.author);               //    add it
-            }
-        });
-        return authors;
     }
 
     /*
@@ -203,38 +188,42 @@ class Library {
     // After finishing editing the book title and/or author save the book to the library and 
     // then save the library to local storage
     btnSaveEdit() {
-        let author = $("#editModalAuthor").val();
-        let title = $("#editModalTitle").val();
-        let books = this.getBookByTitle(this.originalTitle); // getBookByTitle returns an array
-        let book = books[0];    // should have only one book in the array
-        book.author = author;
-        book.title = title;
-        this.removeBookByTitle(this.originalTitle);
-        this.addBook(book);
-        this.saveLibraryToLocalStorage();
-        this.editTableRow.children("td:nth-child(1)").text(author); // update the table
-        this.editTableRow.children("td:nth-child(2)").text(title);
-        this.homeTable.draw(false);
-        $("#editModal").modal("hide");
+        this.bookToEdit.author = $("#editModalAuthor").val();
+        this.bookToEdit.title = $("#editModalTitle").val();
+        this.updateBookInLibrary(this.bookToEdit);
     }
 
     btnAuthorToDelete(e) {
         let author = $(e.currentTarget).text();
         if (confirm("Are you sure you want to delete all the books by " + author + " ?")) {
             this.removeBooksByAuthor(author);
-            this.saveLibraryToLocalStorage();
         }
-        location.reload();  //  Refresh the table
+        this.homeTable.draw();  //  Refresh the table
+    }
+
+    removeBooksByAuthor(author) {
+        let rows = this.homeTable.column(1).search(author);
+        console.log(rows);
     }
 
     // edit Author and/or Title in the selected row
     iconEditAuthorAndTitle(e) {
         this.editTableRow = $(e.currentTarget).closest("tr");
-        let author = this.editTableRow.children("td:nth-child(1)").text();
-        this.originalTitle = this.editTableRow.children("td:nth-child(2)").text();
-        $("#editModalAuthor").val(author);
-        $("#editModalTitle").val(this.originalTitle);
+        let index = this.homeTable.row( this.editTableRow ).index();    // Get index of row to edit
+        this.bookToEdit = new Book(this.homeTable.row( index ).data()); // get book to edit
+        $("#editModalAuthor").val(this.bookToEdit.author);
+        $("#editModalTitle").val(this.bookToEdit.title);
         $("#editModal").modal("show"); // pop the edit modal
+    }
+
+    /*
+        updateBookInTable - update the author and title of the book in the table
+    */
+    updateBookInTable(book) {
+        this.editTableRow.children("td:nth-child(1)").text(book.author); // update the table
+        this.editTableRow.children("td:nth-child(2)").text(book.title);
+        this.homeTable.draw(false);
+        $("#editModal").modal("hide");
     }
 
     // delete the selected row from the table and the corresponding book from the library
@@ -300,12 +289,29 @@ class Library {
     */
     addBookToTable(book) {
         this.homeTable.row.add(book);
-        this.homeTable.columns( [ 0, 5, 6 ] ).visible( false );
+        // this.homeTable.columns( [ 0, 5, 6 ] ).visible( false );
         this.homeTable.row().draw(false);
     }
 
     failedResponse(response) {
         console.log(response);
+    }
+
+    /*
+        updateBookInLibrary - updates a book in the library
+    */
+    updateBookInLibrary(book) {
+        let _this = this;
+        $.ajax ({
+            dataType: "json",
+            type: "PUT",
+            data: book,
+            url: "http://localhost:3000/library/" + book._id,
+        }).done( function (response) {
+            _this.updateBookInTable(new Book(response));       // The response will have the _id field
+        }).fail( function (response) {
+            _this.failedResponse(response);
+        });
     }
 
     /*
