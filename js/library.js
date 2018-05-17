@@ -132,13 +132,13 @@ class Library {
         }
     }
 
-    // Save all books in booksToAdd array to the library
+    /*
+        btnSaveBooksToLibrary - Save all the books in booksToAdd array to the library
+    */
     btnSaveBooksToLibrary() {
         if (Array.isArray(this.booksToAdd) && this.booksToAdd.length) { // make sure there are books to add
             let _this = this;
-            // this.addBooks(this.booksToAdd); //add the new books to the library
-            // this.saveLibraryToLocalStorage();
-            this.booksToAdd.forEach(function (book) {     // add books to table
+            this.booksToAdd.forEach(function (book) {     // add books to library
                 _this.addBookToLibrary(book);
             });
             // clear the table and the input fields in the add modal
@@ -185,8 +185,9 @@ class Library {
         }));
     }
 
-    // After finishing editing the book title and/or author save the book to the library and 
-    // then save the library to local storage
+    /*
+        btnSaveEdit - After finishing editing the book title and/or author save the book to the library
+    */
     btnSaveEdit() {
         this.bookToEdit.author = $("#editModalAuthor").val();
         this.bookToEdit.title = $("#editModalTitle").val();
@@ -206,7 +207,9 @@ class Library {
         console.log(rows);
     }
 
-    // edit Author and/or Title in the selected row
+    /*
+        iconEditAuthorAndTitle - edit Author and/or Title in the selected row
+    */
     iconEditAuthorAndTitle(e) {
         this.editTableRow = $(e.currentTarget).closest("tr");
         let index = this.homeTable.row( this.editTableRow ).index();    // Get index of row to edit
@@ -226,7 +229,9 @@ class Library {
         $("#editModal").modal("hide");
     }
 
-    // delete the selected row from the table and the corresponding book from the library
+    /*
+        iconDeleteRow - delete the selected row from the table and the corresponding book from the library
+    */
     iconDeleteRow(e) {
         let tableRow = $(e.currentTarget).closest("tr");
         let book = $("#displayTable").dataTable().fnGetData( tableRow );   // get the data for the row
@@ -237,6 +242,9 @@ class Library {
         }
     }
 
+    /*
+        getBookById - get the book from the library 
+    */
     getBookById(id) {
         let _this = this;
         $.ajax ({
@@ -315,7 +323,8 @@ class Library {
     }
 
     /*
-
+        addBookToLibrary - add the book to the library
+            book - book to add
     */
     addBookToLibrary(book) {
         let _this = this;
