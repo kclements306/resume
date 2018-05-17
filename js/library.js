@@ -175,6 +175,19 @@ class Library {
         let rowCount = this.homeTable.rows().count();
         let randomCount = Math.floor(Math.random() * rowCount);
         let book = new Book(this.homeTable.row(randomCount).data());
+        this.getBookById(book._id);
+        // $("#imgRecommendImage").attr("src", book.cover);
+        // $("#pRecommendTitle").text(book.title);
+        // $("#pRecommendAuthor").text(book.author);
+        // $("#pRecommendNumPages").text(book.numPages);
+        // $("#pRecommendPubDate").text(book.pubDate.toLocaleDateString("en-US", {
+        //     year: "numeric",
+        //     month: "long",
+        //     day: "numeric"
+        // }));
+    }
+
+    modalCallback(book) {
         $("#imgRecommendImage").attr("src", book.cover);
         $("#pRecommendTitle").text(book.title);
         $("#pRecommendAuthor").text(book.author);
@@ -254,8 +267,7 @@ class Library {
             type: "GET",
             url: "http://localhost:3000/library/" + id
         }).done( function(response) {
-            console.log(response);
-            return (new Book(response));
+            _this.modalCallback(new Book(response));
         }).fail( function(response) {
             _this.failedResponse(response);
         });
@@ -271,7 +283,8 @@ class Library {
             dataType: "json",
             type: "DELETE",
         }).done( function(response) {
-            console.log(response);
+            // _this.homeTable.row(tableRow).remove();
+            // _this.homeTable.draw(false);
         }).fail( function(response) {
             _this.failedResponse(response);
         });
