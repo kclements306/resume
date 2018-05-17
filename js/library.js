@@ -20,8 +20,9 @@ class Library {
         // this.books = [];
     }
 
-    // get library from local storage and bind events.
-    // homeTable and addTable are here to make sure lib is populated first.
+    /*
+        init - get library and bind events.  homeTable and addTable are here to make sure lib is populated first.
+    */
     init() {
         this.getLibraryFromDB();
         this._bindEvents();
@@ -203,7 +204,8 @@ class Library {
     }
 
     removeBooksByAuthor(author) {
-        let rows = this.homeTable.column(1).search(author);
+        console.log(author);
+        let rows = this.homeTable.column( 1 ).search(author).row().indexes();
         console.log(rows);
     }
 
@@ -253,6 +255,7 @@ class Library {
             url: "http://localhost:3000/library/" + id
         }).done( function(response) {
             console.log(response);
+            return (new Book(response));
         }).fail( function(response) {
             _this.failedResponse(response);
         });
