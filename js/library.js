@@ -17,7 +17,7 @@ class Library {
         this.editTableRow;      // The table row being edited.
         this.originalTitle;     // Save the book's original title before editing
         this.bookToEdit;       // book being edited
-        // this.books = [];
+        this.books = [];
     }
 
     /*
@@ -28,12 +28,12 @@ class Library {
         this._bindEvents();
         // This datatable is displayed on the home page
         this.homeTable = $("#displayTable").DataTable({
-            // data: this.books,
-            ajax: {
-                dataType: "json",
-                type: "GET",
-                url: "http://localhost:3000/library/"
-            },
+            data: this.books,
+            // ajax: {
+            //     dataType: "json",
+            //     type: "GET",
+            //     url: "http://localhost:3000/library/"
+            // },
             columns: [
                 { data: "_id", defaultContent: "", visible: false },
                 { data: "author" },
@@ -62,7 +62,7 @@ class Library {
         // The add datatable is used when adding boooks it's inside the modal addModal
         this.addTable = $("#addModalTable").DataTable({
             paging: false,
-            searching: false
+            searching: false,
         });
     }
 
@@ -113,7 +113,7 @@ class Library {
         if (this.findTitleInTable(title)) { // pop an alert but don't add the book to the table
             alert("Duplicate title: " + title + " found in table");
         } else {    // add the book to the modal table
-            this.addTable.row.add([0, author, title, numPages, pubDate, cover.substring[0, 24], 0]);
+            this.addTable.row.add([author, title, numPages, pubDate, cover.substring(0, 24)]);
             this.addTable.draw(false);
         }
     }
@@ -211,15 +211,25 @@ class Library {
     btnAuthorToDelete(e) {
         let author = $(e.currentTarget).text();
         if (confirm("Are you sure you want to delete all the books by " + author + " ?")) {
+            $("#showAllAuthorsModal").modal("hide");
             this.removeBooksByAuthor(author);
         }
+        $("#showAllAuthorsModal").modal("hide");
         this.homeTable.draw();  //  Refresh the table
     }
 
+    /*
+        removeBooksByAuthor - 
+    */
     removeBooksByAuthor(author) {
-        console.log(author);
-        let rows = this.homeTable.column( 1 ).search(author).row().indexes();
-        console.log(rows);
+        let _this = this;
+        let rows = this.homeTable.rows( function ( idx, data ) {
+            return (data.author === author) ? true : false;
+        } ).data();
+        for (let i=0; i<rows.length; ++i) {
+            let book = new Book(rows[i]);
+            _this.removeBookById(book._id);
+        }
     }
 
     /*
@@ -274,7 +284,7 @@ class Library {
     }
 
     /*
-        removeBookById - removes a book from the database
+        removeBookById - removes a book from the database then calls removeBookFromTable on return
     */
     removeBookById(id) {
         let _this = this;
@@ -283,8 +293,8 @@ class Library {
             dataType: "json",
             type: "DELETE",
         }).done( function(response) {
-            // _this.homeTable.row(tableRow).remove();
-            // _this.homeTable.draw(false);
+            let book = new Book(response);
+            _this.removeBookFromTable(book);
         }).fail( function(response) {
             _this.failedResponse(response);
         });
@@ -309,12 +319,21 @@ class Library {
     }
 
     /*
-        addBookToTable - adds a book to the table and hides the _id, cover and __v columns 
+        addBookToTable - adds a book to the table 
     */
     addBookToTable(book) {
         this.homeTable.row.add(book);
-        // this.homeTable.columns( [ 0, 5, 6 ] ).visible( false );
         this.homeTable.row().draw(false);
+    }
+
+    /*
+        removeBookFromTable - removes a book from the table
+    */
+    removeBookFromTable(book) {
+        this.homeTable.column( function ( index, data, node) {
+            return ( data._id === book._id) ? true : false;
+        }).remove();
+        this.homeTable.draw(false);
     }
 
     failedResponse(response) {
