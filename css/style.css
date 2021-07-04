@@ -1,0 +1,666 @@
+
+body {
+  font-family: 'Abraham Lincoln';
+}
+
+
+h1 {
+  font-family: 'Abraham Lincoln';
+  font-size: 64px;
+  color: orange;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Abraham Lincoln';
+  font-size: 36px;
+  color: white;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  font-family: 'Abraham Lincoln';
+  font-size: 36px;
+  color: gray;
+}
+
+nav {
+  font-family: 'sans-serif';
+  font-size: 20px;
+  color: gray;
+  margin-top: 30px;
+  text-align: center;
+}
+
+div.couple {
+  position: absolute;
+  width: 1920px;
+  height: 1950px;
+  background-image: url("../images/couple.png");
+  overflow: hidden;
+}
+
+div.logo {
+  padding-top: 50px;
+  text-align: center;
+}
+
+img.logo {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid white;
+}
+
+span.nav {
+  padding-right: 30px;
+}
+
+div.honor {
+  margin-top: 700px;
+}
+
+div.scroll {
+  margin-top: 300px;
+  text-align: center;
+}
+
+img.right-margin-phone {
+  position: absolute;
+  width: 45px;
+  height: 200px;
+  right: 10px;
+  top: 0px;
+}
+
+nav.right-margin {
+  position: absolute;
+  font-family: 'Gotham Black';
+  font-size: 16px;
+  color: gray;
+  transform: rotate(-90deg);
+  height: 30px;
+  width: 500px;
+  right: -220px;
+  top: 600px;
+  color: gray;
+  z-index: 10;
+}
+
+span.right-margin-nav {
+  margin-right: 20px;
+}
+
+div.right-margin-copyright {
+  position: absolute;
+  font-family: 'Gotham Black';
+  font-size: 16px;
+  color: gray;
+  transform: rotate(-90deg);
+  right: -120px;
+  width: 300px;
+  height: 20px;
+  z-index: 10;
+}
+
+div.one {
+  position: absolute;
+  top: 1950px;
+  height: 1200px;
+  width: 1920px;
+  background-color: #694fca;
+  margin-top: 0px;
+}
+
+div.brushes {
+  position: absolute;
+  height: 700px;
+  width: 1000px;
+  top: 1600px;
+  left: 400px;
+  z-index: 10;
+}
+
+img.basket-brushes {
+  position: absolute;
+  left: 700px;
+  top: 435px;
+}
+
+div.invites {
+  position: absolute;
+  top: 480px;
+  left: 250px;
+}
+
+span.invites {
+  font-family: 'Abraham Lincoln';
+  font-size: 64px;
+  color: white;
+}
+
+span.invent {
+  font-family: 'Abraham Lincoln';
+  font-size: 16px;
+  color: white;
+}
+
+div.one-complexity {
+  position: absolute;
+  top: 500px;
+  left: 400px;
+  display: table-row;
+}
+
+div.one-complexity-left {
+  position: relative;
+  display: table-cell;
+  font-family: 'Abraham Lincoln';
+  font-size: 72px;
+  color: white;
+  width: 200px;
+}
+
+div.one-complexity-right {
+  position: relative;
+  display: table-cell;
+  width: 375px;
+  line-height: 12px;
+}
+
+span.one-complexity-right {
+  font-family: sans-serif;
+  font-size: 12px;
+  color: white;
+}
+
+div.one-services {
+  position: absolute;
+  display: table-row;
+  top: 800px;
+  left: 400px;
+}
+
+div.one-services-a {
+  position: relative;
+  display: table-cell;
+  width: 300px;
+  height: 200px;
+  padding-right: 50px;
+}
+
+span.one-services-heading {
+  font-family: 'Abraham Lincoln';
+  font-size: 20px;
+  color: orange;
+}
+
+div.one-services-body {
+  margin-top: 50px;
+}
+
+span.one-services-body {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+img.one-services-body {
+  text-align: center;
+}
+
+div.one-bar {
+  position: absolute;
+  left: 914px;
+  bottom: 50px;
+}
+
+img.one-bar-gold {
+  padding-right: 11px;
+}
+
+div.two {
+  position: absolute;
+  top: 3150px;
+  width: auto;
+  height: 1500px;
+  background-color: white;
+}
+
+div.two-welove {
+  position: absolute;
+  top: 260px;
+  left: 580px;
+  text-align: center;
+}
+
+div.two-welove-heading {
+  position: relative;
+  font-family: 'Abraham Lincoln';
+  font-size: 90px;
+  color: black;
+}
+
+div.two-welove-body {
+  position: relative;
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+img.two-bullseye {
+  position: absolute;
+  top: 500px;
+  left: 800px;
+}
+
+img.two-group2 {
+  position: absolute;
+  top: 1100px;
+  left: 435px;
+}
+
+div.two-honor {
+  position: absolute;
+  width: 500px;
+  text-align: right;
+  line-height: .9;
+  top: 1575px;
+  left: 775px;
+}
+
+span.two-honor-heading {
+  font-family: 'Abraham Lincoln';
+  font-size: 96px;
+  color: black;
+}
+
+span.two-honor-body {
+  font-family: 'Abraham Lincoln';
+  font-size: 24px;
+  color: black;
+}
+
+div.three {
+  position: absolute;
+  top: 5250px;
+  width: auto;
+  background-color: white;
+}
+
+img.three-rectangle {
+  position: absolute;
+  left: 50px;
+}
+
+img.three-tattoo {
+  position: absolute;
+  top: 75px;
+  left: 125px;
+}
+
+div.three-tattoo-prev {
+  position: absolute;
+  width: 400px;
+  height: 33px;
+  top: 125px;
+  left: 175px;
+}
+
+img.three-tattoo-prev-a {
+  position: relative;
+  width: 33px;
+  float: left;
+}
+
+img.three-tattoo-prev-b {
+  position: relative;
+  width: 173px;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+img.three-tattoo-prev-c {
+  position: relative;
+  width: 33px;
+  float: left;
+}
+
+div.three-whatwedo {
+  position: absolute;
+  width: 450px;
+  height: 200px;
+  font-family: 'Abraham Lincoln';
+  background-color: #694fca;
+  top: 225px;
+  left: 700px;
+}
+
+div.three-whatwedo-header {
+  position: relative;
+  font-size: 48px;
+  color: orange;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+div.three-whatwedo-body {
+  position: relative;
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+  padding-left: 20px;
+  line-height: 2
+}
+
+img.three-whatwedo-x {
+  position: absolute;
+  top: 10px;
+  left: 400px;
+}
+
+table.three {
+  position: absolute;
+  table-layout: auto;
+  border-collapse: collapse;
+  font-family: 'Abraham Lincoln';
+  font-size: 36px;
+  top: 225px;
+  left: 1200px;
+  width: 600px;
+}
+
+img.three-icon {
+  position: relative;
+  max-width: 50%;
+  max-height: 50%;
+  padding-right: 25px;
+}
+
+tr.three:nth-child(2n) {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+img.three-03 {
+  position: absolute;
+  width: 165px;
+  height: 165px;
+  top: 575px;
+  left: 1050px;
+}
+
+div.winter {
+  position: absolute;
+  top: 5500px;
+  height: 2560px;
+  width: 1920px;
+  background-image: url("../images/winter.png");
+  z-index: -5;
+}
+
+div.winter-text {
+  position: absolute;
+  top: 1250px;
+  left: 710px;
+  width: 500px;
+  height: 400px;
+  font-family: 'Abraham Lincoln';
+  font-size: 36px;
+  text-align: center;
+}
+
+span.winter-text-heading {}
+
+span.winter-text-body {
+  font-size: 24px;
+}
+
+img.winter-text-line {
+  color: black;
+}
+
+span.winter-text-subtext {
+  font-family: sans-serif;
+  font-size: 24px;
+}
+
+div.winter-test {
+  position: absolute;
+  bottom: 400px;
+  left: 500px;
+  width: 650px;
+  height: 600px
+}
+
+div.winter-test-customers {
+  position: absolute;
+  overflow: hidden;
+  width: 1000px;
+}
+
+div.winter-test-customers.a {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 450px;
+  text-align: center;
+  background-color: white;
+  margin-right: 20px;
+}
+
+div.winter-test-customers.b {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 450px;
+  background-color: #694fca;
+  text-align: center;
+  margin-right: 20px;
+}
+
+div.winter-test-customers.c {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 450px;
+  text-align: center;
+  background-color: white;
+}
+
+img.winter-test-customers-image {
+  /* width: 50%; */
+  /* height: 50%; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+img.winter-test-customers-stars {}
+
+p.winter-test-customers-name {
+  font-family: 'Gotham Black';
+  font-weight: bold;
+}
+
+p.winter-test-customers-location {
+  font-family: 'Gotham Black';
+  font-style: normal;
+  font-size: 12px;
+  color: gray;
+}
+
+footer {
+  position: absolute;
+  width: 1920px;
+  height: 600px;
+  top: 7700px;
+  background-color: black;
+}
+
+ul.footer {
+  position: absolute;
+  display: table-row;
+  left: 400px;
+}
+
+li.footer {
+  display: table-cell;
+}
+
+img.footer-phone {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+img.footer-email {
+  margin-left: 200px;
+  margin-right: 10px;
+  margin-bottom: 11px;
+}
+
+img.footer-phone-number {
+  margin-right: 200px;
+  margin-bottom: 10px;
+}
+
+img.footer-email-info {
+  margin-bottom: 10px;
+}
+
+div.footer-box {
+  position: absolute;
+  height: 400px;
+  width: 1920;
+  top: 100px;
+  left: 300px;
+  overflow: visible;
+}
+
+div.footer-box-aboutus {
+  position: relative;
+  float: left;
+  width: 600px;
+  height: 400px;
+}
+
+p.footer-box-title {
+  font-family: 'Gotham Black';
+  color: white;
+}
+
+div.footer-box-aboutus-image {
+  position: absolute;
+  width: 400px;
+}
+
+img.footer-box-aboutus {
+  float: left;
+}
+
+div.footer-box-aboutus-soc {
+  float: left;
+}
+
+div.footer-box-aboutus-soc-img {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: -12px;
+  width: 350px;
+}
+
+img.sm {
+  float: left;
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+  color: gray;
+  opacity: .5;
+}
+
+p.footer-box-body {
+  font-family: 'Gotham Black';
+  font-size: 10px;
+  color: gray;
+}
+
+p.footer-box-aboutus-body {
+  font-family: 'Gotham Black';
+  font-size: 10px;
+  color: gray;
+  line-height: 2;
+}
+
+div.footer-box-newsletter {
+  float: left;
+  width: 300px;
+  height: 400px;
+}
+
+div.footer-box-fromblog {
+  float: left;
+  width: 300px;
+  height: 400px;
+}
+
+div.footer-box-newsletter-body {
+  position: relative;
+  top: 40px;
+}
+
+p.footer-box-newsletter-email {
+  font-family: 'Gotham Black';
+  font-size: 10px;
+  color: gray;
+  margin-top: 20px;
+  width: 250px;
+  border: 1px solid gray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+}
+
+p.footer-box-newsletter-subscribe {
+  font-family: 'Gotham Black';
+  font-size: 12px;
+  color: gray;
+  background-color: #694fca;
+  width: 100px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+p.footer-box-fromblog {
+  position: relative;
+  font-family: 'Gotham Black';
+  font-size: 10px;
+  color: gray;
+}
+
+span.footer-box-fromblog-date {
+  font-family: 'Gotham Black';
+  font-size: 12px;
+  color: #694fca;
+}
+
+div.footer-box-fromblog-redesign {
+  position: relative;
+  overflow: hidden;
+}
+
+img.footer-box-fromblog {
+  float: left;
+  clear: left;
+  margin-top: 20px;
+}
+
+p.footer-box-fromblog {
+  position: relative;
+  margin-left: 20px;
+  margin-top: 20px;
+  float: left;
+}
